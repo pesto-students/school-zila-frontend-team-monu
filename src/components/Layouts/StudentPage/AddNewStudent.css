@@ -1,0 +1,162 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin-left: 17.5%;
+  margin-top: 1%;
+}
+
+.topHeader > h2 {
+  padding-left: 2.3%;
+  color: #303972;
+}
+
+.topHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2.5%;
+}
+
+.studentDetail {
+  margin: 30px 15px 0 40px;
+}
+
+.profileMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileName > p {
+  font-weight: bold;
+  font-size: 10px;
+  margin-right: 8px;
+}
+
+.profileAvatar {
+  background-color: #c1bbeb;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addStudent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  /* height: 40px; */
+  width: 12%;
+  font-weight: 600;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.personalDetail {
+  width: 100%;
+  height: max-content;
+}
+
+.commonFormHeader {
+  background-color: #5dbc67;
+  height: 5vh;
+  width: 97.5%;
+  border-radius: 13px 13px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.commonFormHeader p {
+  margin-left: 2%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+.personalDetailsForm {
+  width: 97.5%;
+  background-color: white;
+  border-radius: 0 0 13px 13px;
+  display: flex;
+}
+
+.commonFormDiv {
+  display: flex;
+  flex-direction: column;
+  width: 39%;
+  padding: 2% 0 0 2%;
+  margin-bottom: 2%;
+}
+
+.commonFormDiv,
+.studentForm label {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #303972;
+  margin-bottom: 2.5%;
+}
+
+.commonFormDiv input,
+textarea {
+  border: 1px solid #c1bbeb;
+  padding: 7px;
+  border-radius: 5px;
+  margin-bottom: 2.5%;
+  color: #a098ae;
+  resize: none;
+}
+
+.education {
+  margin-top: 3%;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 40px;
+  width: 12%;
+  font-weight: 600;
+}
+
+.submitFormButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5%;
+}
+
+.pdfRightDiv textarea {
+  height: 105px;
+  width: 105px;
+  border: 1px dashed #c1bbeb;
+}
+
+.studentForm {
+  display: flex;
+  flex-direction: column;
+  width: 13%;
+  padding: 2% 0 0 2%;
+  margin-bottom: 2%;
+}
+
+.studentForm textarea {
+  border: 1px dashed #c1bbeb;
+}
