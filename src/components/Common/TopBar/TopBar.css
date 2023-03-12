@@ -1,0 +1,12 @@
+.topHeader > p {
+  color: #303972;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.topHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2.5%;
+}

@@ -1,0 +1,67 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin-left: 17.5%;
+  margin-top: 1%;
+}
+
+.topHeader > h2 {
+  padding-left: 2.3%;
+  color: #303972;
+}
+
+.topHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2.5%;
+}
+
+.studentDetail {
+  margin: 30px 15px 0 40px;
+}
+
+.profileMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileName > p {
+  font-weight: bold;
+  font-size: 10px;
+  margin-right: 8px;
+}
+
+.profileAvatar {
+  background-color: #c1bbeb;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addStudent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  /* height: 40px; */
+  width: 12%;
+  font-weight: 600;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
