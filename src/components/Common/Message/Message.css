@@ -1,0 +1,19 @@
+.common-messages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.common-messages-sub {
+    margin: 10px 0 0 8px;
+}
+
+.common-messages-sub > div:first-child {
+    font-size: x-small;
+    margin-bottom: 5px;
+}
+
+.common-messages-sub > div:last-child {
+    font-size: xx-small;
+    color: grey;
+}

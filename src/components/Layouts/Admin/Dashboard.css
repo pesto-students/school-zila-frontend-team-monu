@@ -1,3 +1,7 @@
+.dash-main {
+    display: flex;
+}
+
 .dash-main-top {
     display: flex;
     background-color: white;
