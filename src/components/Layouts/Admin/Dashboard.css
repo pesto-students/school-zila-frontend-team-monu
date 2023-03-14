@@ -1,4 +1,4 @@
-.dash-main {
+.dash-main-top {
     display: flex;
     background-color: white;
     width: 60%;
@@ -20,4 +20,27 @@
 
 .dash-sub-top > span > span {
     font-size: medium;
+}
+
+.dash-main-right-column {
+    width: 32vh;
+}
+
+.dash-main-right-column-messages {
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages-main {
+    margin: 20px 0 0 8px;
+}
+
+.messages-main > div:first-child{
+    font-size: small;
+    margin-bottom: 4px;
+}
+
+.messages-main > div:last-child{
+    font-size: xx-small;
+    color: grey;
 }
