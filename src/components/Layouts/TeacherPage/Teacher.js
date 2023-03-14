@@ -7,8 +7,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import AddIcon from "@mui/icons-material/Add";
-import ColorButtons from "../../Button";
-import SearchInput from "../../SearchInput";
+import ColorButtons from "../../Common/Button";
+import SearchInput from "../../Common/SearchInput";
 import activityIcon from "../../../assets/Activity-icon.svg";
 
 import SideBar from "../../Common/SideBar/SideBar";

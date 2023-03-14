@@ -2,7 +2,7 @@ import React from "react";
 import TempTeacherPic from "../../../assets/tempTeacherPic.jpg";
 import PhoneCallIcon from "../../../assets/Call-icon.svg";
 import EmailIcon from "../../../assets/Email-icon.svg";
-import ColorButtons from "../../Button";
+import ColorButtons from "../Button";
 import "./TeacherCard.css";
 
 export default function TeacherCard(props) {

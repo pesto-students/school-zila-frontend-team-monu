@@ -1,6 +1,6 @@
 import React from "react";
-import SearchInput from "../../SearchInput";
-import ColorButtons from "../../Button";
+import SearchInput from "../SearchInput";
+import ColorButtons from "../Button";
 import AddIcon from "@mui/icons-material/Add";
 import "./AddNewMemComp.css";
 

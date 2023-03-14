@@ -1,5 +1,4 @@
 import React from "react";
-import ColorButtons from "../../Button";
 import TempSubjectPic from "../../../assets/tempTeacherPic.jpg";
 import StarIcon from "../../../assets/Star-icon.svg";
 import ViewsIcon from "../../../assets/Views-icon.svg";

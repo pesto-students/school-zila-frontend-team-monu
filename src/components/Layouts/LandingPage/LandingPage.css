@@ -1,0 +1,128 @@
+.landingPageHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.landingPageHeader > p {
+  color: #303972;
+  font-size: 2.2rem;
+  font-weight: bolder;
+}
+
+.midContainer {
+  display: flex;
+  /* width: 100%; */
+  margin: 0 6% 0 6%;
+  justify-content: center;
+}
+
+.midLeftContainer {
+  width: 27%;
+}
+
+.midLeftContainer > img {
+  width: 90%;
+}
+
+.midRightContainer {
+  width: 70%;
+  /* margin-left: 0%; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1.5% 1.5% 0 1.5%;
+}
+
+.schoolDetailHeader {
+  display: flex;
+  /* width: 90%; */
+  justify-content: space-between;
+}
+
+.schoolImage {
+  width: 75%;
+}
+
+.schoolImage > img {
+  width: 100%;
+}
+
+.schoolDetail {
+  margin-left: 3%;
+}
+
+.schoolTitle {
+  font-size: 1.6rem;
+  margin-top: 0px;
+  color: #5dbc67;
+  font-weight: bold;
+}
+
+.schoolLoginBtn {
+  border: none;
+  background-color: #524ab4;
+  width: 20%;
+  height: 15%;
+  color: white;
+  border-radius: 50px;
+}
+
+.schoolSmallDetails {
+  color: #303972;
+}
+
+.schoolStats {
+  display: flex;
+  justify-content: center;
+  width: 55%;
+}
+
+.schoolRating {
+  width: 33%;
+}
+
+.schoolStatsText1 {
+  margin-bottom: 0px;
+  color: #5dbc67;
+  font-size: 1.2rem;
+}
+
+.schoolStats {
+  display: flex;
+  width: 34%;
+  align-items: center;
+}
+
+.schoolStats > img {
+  width: 35%;
+}
+
+.stats {
+  display: flex;
+  /* width: 31%; */
+  margin-left: 5%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.schoolStatsText1 {
+  margin-bottom: 0px;
+}
+
+.schoolStatsText2 {
+  margin-bottom: 0px;
+}
+
+.schoolIntrest {
+  display: flex;
+  width: 33%;
+  align-items: center;
+}
+
+.schoolIntrest {
+  width: 25%;
+}
+
+.intrest {
+  margin-left: 5%;
+}
