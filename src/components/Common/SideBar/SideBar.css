@@ -3,7 +3,7 @@
   display: flex;
   background-color: #5dbc67;
   width: 15vw;
-  height: 85vh;
+  height: 100vh;
   justify-content: flex-start;
   flex-direction: column;
 }
