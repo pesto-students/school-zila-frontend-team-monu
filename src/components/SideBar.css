@@ -2,9 +2,10 @@
   display: flex;
   background-color: #5dbc67;
   width: 18%;
-  height: 85vh;
+  height: 100vh;
   justify-content: flex-start;
   flex-direction: column;
+  position:fixed;
 }
 
 .schoolName {
@@ -35,7 +36,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 4px 0 4px 23px;
+  padding: 4% 0 4% 15%;
   margin-left: 22px;
 }
 
