@@ -1,0 +1,23 @@
+.dash-main {
+    display: flex;
+    background-color: white;
+    width: 60%;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 8px;
+}
+
+.dash-sub-top {
+    display: flex;
+}
+
+.dash-sub-top > span > div {
+    color:grey;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.dash-sub-top > span > span {
+    font-size: medium;
+}
