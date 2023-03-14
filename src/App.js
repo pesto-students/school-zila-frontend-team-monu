@@ -1,17 +1,16 @@
 import React from "react";
 import "./App.css";
-import AddNewStudent from "./components/Layouts/StudentPage/AddNewStudent";
-// import Student from "./components/Layouts/StudentPage/Student";
-import AddNewTeacher from "./components/Layouts/TeacherPage/AddNewTeacher";
-// import Teacher from "./components/Layouts/TeacherPage/Teacher";
+import Student from "./components/Student";
+import {Calander} from "./components/Calander";
+import SideBar from './components/SideBar';
 
 function App() {
-  // return <div>{false ? <Student /> : <Teacher />}</div>;
   return (
-    <div>
-      <AddNewStudent />
+    <div style={{display:'flex'}}>
+    <SideBar />
+  <Calander />;
     </div>
-  );
+  )
 }
 
-export default App;
+export default App; 
