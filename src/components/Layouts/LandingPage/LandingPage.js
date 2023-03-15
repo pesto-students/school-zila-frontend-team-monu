@@ -36,13 +36,13 @@ export default function LandingPage() {
             </div>
             <div className="schoolStats">
               <div className="schoolRating">
-                <p className="schoolStatsText1">Rating</p>
+                <p className="schoolStatsText2">Rating</p>
                 <div className="rating">
                   <img src={StarIcon} alt="Start Icon" />
-                  <p className="schoolStatsText2">4.9</p>
+                  <p className="schoolStatsText1">4.9</p>
                 </div>
               </div>
-              <div className="schoolStats">
+              <div className="schoolViews">
                 <img src={StatsIcon} alt="Stats Icon" />
                 <div className="stats">
                   <p className="schoolStatsText1">3456</p>
@@ -75,11 +75,10 @@ export default function LandingPage() {
                     Magni.
                   </li>
                 </ul>
-                <p>Lorem ipsum dolor sit amet.</p>
               </div>
               <div className="qualitieRightDiv">
                 <p className="qualitieHeader">Address</p>
-                <p>
+                <p className="address">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Optio!
                 </p>

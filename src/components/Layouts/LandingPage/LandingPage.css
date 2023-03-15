@@ -17,11 +17,12 @@
 }
 
 .midLeftContainer {
-  width: 27%;
+  width: 23%;
 }
 
 .midLeftContainer > img {
   width: 90%;
+  border-radius: 10px;
 }
 
 .midRightContainer {
@@ -40,18 +41,20 @@
 }
 
 .schoolImage {
-  width: 75%;
+  width: 70%;
 }
 
 .schoolImage > img {
-  width: 100%;
+  width: 90%;
 }
 
 .schoolDetail {
-  margin-left: 3%;
+  /* margin-left: 3%; */
 }
 
-.schoolTitle {
+.schoolTitle,
+.qualitieHeader,
+.qualitieHeader {
   font-size: 1.6rem;
   margin-top: 0px;
   color: #5dbc67;
@@ -71,58 +74,91 @@
   color: #303972;
 }
 
-.schoolStats {
-  display: flex;
-  justify-content: center;
-  width: 55%;
-}
-
 .schoolRating {
-  width: 33%;
-}
-
-.schoolStatsText1 {
-  margin-bottom: 0px;
-  color: #5dbc67;
-  font-size: 1.2rem;
+  width: 29%;
 }
 
 .schoolStats {
   display: flex;
-  width: 34%;
+  width: 50%;
   align-items: center;
-}
-
-.schoolStats > img {
-  width: 35%;
+  justify-content: flex-start;
+  /* margin-top: 3%; */
+  margin: 2.7% 0 2.7% 0;
 }
 
 .stats {
   display: flex;
   /* width: 31%; */
-  margin-left: 5%;
+  margin-left: 12%;
   align-items: center;
   flex-direction: column;
 }
 
 .schoolStatsText1 {
-  margin-bottom: 0px;
+  color: #303972;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* margin-top: 0px; */
+  margin: 0 0 0 5%;
 }
 
 .schoolStatsText2 {
-  margin-bottom: 0px;
+  color: #5dbc67;
+  font-size: 1.2rem;
+  /* margin-top: 0px; */
+  margin: 0 0 0 0;
 }
 
 .schoolIntrest {
   display: flex;
-  width: 33%;
+  width: 35%;
   align-items: center;
 }
 
-.schoolIntrest {
+.schoolIntrest > img {
   width: 25%;
 }
 
 .intrest {
+  margin-left: 12%;
+}
+
+.rating {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.rating > img {
+  width: 15%;
+}
+
+.schoolViews {
+  display: flex;
+  width: 36%;
+}
+
+.schoolViews > img {
+  width: 28%;
+}
+
+.schoolQualities {
+  display: flex;
+}
+
+.qualitieRightDiv {
   margin-left: 5%;
+}
+
+.qualitieLeftDiv > ul {
+  padding-left: 20px;
+}
+
+ul li {
+  color: #303972;
+}
+
+.address {
+  color: #303972;
 }
