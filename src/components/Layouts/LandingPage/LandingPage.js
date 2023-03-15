@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../Common/Footer/Footer";
-import LandingPageImage from "../../../assets/soundtrap-ddwbTn5HDdQ-unsplash 1.jpg";
-import SchoolImage from "../../../assets/StockSnap_PVOZBIDHGL 1.png";
+import LandingPageImage from "../../../assets/Landing-page-image.jpg";
+import SchoolImage from "../../../assets/Landing-page-school-image.png";
 import StarIcon from "../../../assets/Star-icon.svg";
 import StatsIcon from "../../../assets/Views-icon.svg";
 import ArrowIcon from "../../../assets/Arrow-icon.svg";
