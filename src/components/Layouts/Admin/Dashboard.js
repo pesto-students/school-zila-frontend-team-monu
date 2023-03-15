@@ -1,6 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 import Message from "../../Common/Message/Message";
+import Notification from "../../Common/Notification/Notification";
 
 export default function Dashboard() {
   const dummyMessage = [
@@ -21,6 +22,26 @@ export default function Dashboard() {
       inClass: "Class 9A",
     },
   ];
+
+  const dummyNotifications = [
+    {
+      senderName: "Vishal Kori",
+      info: "Lorum Ipsum dolar sit amet..",
+    },
+    {
+      senderName: "Saurabh Kumar",
+      info: "Lorum Ipsum dolar sit amet..",
+    },
+    {
+      senderName: "Monu Kumar",
+      info: "Lorum Ipsum dolar sit amet..",
+    },
+    {
+      senderName: "Akshay Kumar",
+      info: "Lorum Ipsum dolar sit amet..",
+    },
+  ];
+
   return (
     <div className="dash-main">
       <div className="dash-main-top">
@@ -180,7 +201,69 @@ export default function Dashboard() {
             <Message senderName={i.senderName} inClass={i.inClass} />
           ))}
         </div>
-        <div className="dash-main-right-column-notifications"></div>
+        <div className="dash-main-right-column-notifications">
+          <div className="notifications-main">
+            <div>Notifications</div>
+            <div>{"You have 32 notifications"}</div>
+          </div>
+          <svg
+            width="70"
+            height="70"
+            viewBox="0 0 120 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g filter="url(#filter0_d_2_179)">
+              <rect x="50" y="30" width="60" height="60" rx="30" fill="white" />
+            </g>
+            <path
+              d="M89.3677 62.9391V53.8677C89.3677 48.7021 85.1655 44.5 80 44.5C74.8345 44.5 70.6323 48.7021 70.6323 53.8677V62.9397C68.967 63.4224 67.7383 64.9544 67.7383 66.8374C67.7383 69.0386 69.5293 70.8296 71.731 70.8296H75.377V70.877C75.377 73.4263 77.4507 75.5 80 75.5C82.5493 75.5 84.6231 73.4263 84.6231 70.8769V70.8296H88.2691C90.4707 70.8296 92.2617 69.0386 92.2617 66.7583C92.2617 64.9406 91.033 63.4198 89.3677 62.9391ZM73.6323 53.8677C73.6323 50.3564 76.4888 47.5 80 47.5C83.5112 47.5 86.3677 50.3564 86.3677 53.8677V62.7661H73.6323V53.8677ZM81.6231 70.8769C81.6231 71.772 80.895 72.5 80 72.5C79.105 72.5 78.377 71.772 78.377 70.8769V70.8296H81.623V70.8769H81.6231ZM88.269 67.8296H71.731C71.1836 67.8296 70.7383 67.3843 70.7383 66.7583C70.7383 66.2114 71.1836 65.7661 71.731 65.7661H88.2691C88.8164 65.7661 89.2617 66.2114 89.2617 66.8374C89.2617 67.3843 88.8164 67.8296 88.269 67.8296Z"
+              fill="#A098AE"
+            />
+            <circle cx="96" cy="44" r="4" fill="#4D44B5" />
+            <defs>
+              <filter
+                id="filter0_d_2_179"
+                x="0"
+                y="0"
+                width="160"
+                height="160"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix
+                  in="SourceAlpha"
+                  type="matrix"
+                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                  result="hardAlpha"
+                />
+                <feOffset dy="20" />
+                <feGaussianBlur stdDeviation="25" />
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.74902 0 0 0 0 0.0823529 0 0 0 0 0.423529 0 0 0 0.05 0"
+                />
+                <feBlend
+                  mode="normal"
+                  in2="BackgroundImageFix"
+                  result="effect1_dropShadow_2_179"
+                />
+                <feBlend
+                  mode="normal"
+                  in="SourceGraphic"
+                  in2="effect1_dropShadow_2_179"
+                  result="shape"
+                />
+              </filter>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          {dummyNotifications.map((i) => (
+            <Notification senderName={i.senderName} info={i.info} />
+          ))}
+        </div>
       </div>
     </div>
   );
