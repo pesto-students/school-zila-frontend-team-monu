@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import LandingPage from "./components/Layouts/LandingPage/LandingPage";
+import LoginPage from "./components/Layouts/LandingPage/LoginPage";
+// import LandingPage from "./components/Layouts/LandingPage/LandingPage";
 // import AnalysisLecture from "./components/Layouts/CoursePage/AnalysisLecture";
 // import Course from "./components/Layouts/CoursePage/Course";
 // import AddNewStudent from "./components/Layouts/StudentPage/AddNewStudent";
@@ -12,7 +13,7 @@ function App() {
   // return <div>{false ? <Student /> : <Teacher />}</div>;
   return (
     <div className="rootDiv1">
-      <LandingPage />
+      <LoginPage />
     </div>
   );
 }
