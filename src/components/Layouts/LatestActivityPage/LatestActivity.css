@@ -1,0 +1,67 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin: 1% 2.5% 0 17.5%;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.subjects {
+  padding: 0 2.5% 0 2.5%;
+  background-color: white;
+  width: 92.5%;
+  border-radius: 15px;
+  height: fit-content;
+  margin-bottom: 2.5%;
+}
+
+.subjectHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subjectHeader > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #303972;
+}
+
+.subjectTab {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+}
+
+.subjectTab > p {
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 5%;
+  color: #a098ae;
+}
+
+.activeSubjectTab {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #5dbc67 !important;
+  border-bottom: 2px solid #5dbc67;
+  padding: 5%;
+}
+
+.subjectDetails {
+  width: 100%;
+  padding: 2% 0 2% 0;
+}
+
+.latestActivityContainer {
+  background-color: white;
+  padding: 1% 2% 1% 2%;
+  border-radius: 14px;
+}
