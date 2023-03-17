@@ -2,7 +2,7 @@ import React from "react";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
 import Footer from "../../Common/Footer/Footer";
-import ColorButtons from "../../Button";
+import ColorButtons from "../../Common/Button";
 import "./AddNewTeacher.css";
 
 export default function AddNewTeacher() {

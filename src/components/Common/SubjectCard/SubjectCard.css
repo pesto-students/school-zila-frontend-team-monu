@@ -1,0 +1,105 @@
+.subjectDetail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+.subjectDetail p {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  color: #303972;
+}
+
+.subAvatar {
+  display: flex;
+  align-items: center;
+  width: 20%;
+}
+
+.subAvatar > img {
+  width: 95px;
+  height: 95px;
+  border-radius: 12px;
+}
+
+.selectSubjectDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+  margin-left: 12%;
+  align-items: center;
+}
+
+.selectSubject {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 30px;
+  width: 100%;
+}
+
+.selectSubjectDiv > p {
+  font-size: 1.6rem;
+  font-weight: bolder;
+  color: #303972;
+}
+
+.subStats {
+  display: flex;
+  justify-content: space-around;
+  width: 20%;
+}
+
+.rating {
+  display: flex;
+  width: 45%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rating > img {
+  width: 20%;
+}
+
+.rating > p {
+  margin-left: 5% !important;
+}
+
+.views {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.views > img {
+  width: 40%;
+}
+
+.noOfView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noOfView > p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.subjectViews {
+  color: #a098ae !important;
+  font-size: 1.2rem !important;
+  font-weight: normal !important;
+  /* margin-top: 0px;
+  margin-bottom: 0px; */
+}
+
+.subTeachersName > p {
+  font-size: 1.2rem !important;
+}
