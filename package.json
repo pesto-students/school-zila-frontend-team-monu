@@ -8,9 +8,10 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
     "@mui/x-data-grid": "^5.17.25",
-    "chart.js": "^4.2.1",
+    "@mui/x-date-pickers": "^6.0.2",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
+    "react-charts": "^2.0.0-beta.7",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },

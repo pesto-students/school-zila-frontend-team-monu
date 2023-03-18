@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
+import Dashboard from "./components/Layouts/DashboardPage/Dashboard";
 // import LoginPage from "./components/Layouts/LandingPage/LoginPage";
-import LatestActivity from "./components/Layouts/LatestActivityPage/LatestActivity";
+// import LatestActivity from "./components/Layouts/LatestActivityPage/LatestActivity";
 // import UserDetails from "./components/Layouts/UserDetailsPage/UserDetails";
 // import LandingPage from "./components/Layouts/LandingPage/LandingPage";
 // import AnalysisLecture from "./components/Layouts/CoursePage/AnalysisLecture";
@@ -15,7 +16,7 @@ function App() {
   // return <div>{false ? <Student /> : <Teacher />}</div>;
   return (
     <div className="rootDiv1">
-      <LatestActivity />
+      <Dashboard />
     </div>
   );
 }
