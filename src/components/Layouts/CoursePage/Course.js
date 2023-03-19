@@ -2,8 +2,8 @@ import React from "react";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
 import Footer from "../../Common/Footer/Footer";
-import "./Course.css";
 import SubjectCard from "../../Common/SubjectCard/SubjectCard";
+import "./Course.css";
 
 export default function Course() {
   return (

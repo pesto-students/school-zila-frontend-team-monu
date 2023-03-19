@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../../Common/Footer/Footer";
 import LandingPageImage from "../../../assets/Landing-page-image.jpg";
 import SchoolImage from "../../../assets/Landing-page-school-image.png";
@@ -25,7 +26,9 @@ export default function LandingPage() {
               </div>
               <div className="schoolDetail">
                 <p className="schoolTitle">schoolName</p>
-                <button className="schoolLoginBtn">Login</button>
+                <Link to="/login">
+                  <button className="schoolLoginBtn">Login</button>
+                </Link>
                 <p className="schoolSmallDetails">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
                   error odit officia eius iste voluptatem laudantium? Recusandae
