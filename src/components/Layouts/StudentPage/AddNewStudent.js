@@ -21,7 +21,7 @@ export default function AddNewStudent() {
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv studentForm">
-                    <label for="fname">Photo *</label>
+                    <label htmlFor="fname">Photo *</label>
                     <textarea
                       type="text"
                       id="fname"
@@ -33,13 +33,13 @@ export default function AddNewStudent() {
                     />
                   </div>
                   <div className="pdfMiddleDiv commonFormDiv">
-                    <label for="fname">First Name *</label>
+                    <label htmlFor="fname">First Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Date of Birth *</label>
+                    <label htmlFor="fname">Date of Birth *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Email *</label>
+                    <label htmlFor="fname">Email *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Address *</label>
+                    <label htmlFor="fname">Address *</label>
                     <textarea
                       type="text"
                       id="fname"
@@ -49,11 +49,11 @@ export default function AddNewStudent() {
                     />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
-                    <label for="fname">Last Name *</label>
+                    <label htmlFor="fname">Last Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Parent Name *</label>
+                    <label htmlFor="fname">Parent Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Phone *</label>
+                    <label htmlFor="fname">Phone *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                 </div>
@@ -64,23 +64,23 @@ export default function AddNewStudent() {
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv commonFormDiv">
-                    <label for="fname">Guardian 1 Name *</label>
+                    <label htmlFor="fname">Guardian 1 Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Email *</label>
+                    <label htmlFor="fname">Email *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Guardian 2 Name *</label>
+                    <label htmlFor="fname">Guardian 2 Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Email *</label>
+                    <label htmlFor="fname">Email *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
                     <label htmlFor="fname">Relationship *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Phone *</label>
+                    <label htmlFor="fname">Phone *</label>
                     <input type="text" id="fname" name="fname" />
                     <label htmlFor="fname">Relationship *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Phone *</label>
+                    <label htmlFor="fname">Phone *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                 </div>

@@ -25,11 +25,11 @@ export default function LoginPage() {
           <p className="loginTitle">LOGIN</p>
           <form action="" method="post">
             <div className="loginForm">
-              <label for="fname">Email *</label>
+              <label htmlFor="fname">Email *</label>
               <input type="text" id="fname" name="fname" />
-              <label for="fname">Password *</label>
+              <label htmlFor="fname">Password *</label>
               <input type="text" id="fname" name="fname" />
-              <label for="fname">Role *</label>
+              <label htmlFor="fname">Role *</label>
               <input type="text" id="fname" name="fname" />
               <div className="submitFormBtn">
                 <input type="submit" value="Submit" className="formSubmitBtn" />
