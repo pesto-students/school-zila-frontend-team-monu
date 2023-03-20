@@ -75,9 +75,12 @@ export default function AddNewTeacher() {
                 </div>
               </div>
               <div className="submitFormButton">
-                <ColorButtons parentClassName="submitButton">
-                  Submit
-                </ColorButtons>
+                <input
+                  type="submit"
+                  id="fname"
+                  name="Submit"
+                  className="submitButton"
+                />
               </div>
             </form>
           </div>

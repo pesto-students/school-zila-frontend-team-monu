@@ -14,7 +14,7 @@ export default function Student() {
         <div className="mainMiddleContainer">
           <div className="middleContainer">
             <TopBar title="Student" />
-            <AddNewMemComp buttonTitle="New Student" />
+            <AddNewMemComp buttonTitle="New Student" route="/add-student" />
             <div className="studentDetail">
               <DataTable />
             </div>

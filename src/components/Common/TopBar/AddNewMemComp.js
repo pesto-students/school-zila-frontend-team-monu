@@ -8,7 +8,7 @@ export default function AddNewMemComp(props) {
   return (
     <div className="middleHeader">
       <SearchInput />
-      <ColorButtons parentClassName="addStudent">
+      <ColorButtons parentClassName="addStudent" route={props.route}>
         <AddIcon style={{ fontSize: "2.5rem" }} /> {props.buttonTitle}
       </ColorButtons>
     </div>
