@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 
-export default function Linechart() {
+export default function Linechart({css}) {
   const UserData = [
     {
       id: 1,
@@ -92,7 +92,8 @@ export default function Linechart() {
     ],
   });
   return (
-    <div>
+    <div style={css}>
+      <div style={{fontSize:'16px', padding:'10px', color:'#303972', backgroundColor:'white', borderRadius:'10px 10px 0 0'}}>School Teachers engagement</div>
       <Line data={studentsData} />
     </div>
   );
