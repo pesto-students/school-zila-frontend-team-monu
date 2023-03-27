@@ -9,3 +9,25 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.profileMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileName > p {
+  font-weight: bold;
+  font-size: 10px;
+  margin-right: 8px;
+}
+
+.profileAvatar {
+  background-color: #c1bbeb;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

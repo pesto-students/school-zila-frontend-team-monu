@@ -1,0 +1,161 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin: 1% 2.5% 0 17.5%;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.userCoverDP {
+  height: 12vh;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.userDetailCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.userDetail {
+  background-color: white;
+  padding: 2% 2% 2% 2%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 12px 12px;
+}
+
+.userAvatar {
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  top: 5%;
+  left: 1.8%;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.userName {
+  color: #303972;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5%;
+}
+
+.otherDetail {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.userlocation {
+  width: 33%;
+}
+
+.userDetailText1 {
+  color: #303972;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.location {
+  width: 42%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userDetailText2 {
+  color: #a098ae;
+}
+
+.userContact {
+  width: 34%;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  width: 48%;
+  justify-content: space-between;
+}
+
+.contactIcon {
+  width: 30px;
+  height: 30px;
+  background-color: #fb7d5b;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.contactIcon > img {
+  width: 65%;
+}
+
+.userEmail {
+  width: 33%;
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.emailIcon {
+  width: 30px;
+  height: 30px;
+  background-color: #fb7d5b;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.emailIcon > img {
+  width: 65%;
+}
+
+.userDetailField {
+  margin-top: 3%;
+  background-color: #fcfafa;
+  padding: 4% 1% 1% 2%;
+  border-radius: 12px;
+}
+
+.userDetailForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.userDetailForm > div {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6%;
+}
+
+.userDetailForm label {
+  color: #303972;
+  font-size: 1.2rem;
+}
+
+.userDetailForm input {
+  background: #f3f6f8;
+  border: 1px solid #c1bbeb;
+  padding: 1.5% 0 1.5% 3%;
+  border-radius: 4px;
+  color: #787272;
+  width: 65%;
+}

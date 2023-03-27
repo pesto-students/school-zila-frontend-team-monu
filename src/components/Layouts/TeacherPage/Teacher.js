@@ -1,16 +1,4 @@
 import React from "react";
-import IconButton from "@mui/material/IconButton";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import AddIcon from "@mui/icons-material/Add";
-import ColorButtons from "../../Common/Button";
-import SearchInput from "../../Common/SearchInput";
-import activityIcon from "../../../assets/Activity-icon.svg";
-
 import SideBar from "../../Common/SideBar/SideBar";
 import TeacherCard from "../../Common/TeacherAvatar/TeacherCard";
 import "./Teacher.css";

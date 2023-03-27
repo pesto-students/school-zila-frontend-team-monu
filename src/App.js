@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import LoginPage from "./components/Layouts/LandingPage/LoginPage";
+import UserDetails from "./components/Layouts/UserDetailsPage/UserDetails";
 // import LandingPage from "./components/Layouts/LandingPage/LandingPage";
 // import AnalysisLecture from "./components/Layouts/CoursePage/AnalysisLecture";
 // import Course from "./components/Layouts/CoursePage/Course";
@@ -13,7 +14,7 @@ function App() {
   // return <div>{false ? <Student /> : <Teacher />}</div>;
   return (
     <div className="rootDiv1">
-      <LoginPage />
+      <UserDetails />
     </div>
   );
 }
