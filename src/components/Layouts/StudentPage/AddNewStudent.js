@@ -2,7 +2,8 @@ import React from "react";
 import Footer from "../../Common/Footer/Footer";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
-import ColorButtons from "../../Button";
+// import ColorButtons from "../../Button";
+import ColorButtons from "../../Common/Button";
 import "./AddNewStudent.css";
 
 export default function AddNewStudent() {

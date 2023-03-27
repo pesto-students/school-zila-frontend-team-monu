@@ -1,0 +1,86 @@
+.loginPageContainer {
+  display: flex;
+  padding: 8% 8% 0 8%;
+  justify-content: center;
+}
+
+.leftContainer {
+  width: 43.5%;
+  margin-right: 4%;
+}
+
+.leftContainer > img {
+  width: 100%;
+}
+
+.briefSchoolInfo {
+  background-color: white;
+  padding: 1% 2.5% 1% 2.5%;
+  border-radius: 12px;
+  margin-top: 5%;
+}
+
+.schoolName {
+  color: #5dbc67;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.schoolInfo {
+  color: #303972;
+  font-size: 1.2rem;
+}
+
+.rightContainer {
+  width: 26.5%;
+  background-color: white;
+  padding: 0 2.5% 0 2.5%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  border-radius: 12px;
+}
+
+.loginTitle {
+  color: #5dbc67;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 12%;
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.loginForm > label {
+  color: #303972;
+  font-weight: bold;
+}
+
+.loginForm > input {
+  border: 1px solid #c1bbeb;
+  border-radius: 5px;
+  margin: 2% 0 2% 0;
+  padding: 1.5%;
+  color: #a098ae;
+  font-size: 1.2rem;
+  background-color: #f3f6f8;
+}
+
+.submitFormBtn {
+  display: flex;
+  justify-content: center;
+  margin-top: 12%;
+}
+
+.submitFormBtn > input {
+  padding: 2.5% 3.5% 2.5% 3.5%;
+  color: white;
+  background-color: #524ab4;
+  border: none;
+  border-radius: 30px;
+}

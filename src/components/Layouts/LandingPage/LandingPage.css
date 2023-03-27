@@ -1,0 +1,165 @@
+.landingPageHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.landingPageHeader > p {
+  color: #303972;
+  font-size: 2.2rem;
+  font-weight: bolder;
+}
+
+.midContainer {
+  display: flex;
+  /* width: 100%; */
+  margin: 0 6% 0 6%;
+  justify-content: center;
+}
+
+.midLeftContainer {
+  width: 23%;
+}
+
+.midLeftContainer > img {
+  width: 90%;
+  border-radius: 10px;
+}
+
+.midRightContainer {
+  width: 70%;
+  /* margin-left: 0%; */
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1.5% 1.5% 0 1.5%;
+  border-radius: 12px;
+}
+
+.schoolDetailHeader {
+  display: flex;
+  /* width: 90%; */
+  justify-content: space-between;
+}
+
+.schoolImage {
+  width: 70%;
+}
+
+.schoolImage > img {
+  width: 90%;
+}
+
+.schoolDetail {
+  /* margin-left: 3%; */
+}
+
+.schoolTitle,
+.qualitieHeader,
+.qualitieHeader {
+  font-size: 1.6rem;
+  margin-top: 0px;
+  color: #5dbc67;
+  font-weight: bold;
+}
+
+.schoolLoginBtn {
+  border: none;
+  background-color: #524ab4;
+  width: 20%;
+  height: 15%;
+  color: white;
+  border-radius: 50px;
+}
+
+.schoolSmallDetails {
+  color: #303972;
+}
+
+.schoolRating {
+  width: 29%;
+}
+
+.schoolStats {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-start;
+  /* margin-top: 3%; */
+  margin: 2.7% 0 2.7% 0;
+}
+
+.stats {
+  display: flex;
+  /* width: 31%; */
+  margin-left: 12%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.schoolStatsText1 {
+  color: #303972;
+  font-weight: bold;
+  font-size: 1.5rem;
+  /* margin-top: 0px; */
+  margin: 0 0 0 5%;
+}
+
+.schoolStatsText2 {
+  color: #5dbc67;
+  font-size: 1.2rem;
+  /* margin-top: 0px; */
+  margin: 0 0 0 0;
+}
+
+.schoolIntrest {
+  display: flex;
+  width: 35%;
+  align-items: center;
+}
+
+.schoolIntrest > img {
+  width: 25%;
+}
+
+.intrest {
+  margin-left: 12%;
+}
+
+.rating {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.rating > img {
+  width: 15%;
+}
+
+.schoolViews {
+  display: flex;
+  width: 36%;
+}
+
+.schoolViews > img {
+  width: 28%;
+}
+
+.schoolQualities {
+  display: flex;
+}
+
+.qualitieRightDiv {
+  margin-left: 5%;
+}
+
+.qualitieLeftDiv > ul {
+  padding-left: 20px;
+}
+
+ul li {
+  color: #303972;
+}
+
+.address {
+  color: #303972;
+}
