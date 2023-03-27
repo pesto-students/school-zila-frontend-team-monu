@@ -1,0 +1,27 @@
+Calander.css
+
+.calander-main {
+  margin-left: "18%";
+  height: "60%";
+  width: "70%";
+  color:'red'
+}
+
+.add-event-main {
+  height: "100%";
+  width: "100%";
+  background-color: "silver";
+  position: "absolute";
+  z-index: "2";
+  top: "0%";
+  left: "0%";
+}
+
+.add-event-sub {
+  position: "absolute";
+  top: "30%";
+  left: "30%";
+  padding: "3% 3% 5% 3%";
+  background-color: "white";
+  border-radius: "10px";
+}

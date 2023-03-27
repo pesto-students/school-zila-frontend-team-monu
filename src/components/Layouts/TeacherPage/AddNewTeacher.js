@@ -20,11 +20,11 @@ export default function AddNewTeacher() {
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv commonFormDiv">
-                    <label for="fname">First Name *</label>
+                    <label htmlFor="fname">First Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Email *</label>
+                    <label htmlFor="fname">Email *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Address *</label>
+                    <label htmlFor="fname">Address *</label>
                     <textarea
                       type="text"
                       id="fname"
@@ -32,15 +32,15 @@ export default function AddNewTeacher() {
                       rows="7"
                       cols="50"
                     />
-                    <label for="fname">Date of Birth *</label>
+                    <label htmlFor="fname">Date of Birth *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
-                    <label for="fname">Last Name *</label>
+                    <label htmlFor="fname">Last Name *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Phone *</label>
+                    <label htmlFor="fname">Phone *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Photo *</label>
+                    <label htmlFor="fname">Photo *</label>
                     <textarea
                       type="text"
                       id="fname"
@@ -50,7 +50,7 @@ export default function AddNewTeacher() {
                       click here to select file"
                       disabled
                     />
-                    <label for="fname">Specialization *</label>
+                    <label htmlFor="fname">Specialization *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                 </div>
@@ -61,23 +61,26 @@ export default function AddNewTeacher() {
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv commonFormDiv">
-                    <label for="fname">University *</label>
+                    <label htmlFor="fname">University *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">Start & End Date *</label>
+                    <label htmlFor="fname">Start & End Date *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
-                    <label for="fname">Degree *</label>
+                    <label htmlFor="fname">Degree *</label>
                     <input type="text" id="fname" name="fname" />
-                    <label for="fname">City *</label>
+                    <label htmlFor="fname">City *</label>
                     <input type="text" id="fname" name="fname" />
                   </div>
                 </div>
               </div>
               <div className="submitFormButton">
-                <ColorButtons parentClassName="submitButton">
-                  Submit
-                </ColorButtons>
+                <input
+                  type="submit"
+                  id="fname"
+                  name="Submit"
+                  className="submitButton"
+                />
               </div>
             </form>
           </div>
