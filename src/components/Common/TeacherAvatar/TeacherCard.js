@@ -7,7 +7,6 @@ import "./TeacherCard.css";
 
 export default function TeacherCard(props) {
   const { teacherProfilePic, teacherName, specialist } = props;
-  console.log(props);
 
   return (
     <div className="teacherCard">

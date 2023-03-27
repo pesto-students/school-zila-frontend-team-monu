@@ -1,0 +1,32 @@
+.activityContainer {
+  display: flex;
+  margin-top: 1.5%;
+}
+
+.activityTopContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+}
+
+.activityBulletPoint {
+  width: 6px;
+  height: 6px;
+  border: 3px solid #4d44b5;
+  border-radius: 50%;
+}
+
+.activityDate {
+  color: #a098ae;
+  margin-top: 0px;
+}
+
+.activity {
+  margin-top: 0px;
+  color: #303972;
+  font-size: 1.2rem;
+}
+
+.subject {
+  color: #fb7d5b;
+}

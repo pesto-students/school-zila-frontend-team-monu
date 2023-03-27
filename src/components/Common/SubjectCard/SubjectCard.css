@@ -96,10 +96,12 @@
   color: #a098ae !important;
   font-size: 1.2rem !important;
   font-weight: normal !important;
-  /* margin-top: 0px;
-  margin-bottom: 0px; */
 }
 
 .subTeachersName > p {
   font-size: 1.2rem !important;
+}
+
+.selectSubjectDiv > a {
+  width: 100%;
 }

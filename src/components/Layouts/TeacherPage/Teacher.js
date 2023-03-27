@@ -14,7 +14,7 @@ export default function Teacher() {
         <SideBar />
         <div className="middleContainer">
           <TopBar title="Teacher" />
-          <AddNewMemComp buttonTitle="New Teacher" />
+          <AddNewMemComp buttonTitle="New Teacher" route="/add-teacher" />
           <div className="teacherList">
             <div className="teacherListRow1">
               <TeacherCard

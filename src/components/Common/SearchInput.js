@@ -15,6 +15,7 @@ export default function SearchInput() {
         width: "20%",
         borderRadius: "50px",
         padding: "0px 4px",
+        boxShadow: "none",
       }}
     >
       <IconButton

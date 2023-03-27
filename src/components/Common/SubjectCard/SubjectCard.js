@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import TempSubjectPic from "../../../assets/tempTeacherPic.jpg";
 import StarIcon from "../../../assets/Star-icon.svg";
 import ViewsIcon from "../../../assets/Views-icon.svg";
@@ -11,7 +12,9 @@ export default function SubjectCard() {
         <img src={TempSubjectPic} alt="Subject Picture" />
         <div className="selectSubjectDiv">
           {/* <ColorButtons parentClassName="selectSubject">Select</ColorButtons> */}
-          <button className="selectSubject">Select</button>
+          <Link to="/analysis-lecture">
+            <button className="selectSubject">Select</button>
+          </Link>
           <p>Subject 1</p>
         </div>
       </div>

@@ -63,7 +63,7 @@ export default function UserDetails() {
               <form action="">
                 <div className="userDetailForm">
                   <div>
-                    <label for="fname">Parent Name</label>
+                    <label htmlFor="fname">Parent Name</label>
                     <input
                       type="text"
                       id="fname"
@@ -73,15 +73,15 @@ export default function UserDetails() {
                     />
                   </div>
                   <div>
-                    <label for="fname">Phone No</label>
+                    <label htmlFor="fname">Phone No</label>
                     <input type="text" id="fname" name="fname" disabled />
                   </div>
                   <div>
-                    <label for="fname">Email</label>
+                    <label htmlFor="fname">Email</label>
                     <input type="text" id="fname" name="fname" disabled />
                   </div>
                   <div>
-                    <label for="fname">Password</label>
+                    <label htmlFor="fname">Password</label>
                     <input type="text" id="fname" name="fname" disabled />
                   </div>
                   <a href="http://localhost:3000">Change Password</a>
