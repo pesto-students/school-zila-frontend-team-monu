@@ -10,6 +10,10 @@
   top: calc(100vh - 10vh);
 }
 
+.footer > img {
+  height:98%
+}
+
 .promoContainer {
   display: flex;
   width: 12%;
@@ -17,5 +21,5 @@
 }
 
 .footer p {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }

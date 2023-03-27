@@ -11,7 +11,7 @@ import Student from "./components/Layouts/StudentPage/Student";
 import AddNewTeacher from "./components/Layouts/TeacherPage/AddNewTeacher";
 import Teacher from "./components/Layouts/TeacherPage/Teacher";
 import "./App.css";
-import { Dashboard } from "@mui/icons-material";
+// import { Dashboard } from "@mui/icons-material";
 
 function App() {
   return (

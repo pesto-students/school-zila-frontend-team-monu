@@ -1,0 +1,89 @@
+.dash-main {
+  display: flex;
+  position: absolute;
+  margin-left: 40vh;
+  justify-content: space-between;
+}
+
+.dash-main-layout {
+  width: 134vh;
+}
+
+.dash-main-top {
+  display: flex;
+  background-color: white;
+  width: 125vh;
+  height: 10vh;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 8px;
+}
+
+.dash-sub-top {
+  display: flex;
+}
+
+.dash-sub-top > span > div {
+  color: grey;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.dash-sub-top > span > span {
+  font-size: medium;
+}
+
+#calendar-mid {
+  display: flex;
+}
+
+.dash-main-right-column {
+  position: fixed;
+  right: 0;
+  width: 35vh;
+  height: 90vh;
+  background-color: white;
+}
+
+.dash-main-right-column > button {
+  font-size: x-small;
+  margin: 10px 0 0 3vw;
+  padding: 5px 50px;
+  border-radius: 20px;
+  border: hidden;
+  color: #303972;
+}
+
+.dash-main-right-column-messages {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 13px 0 0;
+}
+
+.messages-main {
+  margin: 20px 0 0 8px;
+}
+
+.messages-main > div:first-child {
+  font-size: small;
+  margin-bottom: 4px;
+}
+
+.messages-main > div:last-child {
+  font-size: xx-small;
+  color: grey;
+}
+
+.notifications-main {
+  margin: 20px 0 0 8px;
+}
+
+.notifications-main > div:first-child {
+  font-size: small;
+  margin-bottom: 4px;
+}
+
+.notifications-main > div:last-child {
+  font-size: xx-small;
+  color: grey;
+}
