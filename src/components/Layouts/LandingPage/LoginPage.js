@@ -4,7 +4,8 @@ import LoginPageImage from "../../../assets/Login-page-image.png";
 import Footer from "../../Common/Footer/Footer";
 import serviceAxiosInstance from "../../../service/axiosService";
 import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
-import { toasterStatus } from "../../../../src/utils/constants";
+import { TOASTER_STATUS } from "../../../../src/utils/constants";
+import { updateTosterStatus } from '../../../utils/commonService';
 import "./LoginPage.css";
 
 let snackBarMessage = "";
@@ -20,7 +21,7 @@ export default function LoginPage() {
 
   const [loginData, setLoginData] = useState(initialLoginState);
   const handleLogin = async () => {
-    try { debugger
+    try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
         url: "login/",
@@ -29,14 +30,14 @@ export default function LoginPage() {
       });
       if (response?.status) {
         snackBarMessage = response?.message;
-        updateTosterStatus(setOpenToaster, setAlertStatus, toasterStatus.SUCCESS);
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
       } else {
         snackBarMessage = response?.message;
-        updateTosterStatus(setOpenToaster, setAlertStatus, toasterStatus.ERROR);
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
       }
     } catch (e) {
       snackBarMessage = response?.message;
-      updateTosterStatus(setOpenToaster, setAlertStatus, toasterStatus.ERROR);
+      updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
       console.log("Error");
     }
   };
@@ -66,15 +67,16 @@ export default function LoginPage() {
         </div>
         <div className="rightContainer">
           <p className="loginTitle">LOGIN</p>
-          <form action="" method="post">
+          <form autoComplete="off">
             <div className="loginForm">
               <label htmlFor="email">Email *</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 value={loginData.email}
                 onChange={handleChange}
+                autoComplete="new-email"
               />
               <label htmlFor="password">Password *</label>
               <input
@@ -83,6 +85,7 @@ export default function LoginPage() {
                 name="password"
                 value={loginData.password}
                 onChange={handleChange}
+                autoComplete="new-password"
               />
               <label htmlFor="role">Role *</label>
               <input
@@ -91,12 +94,14 @@ export default function LoginPage() {
                 name="role"
                 value={loginData.role}
                 onChange={handleChange}
+                autoComplete="new-role"
               />
               <Link to="/student">
                 <div className="submitFormBtn">
                   <input
                     type="submit"
-                    value="Submit"
+                    id="submit"
+                    name="submit"
                     className="formSubmitBtn"
                     onClick={handleLogin}
                   />

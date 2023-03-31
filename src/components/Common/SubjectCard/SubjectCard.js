@@ -11,7 +11,7 @@ export default function SubjectCard() {
       <div className="subAvatar">
         <img src={TempSubjectPic} alt="Subject Picture" />
         <div className="selectSubjectDiv">
-          {/* <ColorButtons parentClassName="selectSubject">Select</ColorButtons> */}
+          {/* <NewEntityButton parentClassName="selectSubject">Select</NewEntityButton> */}
           <Link to="/analysis-lecture">
             <button className="selectSubject">Select</button>
           </Link>
