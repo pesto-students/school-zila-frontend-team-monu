@@ -18,11 +18,16 @@ export default function SideBar() {
         <p>WizzKid</p>
       </div>
       <div className="menuItems">
-        {/* <NavLink to="">
-          <div>
+        {/* <NavLink to="/dashboard"
+        className={({ isActive, isPending }) =>
+        isPending
+          ? ""
+          : isActive
+          ? "activeDashBoardButton"
+          : "dashBoardButton"
+      }>
             <img src={homeIcon} alt="asd" />
             <p>Dashboard</p>
-          </div>
         </NavLink> */}
         <NavLink
           to="/student"

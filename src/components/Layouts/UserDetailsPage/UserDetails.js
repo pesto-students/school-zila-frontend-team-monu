@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Footer from "../../Common/Footer/Footer";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
@@ -9,7 +9,44 @@ import ContactIcon from "../../../assets/Call-icon.svg";
 import EmailIcon from "../../../assets/Email-icon.svg";
 import "./UserDetails.css";
 
+let defaultUser = {
+  userName: 'Vishal',
+  userPhone: '9876543210',
+  userEmail:'vishal@gmail.com',
+  userCity: 'Mumbai',
+  userCountry: 'India',
+  role:'Admin',
+
+}
+
 export default function UserDetails() {
+  const [userData, setuserData] = useState(defaultUser);
+
+  useEffect(() => {
+    handleGetUserDetails();
+  },[])
+
+
+  const handleGetUserDetails = async () => {
+    try {
+      let payload = {
+        schoolId: '',
+        userId: '',
+      }
+      let response = await serviceAxiosInstance({
+        // url of the api endpoint (can be changed)
+        url: "user/",
+        method: "POST",
+        data: payload,
+      });
+      if (response?.status) {
+        setuserData(response.data);
+      }
+    } catch (e) {
+      console.log("Error");
+    }
+  };
+
   return (
     <>
       <div className="mainContainer">
@@ -29,13 +66,13 @@ export default function UserDetails() {
                 className="userCoverDP"
               />
               <div className="userDetail">
-                <p className="userName">Saurabh Kumar</p>
+                <p className="userName">{userData.userName}</p>
                 <div className="otherDetail">
                   <div className="userlocation">
-                    <p className="userDetailText1">Admin</p>
+                    <p className="userDetailText1">{userData.role}</p>
                     <div className="location">
                       <img src={LocationIcon} alt="User Location" />
-                      <p className="userDetailText2">Mumbai, India</p>
+                      <p className="userDetailText2">{userData.userCity+', '+userData.userCountry}</p>
                     </div>
                   </div>
                   <div className="userContact">
@@ -44,7 +81,7 @@ export default function UserDetails() {
                       <div className="contactIcon">
                         <img src={ContactIcon} alt="User Contact" />
                       </div>
-                      <p className="userDetailText1">+911234567890</p>
+                      <p className="userDetailText1">{userData.userPhone}</p>
                     </div>
                   </div>
                   <div className="userEmail">
@@ -53,7 +90,7 @@ export default function UserDetails() {
                       <div className="emailIcon">
                         <img src={EmailIcon} alt="User Email Address" />
                       </div>
-                      <p className="userDetailText1">abcd@email.com</p>
+                      <p className="userDetailText1">{userData.userEmail}</p>
                     </div>
                   </div>
                 </div>
@@ -73,16 +110,16 @@ export default function UserDetails() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="fname">Phone No</label>
-                    <input type="text" id="fname" name="fname" disabled />
+                    <label htmlFor="userPhone">Phone No</label>
+                    <input type="text" id="userPhone" name="userPhone" disabled />
                   </div>
                   <div>
-                    <label htmlFor="fname">Email</label>
-                    <input type="text" id="fname" name="fname" disabled />
+                    <label htmlFor="userEmail">Email</label>
+                    <input type="text" id="userEmail" name="userEmail" disabled />
                   </div>
                   <div>
-                    <label htmlFor="fname">Password</label>
-                    <input type="text" id="fname" name="fname" disabled />
+                    <label htmlFor="userPassword">Password</label>
+                    <input type="text" id="userPassword" name="userPassword" disabled />
                   </div>
                   <a href="http://localhost:3000">Change Password</a>
                 </div>

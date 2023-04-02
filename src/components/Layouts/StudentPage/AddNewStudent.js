@@ -1,12 +1,70 @@
-import React from "react";
+import React, {useState} from "react";
 import Footer from "../../Common/Footer/Footer";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
-// import ColorButtons from "../../Button";
-import ColorButtons from "../../Common/Button";
+// import NewEntityButton from "../../Button";
+import NewEntityButton from "../../Common/NewEntityButton";
+
+import serviceAxiosInstance from "../../../service/axiosService";
+import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
+import { TOASTER_STATUS } from "../../../../src/utils/constants";
+import { updateTosterStatus } from '../../../utils/commonService';
 import "./AddNewStudent.css";
 
+let snackBarMessage = "";
+const initialStudentData = {
+  studentImage: null,
+  schoolUuid:"",
+  studentName: "",
+  studentPassword: "",
+  studentEmail: "",
+  studentDob: "",
+  studentPhone: "",
+  studentAddress: "",
+  parent1Name: "",
+  parent1Relationship: "",
+  parent1Email: "",
+  parent1Phone: "",
+  parent2Name: "",
+  parent2Relationship: "",
+  parent2Email: "",
+  parent2Phone: "",
+  role: "",
+};
+
 export default function AddNewStudent() {
+  const [openToaster, setOpenToaster] = useState(false);
+  const [alertStatus, setAlertStatus] = useState(null);
+
+  const [studentData, setStudentData] = useState(initialStudentData);
+  const handleStudentForm = async () => {
+    try {
+      let response = await serviceAxiosInstance({
+        // url of the api endpoint (can be changed)
+        url: "add-student/",
+        method: "POST",
+        data: studentData,
+      });
+      if (response?.status) {
+        snackBarMessage = response?.message;
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
+      } else {
+        snackBarMessage = response?.message;
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
+      }
+    } catch (e) {
+      snackBarMessage = response?.message;
+      updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
+      console.log("Error");
+    }
+  };
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const {name, value} = event?.target;
+    setStudentData({ ...studentData, [name]: value });
+  };
+
   return (
     <>
       <div className="mainContainer">
@@ -14,18 +72,18 @@ export default function AddNewStudent() {
         <div className="mainMiddleContainer">
           <div className="middleContainer">
             <TopBar title="Add New Student" />
-            <form>
+            <form autoComplete="off">
               <div className="personalDetail">
                 <div className="personalDetailHeader commonFormHeader">
                   <p>Student Details</p>
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv studentForm">
-                    <label htmlFor="fname">Photo *</label>
+                    <label htmlFor="photo">Photo *</label>
                     <textarea
                       type="text"
-                      id="fname"
-                      name="fname"
+                      id="photo"
+                      name="photo"
                       rows="7"
                       value="Drag and drop or 
                       click here to select file"
@@ -33,28 +91,28 @@ export default function AddNewStudent() {
                     />
                   </div>
                   <div className="pdfMiddleDiv commonFormDiv">
-                    <label htmlFor="fname">First Name *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Date of Birth *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Email *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Address *</label>
+                    <label htmlFor="studentName">Name *</label>
+                    <input type="text" id="studentName" name="studentName" value={studentData.studentName} onChange={handleChange} autoComplete="new-studentName" />
+                    <label htmlFor="studentDob">Date of Birth *</label>
+                    <input type="date" id="studentDob" name="studentDob" value={studentData.studentDob} onChange={handleChange} autoComplete="new-studentDob" />
+                    <label htmlFor="studentEmail">Email *</label>
+                    <input type="email" id="studentEmail" name="studentEmail" value={studentData.studentEmail} onChange={handleChange} autoComplete="new-studentEmail" />
+                    <label htmlFor="studentAddress">Address *</label>
                     <textarea
                       type="text"
-                      id="fname"
-                      name="fname"
+                      id="studentAddress"
+                      name="studentAddress"
                       rows="7"
-                      cols="50"
+                      cols="50" value={studentData.studentAddress} onChange={handleChange}
                     />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
-                    <label htmlFor="fname">Last Name *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Parent Name *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Phone *</label>
-                    <input type="text" id="fname" name="fname" />
+                    <label htmlFor="studentPhone">Phone *</label>
+                    <input type="text" id="studentPhone" name="studentPhone" value={studentData.studentPhone} onChange={handleChange} autoComplete="new-studentPhone" />
+                    <label htmlFor="parent1Name">Parent Name *</label>
+                    <input type="text" id="parent1Name" name="parent1Name" value={studentData.parent1Name} onChange={handleChange} autoComplete="new-parent1Name" />
+                    <label htmlFor="studentPassword">Password *</label>
+                    <input type="text" id="studentPassword" name="studentPassword" value={studentData.studentPassword} onChange={handleChange} autoComplete="new-studentPassword" />
                   </div>
                 </div>
               </div>
@@ -64,33 +122,34 @@ export default function AddNewStudent() {
                 </div>
                 <div className="personalDetailsForm">
                   <div className="pdfLeftDiv commonFormDiv">
-                    <label htmlFor="fname">Guardian 1 Name *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Email *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Guardian 2 Name *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Email *</label>
-                    <input type="text" id="fname" name="fname" />
+                    <label htmlFor="parent1Name">Guardian 1 Name *</label>
+                    <input type="text" id="parent1Name" name="parent1Name" value={studentData.parent1Name} onChange={handleChange} autoComplete="new-parent1Name" />
+                    <label htmlFor="parent1Email">Email *</label>
+                    <input type="email" id="parent1Email" name="parent1Email" value={studentData.parent1Email} onChange={handleChange} autoComplete="new-parent1Email" />
+                    <label htmlFor="parent2Name">Guardian 2 Name *</label>
+                    <input type="text" id="parent2Name" name="parent2Name" value={studentData.parent2Name} onChange={handleChange} autoComplete="new-parent2Name" />
+                    <label htmlFor="parent2Email">Email *</label>
+                    <input type="email" id="parent2Email" name="parent2Email" value={studentData.parent2Email} onChange={handleChange} autoComplete="new-parent2Email" />
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
-                    <label htmlFor="fname">Relationship *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Phone *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Relationship *</label>
-                    <input type="text" id="fname" name="fname" />
-                    <label htmlFor="fname">Phone *</label>
-                    <input type="text" id="fname" name="fname" />
+                    <label htmlFor="parent1Relationship">Relationship *</label>
+                    <input type="text" id="parent1Relationship" name="parent1Relationship" value={studentData.parent1Relationship} onChange={handleChange} autoComplete="new-parent1Relationship" />
+                    <label htmlFor="parent1Phone">Phone *</label>
+                    <input type="text" id="parent1Phone" name="parent1Phone" value={studentData.parent1Phone} onChange={handleChange} autoComplete="new-parent1Phone" />
+                    <label htmlFor="parent2Relationship">Relationship *</label>
+                    <input type="text" id="parent2Relationship" name="parent2Relationship" value={studentData.parent2Relationship} onChange={handleChange} autoComplete="new-parent2Relationship" />
+                    <label htmlFor="parent2Phone">Phone *</label>
+                    <input type="text" id="parent2Phone" name="parent2Phone" value={studentData.parent2Phone} onChange={handleChange} autoComplete="new-parent2Phone" />
                   </div>
                 </div>
               </div>
               <div className="submitFormButton">
                 <input
                   type="submit"
-                  id="fname"
-                  name="Submit"
+                  id="submit"
+                  name="submit"
                   className="submitButton"
+                  onClick={handleStudentForm}
                 />
               </div>
             </form>
@@ -98,6 +157,16 @@ export default function AddNewStudent() {
         </div>
       </div>
       <Footer />
+      {openToaster && (
+        <ToasterSnackbar
+          status={alertStatus}
+          openToaster={openToaster}
+          message={"Message for Toast"}
+          setOpenToaster={setOpenToaster}
+          alertStatus={alertStatus}
+          setAlertStatus={setAlertStatus}
+        />
+      )}
     </>
   );
 }

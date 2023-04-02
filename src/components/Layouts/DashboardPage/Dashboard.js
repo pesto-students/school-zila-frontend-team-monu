@@ -8,12 +8,12 @@ import TeacherIcon from "../../../assets/Teacher-icon.svg";
 import EventIcon from "../../../assets/Event-icon.svg";
 
 import "./Dashboard.css";
-import DateCalendarViews from "../../Common/Calender/Calender";
+import DateCalendarViews from "../../Common/DashboardCalendar/DashboardCalendar";
 import MyChart from "../../Common/LineChart";
 
 export default function Dashboard() {
   const dummyMessage = [
-    {
+    { 
       senderName: "Vishal Kori",
       inClass: "Class 7A",
     },

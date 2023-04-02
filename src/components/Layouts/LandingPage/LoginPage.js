@@ -1,10 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginPageImage from "../../../assets/Login-page-image.png";
 import Footer from "../../Common/Footer/Footer";
+import serviceAxiosInstance from "../../../service/axiosService";
+import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
+import { TOASTER_STATUS } from "../../../../src/utils/constants";
+import { updateTosterStatus } from '../../../utils/commonService';
 import "./LoginPage.css";
 
+let snackBarMessage = "";
+const initialLoginState = {
+  email: "",
+  password: "",
+  role: "",
+};
+
 export default function LoginPage() {
+  const [openToaster, setOpenToaster] = useState(false);
+  const [alertStatus, setAlertStatus] = useState(null);
+
+  const [loginData, setLoginData] = useState(initialLoginState);
+  const handleLogin = async () => {
+    try {
+      let response = await serviceAxiosInstance({
+        // url of the api endpoint (can be changed)
+        url: "login/",
+        method: "POST",
+        data: loginData,
+      });
+      if (response?.status) {
+        snackBarMessage = response?.message;
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
+      } else {
+        snackBarMessage = response?.message;
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
+      }
+    } catch (e) {
+      snackBarMessage = response?.message;
+      updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
+      console.log("Error");
+    }
+  };
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const {name, value} = event?.target;
+    setLoginData({ ...loginData, [name]: value });
+  };
+
   return (
     <>
       <div className="loginPageContainer">
@@ -24,20 +67,43 @@ export default function LoginPage() {
         </div>
         <div className="rightContainer">
           <p className="loginTitle">LOGIN</p>
-          <form action="" method="post">
+          <form autoComplete="off">
             <div className="loginForm">
-              <label htmlFor="fname">Email *</label>
-              <input type="text" id="fname" name="fname" />
-              <label htmlFor="fname">Password *</label>
-              <input type="text" id="fname" name="fname" />
-              <label htmlFor="fname">Role *</label>
-              <input type="text" id="fname" name="fname" />
+              <label htmlFor="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={loginData.email}
+                onChange={handleChange}
+                autoComplete="new-email"
+              />
+              <label htmlFor="password">Password *</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleChange}
+                autoComplete="new-password"
+              />
+              <label htmlFor="role">Role *</label>
+              <input
+                type="text"
+                id="role"
+                name="role"
+                value={loginData.role}
+                onChange={handleChange}
+                autoComplete="new-role"
+              />
               <Link to="/student">
                 <div className="submitFormBtn">
                   <input
                     type="submit"
-                    value="Submit"
+                    id="submit"
+                    name="submit"
                     className="formSubmitBtn"
+                    onClick={handleLogin}
                   />
                 </div>
               </Link>
@@ -46,6 +112,16 @@ export default function LoginPage() {
         </div>
       </div>
       <Footer />
+      {openToaster && (
+        <ToasterSnackbar
+          status={alertStatus}
+          openToaster={openToaster}
+          message={"Message for Toast"}
+          setOpenToaster={setOpenToaster}
+          alertStatus={alertStatus}
+          setAlertStatus={setAlertStatus}
+        />
+      )}
     </>
   );
 }
