@@ -11,6 +11,7 @@ import Student from "./components/Layouts/StudentPage/Student";
 import AddNewTeacher from "./components/Layouts/TeacherPage/AddNewTeacher";
 import Teacher from "./components/Layouts/TeacherPage/Teacher";
 import "./App.css";
+import SignUpPage from "./components/Layouts/LandingPage/SignUpPage";
 // import { Dashboard } from "@mui/icons-material";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         <Route path="/student" element={<Student />} />
         <Route path="/teacher" element={<Teacher />} />
