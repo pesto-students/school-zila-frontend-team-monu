@@ -49,6 +49,7 @@ export default function AddEventDrawer({props}) {
         role="presentation"
       >
         <div
+        id=""
           style={{
             display: "flex",
             flexDirection: "column",
@@ -67,7 +68,7 @@ export default function AddEventDrawer({props}) {
             onChange={handleChange}
           />
           <label htmlFor="eventTime">Event Time:</label>
-          <div style={{display: "flex"}}>
+          <div id="newTime" style={{display: "flex"}}>
             <select name="newHours" id="newHours">{selectHour}</select>
             <selec name="newMinutes" id="newMinutes">{selectMinutes}</selec>
             <select name="newMeridiem" id="newMeridiem">{selectMeridiem}</select>

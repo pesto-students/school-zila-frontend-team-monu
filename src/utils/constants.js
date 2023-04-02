@@ -24,4 +24,13 @@ const STUDENTS_COLUMNS = [
     },
   ];
 
-export {TOASTER_STATUS, STUDENTS_COLUMNS};
+const ASSIGNMENT_COLUMNS = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "subject", headerName: "SUBJECT", width: 120 },
+  { field: "description", headerName: "DESCRIPTION", width: 350 },
+  { field: "teacherName", headerName: "TEACHER NAME", width: 150 },
+  { field: "date", headerName: "DATE", width: 140 },
+  { field: "marks", headerName: "MARKS", width: 100 },
+]
+
+export {TOASTER_STATUS, STUDENTS_COLUMNS, ASSIGNMENT_COLUMNS};

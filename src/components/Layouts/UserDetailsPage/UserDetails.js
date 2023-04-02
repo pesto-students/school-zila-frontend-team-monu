@@ -66,13 +66,13 @@ export default function UserDetails() {
                 className="userCoverDP"
               />
               <div className="userDetail">
-                <p className="userName">{defaultUser.userName}</p>
+                <p className="userName">{userData.userName}</p>
                 <div className="otherDetail">
                   <div className="userlocation">
-                    <p className="userDetailText1">{defaultUser.role}</p>
+                    <p className="userDetailText1">{userData.role}</p>
                     <div className="location">
                       <img src={LocationIcon} alt="User Location" />
-                      <p className="userDetailText2">{defaultUser.userCity+', '+defaultUser.userCountry}</p>
+                      <p className="userDetailText2">{userData.userCity+', '+userData.userCountry}</p>
                     </div>
                   </div>
                   <div className="userContact">
@@ -81,7 +81,7 @@ export default function UserDetails() {
                       <div className="contactIcon">
                         <img src={ContactIcon} alt="User Contact" />
                       </div>
-                      <p className="userDetailText1">{defaultUser.userPhone}</p>
+                      <p className="userDetailText1">{userData.userPhone}</p>
                     </div>
                   </div>
                   <div className="userEmail">
@@ -90,7 +90,7 @@ export default function UserDetails() {
                       <div className="emailIcon">
                         <img src={EmailIcon} alt="User Email Address" />
                       </div>
-                      <p className="userDetailText1">{defaultUser.userEmail}</p>
+                      <p className="userDetailText1">{userData.userEmail}</p>
                     </div>
                   </div>
                 </div>
