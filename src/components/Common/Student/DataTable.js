@@ -25,43 +25,6 @@ import {
 } from "../StudentCard/StudentCard";
 import StudentImage from "../../../assets/tempTeacherPic.jpg";
 
-function createData(name, id, date, parentName, city, contact, grade, action) {
-  return {
-    name,
-    id,
-    date,
-    parentName,
-    city,
-    contact,
-    grade,
-    action,
-  };
-}
-
-const rows = [
-  createData(
-    StudentName("Donut", StudentImage),
-    StudentId(452),
-    Date(25.0),
-    ParentName(51),
-    City(4.9),
-    Contact(),
-    StudentGrade("asd"),
-    StudentAction()
-  ),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-  createData("Honeycomb", 408, 3.2, 87, 6.5),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Jelly Bean", 375, 0.0, 94, 0.0),
-  createData("KitKat", 518, 26.0, 65, 7.0),
-  createData("Lollipop", 392, 0.2, 98, 0.0),
-  createData("Marshmallow", 318, 0, 81, 2.0),
-  createData("Nougat", 360, 19.0, 9, 37.0),
-  createData("Oreo", 437, 18.0, 63, 4.0),
-];
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -90,57 +53,6 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-const headCells = [
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Name",
-  },
-  {
-    id: "id",
-    numeric: true,
-    disablePadding: false,
-    label: "ID",
-  },
-  {
-    id: "date",
-    numeric: true,
-    disablePadding: false,
-    label: "Date",
-  },
-  {
-    id: "pname",
-    numeric: true,
-    disablePadding: false,
-    label: "Parent Name",
-  },
-  {
-    id: "city",
-    numeric: true,
-    disablePadding: false,
-    label: "City",
-  },
-  {
-    id: "contact",
-    numeric: true,
-    disablePadding: false,
-    label: "Contact",
-  },
-  {
-    id: "grade",
-    numeric: true,
-    disablePadding: false,
-    label: "Grade",
-  },
-  {
-    id: "action",
-    numeric: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
-
 const DEFAULT_ORDER = "asc";
 const DEFAULT_ORDER_BY = "id";
 const DEFAULT_ROWS_PER_PAGE = 5;
@@ -153,6 +65,7 @@ function EnhancedTableHead(props) {
     numSelected,
     rowCount,
     onRequestSort,
+    headCells,
   } = props;
   const createSortHandler = (newOrderBy) => (event) => {
     onRequestSort(event, newOrderBy);
@@ -208,7 +121,7 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable() {
+export default function EnhancedTable({ headCells, studentsData }) {
   const [order, setOrder] = React.useState(DEFAULT_ORDER);
   const [orderBy, setOrderBy] = React.useState(DEFAULT_ORDER_BY);
   const [selected, setSelected] = React.useState([]);
@@ -217,6 +130,54 @@ export default function EnhancedTable() {
   const [visibleRows, setVisibleRows] = React.useState(null);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
+
+  function createData(
+    name,
+    id,
+    date,
+    parentName,
+    city,
+    contact,
+    grade,
+    action
+  ) {
+    console.log(id);
+    return {
+      name,
+      id,
+      date,
+      parentName,
+      city,
+      contact,
+      grade,
+      action,
+    };
+  }
+
+  const rows = studentsData.map((data) => {
+    return createData(
+      StudentName(data.name, StudentImage),
+      StudentId(data.id),
+      Date(data.date),
+      ParentName(data.parentName),
+      City(data.city),
+      Contact(),
+      StudentGrade(data.studentGrade),
+      StudentAction()
+    );
+  });
+  // createData(
+  //   StudentName("Student 1", StudentImage),
+  //   StudentId("#123456789"),
+  //   Date("March 25, 2023"),
+  //   ParentName("Parent 1"),
+  //   City("City 1"),
+  //   Contact(),
+  //   StudentGrade("VII A"),
+  //   StudentAction()
+  // ),
+
+  console.log(rows);
 
   React.useEffect(() => {
     let rowsOnMount = stableSort(
@@ -349,6 +310,7 @@ export default function EnhancedTable() {
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
+              headCells={headCells}
             />
             <TableBody>
               {visibleRows
@@ -417,10 +379,6 @@ export default function EnhancedTable() {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      {/* <FormControlLabel
-        control={<Switch checked={dense} onChange={handleChangeDense} />}
-        label="Dense padding"
-      /> */}
     </Box>
   );
 }
