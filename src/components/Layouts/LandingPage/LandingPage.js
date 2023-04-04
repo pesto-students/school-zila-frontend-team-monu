@@ -29,6 +29,9 @@ export default function LandingPage() {
                 <Link to="/login">
                   <button className="schoolLoginBtn">Login</button>
                 </Link>
+                <Link to="/signup">
+                  <button className="schoolSignUpBtn">Sign Up</button>
+                </Link>
                 <p className="schoolSmallDetails">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum
                   error odit officia eius iste voluptatem laudantium? Recusandae
