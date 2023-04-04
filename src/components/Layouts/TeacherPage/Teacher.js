@@ -126,13 +126,14 @@ export default function Teacher() {
           <AddNewMemComp buttonTitle="New Teacher" route="/add-teacher" />
           <div className="teacherList">
             <div className="teacherListRow1">
-              <div style={{  }}>
+              <div style={{}}>
                 {teacherData.map((data) => (
-                  <div style={{float:'left', marginRight:'0.5vw',  }}>
+                  <div style={{ float: "left", marginRight: "0.5vw" }}>
                     <TeacherCard
                       teacherProfilePic={data.teacherProfilePic}
                       teacherName={data.teacherName}
                       specialist={data.specialist}
+                      key={`${data.teacherName}+${data.specialist}`}
                     />
                   </div>
                 ))}

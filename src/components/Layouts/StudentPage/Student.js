@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
 import SideBar from "../../Common/SideBar/SideBar";
-import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
 import Footer from "../../Common/Footer/Footer";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
-import { STUDENTS_COLUMNS } from "../../../../src/utils/constants";
 
 const headCells = [
   {
