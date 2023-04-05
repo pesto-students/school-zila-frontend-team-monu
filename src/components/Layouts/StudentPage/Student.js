@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
-import SideBar from "../../Common/SideBar/SideBar";
 import DataTable from "../../Common/Student/DataTable";
-import Footer from "../../Common/Footer/Footer";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import { STUDENTS_COLUMNS } from "../../../../src/utils/constants";
+import AddNewStudent from "./AddNewStudent";
 
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
@@ -20,19 +19,23 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-export default function Student() {
-  const [studentData, setStudentData] = useState(rows);
+export default function Student({setShowSideBar}) {
+  useEffect(()=> {
+    setShowSideBar(true);
+  },[]);
 
+  const [studentData, setStudentData] = useState(rows);
+  const [addNewBtnClick, setAddNewBtnClick] = useState(false);
+  console.log("addnewBTnClick",addNewBtnClick)
   useEffect(() => {
     handleGetStudentsDetails();
-  },[])
-
+  }, []);
 
   const handleGetStudentsDetails = async () => {
     try {
       let payload = {
-        schoolId: '',
-      }
+        schoolId: "",
+      };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
         url: "student/",
@@ -49,19 +52,27 @@ export default function Student() {
 
   return (
     <>
-      <div className="mainContainer">
-        <SideBar />
-        <div className="mainMiddleContainer">
-          <div className="middleContainer">
-            <TopBar title="Student" />
-            <AddNewMemComp buttonTitle="New Student" route="/add-student" />
-            <div className="studentDetail">
-              <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} />
+      {addNewBtnClick ? (
+        <AddNewStudent setAddNewBtnClick={setAddNewBtnClick} />
+      ) : (
+        <div className="mainContainer">
+          <div className="mainMiddleContainer">
+            <div className="middleContainer">
+                <TopBar title="Student" />
+                <AddNewMemComp
+                  buttonTitle="New Student"
+                  setAddNewBtnClick={setAddNewBtnClick}
+                />
+                <div className="studentDetail">
+                  <DataTable
+                    studentData={studentData}
+                    columns={STUDENTS_COLUMNS}
+                  />
+                </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+      )}
     </>
   );
 }

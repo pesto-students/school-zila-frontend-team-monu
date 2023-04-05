@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from "react";
-import SideBar from "../../Common/SideBar/SideBar";
+import AnalysisLecture from "./AnalysisLecture";
 import TopBar from "../../Common/TopBar/TopBar";
-import Footer from "../../Common/Footer/Footer";
 import SubjectCard from "../../Common/CoursesUtil/SubjectCard";
 import StudentAssignment from "../../Common/CoursesUtil/StudentAssignment";
 import Tabs from '@mui/material/Tabs';
@@ -33,8 +32,13 @@ function a11yProps(index) {
   };
 }
 
-export default function Course() {
+export default function Course({setShowSideBar}) {
+  useEffect(()=> {
+    setShowSideBar(true);
+  },[]);
+
   const [courseData, setCourseData] = useState([]);
+  const [openLecture, setOpenLecture] = useState(false);
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -48,7 +52,7 @@ export default function Course() {
   const handleGetCoursesDetails = async () => {
     try {
       let payload = {
-        classId: '',
+        courseId: '',
         schoolId: '',
       }
       let response = await serviceAxiosInstance({
@@ -67,8 +71,10 @@ export default function Course() {
 
   return (
     <>
+    {openLecture
+     ? <AnalysisLecture setOpenLecture={setOpenLecture} />
+     :(    
       <div className="mainContainer">
-        <SideBar />
         <div className="mainMiddleContainer">
           <div className="middleContainer">
             <TopBar title="Courses" />
@@ -76,19 +82,19 @@ export default function Course() {
               <div className="subjectHeader">
                 <p>Topics</p>
                 <div className="subjectTab">
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                  <Tab label="Recordings" {...a11yProps(0)} />
-                  <Tab label="Assignments" {...a11yProps(1)} />
-                  <Tab label="Notes" {...a11yProps(2)} />
-                </Tabs>
+                  <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                    <Tab label="Recordings" {...a11yProps(0)} />
+                    <Tab label="Assignments" {...a11yProps(1)} />
+                    <Tab label="Notes" {...a11yProps(2)} />
+                  </Tabs>
                 </div>
               </div>
               <TabPanel value={value} index={0}>
                 <div className="subjectDetails">
-                  <SubjectCard />
-                  <SubjectCard />
-                  <SubjectCard />
-                  <SubjectCard />
+                  <SubjectCard setOpenLecture={setOpenLecture} />
+                  <SubjectCard setOpenLecture={setOpenLecture} />
+                  <SubjectCard setOpenLecture={setOpenLecture} />
+                  <SubjectCard setOpenLecture={setOpenLecture} />
                 </div>
               </TabPanel>
               <TabPanel value={value} index={1}>
@@ -101,7 +107,7 @@ export default function Course() {
           </div>
         </div>
       </div>
-      <Footer />
+    )}
     </>
   );
 }

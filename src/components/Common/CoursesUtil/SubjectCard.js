@@ -5,16 +5,14 @@ import StarIcon from "../../../assets/Star-icon.svg";
 import ViewsIcon from "../../../assets/Views-icon.svg";
 import "./SubjectCard.css";
 
-export default function SubjectCard() {
+export default function SubjectCard(props) {
+  const { setOpenLecture } = props;
   return (
     <div className="subjectDetail">
       <div className="subAvatar">
         <img src={TempSubjectPic} alt="Subject Picture" />
         <div className="selectSubjectDiv">
-          {/* <NewEntityButton parentClassName="selectSubject">Select</NewEntityButton> */}
-          <Link to="/analysis-lecture">
-            <button className="selectSubject">Select</button>
-          </Link>
+            <button className="selectSubject" onClick={()=>setOpenLecture(true)}>Select</button>
           <p>Subject 1</p>
         </div>
       </div>
