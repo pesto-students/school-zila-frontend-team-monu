@@ -10,6 +10,7 @@ import Teacher from "./components/Layouts/TeacherPage/Teacher";
 import { EventCalendar } from "./components/Common/Calendar/Calendar";
 import SideBar from "./components/Common/SideBar/SideBar";
 import "./App.css";
+import SignUpPage from "./components/Layouts/LandingPage/SignUpPage";
 // import { Dashboard } from "@mui/icons-material";
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
         {showSideBar && <SideBar />}
         <Routes>
           <Route path="/" element={<LandingPage setShowSideBar={setShowSideBar} />} />
-          <Route path="/login" element={<LoginPage setShowSideBar={setShowSideBar} />} />
+          <Route path="/login" element={<LoginPage setShowSideBar={setShowSideBar} />} />          
+          <Route path="/signup" element={<SignUpPage />} />
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
           <Route path="/student" element={<Student setShowSideBar={setShowSideBar} />} />
           <Route path="/teacher" element={<Teacher setShowSideBar={setShowSideBar} />} />

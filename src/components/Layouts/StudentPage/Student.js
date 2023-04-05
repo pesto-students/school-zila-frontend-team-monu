@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
-import DataTable from "../../Common/Student/DataTable";
+// import DataTable from "../../Common/Student/DataTable";
+import EnhancedTable from "../../Common/Student/DataTable";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
@@ -8,26 +9,63 @@ import { STUDENTS_COLUMNS } from "../../../../src/utils/constants";
 import AddNewStudent from "./AddNewStudent";
 
 const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  {
+    id: "#123456789",
+    name: "Student 1",
+    date: "March 25, 2023",
+    parentName: "Parent 1",
+    city: "City 1",
+    studentGrade: "VII A",
+  },
+  {
+    id: "#123456789",
+    name: "Student 1",
+    date: "March 25, 2023",
+    parentName: "Parent 1",
+    city: "City 1",
+    studentGrade: "VII A",
+  },
+  {
+    id: "#123456789",
+    name: "Student 1",
+    date: "March 25, 2023",
+    parentName: "Parent 1",
+    city: "City 1",
+    studentGrade: "VII A",
+  },
+  {
+    id: "#123456789",
+    name: "Student 1",
+    date: "March 25, 2023",
+    parentName: "Parent 1",
+    city: "City 1",
+    studentGrade: "VII A",
+  },
+  {
+    id: "#123456789",
+    name: "Student 1",
+    date: "March 25, 2023",
+    parentName: "Parent 1",
+    city: "City 1",
+    studentGrade: "VII A",
+  },
+  // { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+  // { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+  // { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  // { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  // { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+  // { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  // { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+  // { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
 export default function Student({setShowSideBar}) {
-  useEffect(()=> {
-    setShowSideBar(true);
-  },[]);
-
   const [studentData, setStudentData] = useState(rows);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
   console.log("addnewBTnClick",addNewBtnClick)
+
   useEffect(() => {
+    setShowSideBar(true);
     handleGetStudentsDetails();
   }, []);
 
@@ -64,9 +102,10 @@ export default function Student({setShowSideBar}) {
                   setAddNewBtnClick={setAddNewBtnClick}
                 />
                 <div className="studentDetail">
-                  <DataTable
-                    studentData={studentData}
-                    columns={STUDENTS_COLUMNS}
+                  {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
+                  <EnhancedTable
+                    headCells={STUDENTS_COLUMNS}
+                    studentsData={studentData}
                   />
                 </div>
             </div>
