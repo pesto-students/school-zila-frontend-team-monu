@@ -4,25 +4,55 @@ const TOASTER_STATUS ={
 };
 
 const STUDENTS_COLUMNS = [
-    { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 90,
-    },
-    {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-    },
-  ];
+  {
+    id: "name",
+    numeric: false,
+    disablePadding: true,
+    label: "Name",
+  },
+  {
+    id: "id",
+    numeric: true,
+    disablePadding: false,
+    label: "ID",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Date",
+  },
+  {
+    id: "pname",
+    numeric: true,
+    disablePadding: false,
+    label: "Parent Name",
+  },
+  {
+    id: "city",
+    numeric: true,
+    disablePadding: false,
+    label: "City",
+  },
+  {
+    id: "contact",
+    numeric: true,
+    disablePadding: false,
+    label: "Contact",
+  },
+  {
+    id: "grade",
+    numeric: true,
+    disablePadding: false,
+    label: "Grade",
+  },
+  {
+    id: "action",
+    numeric: true,
+    disablePadding: false,
+    label: "Action",
+  },
+];
 
 const ASSIGNMENT_COLUMNS = [
   { field: "id", headerName: "ID", width: 70 },

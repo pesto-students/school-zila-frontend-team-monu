@@ -1,64 +1,12 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
-import SideBar from "../../Common/SideBar/SideBar";
-import DataTable from "../../Common/Student/DataTable";
+// import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
-import Footer from "../../Common/Footer/Footer";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import { STUDENTS_COLUMNS } from "../../../../src/utils/constants";
-
-const headCells = [
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Name",
-  },
-  {
-    id: "id",
-    numeric: true,
-    disablePadding: false,
-    label: "ID",
-  },
-  {
-    id: "date",
-    numeric: true,
-    disablePadding: false,
-    label: "Date",
-  },
-  {
-    id: "pname",
-    numeric: true,
-    disablePadding: false,
-    label: "Parent Name",
-  },
-  {
-    id: "city",
-    numeric: true,
-    disablePadding: false,
-    label: "City",
-  },
-  {
-    id: "contact",
-    numeric: true,
-    disablePadding: false,
-    label: "Contact",
-  },
-  {
-    id: "grade",
-    numeric: true,
-    disablePadding: false,
-    label: "Grade",
-  },
-  {
-    id: "action",
-    numeric: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
+import AddNewStudent from "./AddNewStudent";
 
 const rows = [
   {
@@ -111,10 +59,13 @@ const rows = [
   // { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-export default function Student() {
-  const [studentsData, setStudentsData] = useState(rows);
+export default function Student({setShowSideBar}) {
+  const [studentData, setStudentData] = useState(rows);
+  const [addNewBtnClick, setAddNewBtnClick] = useState(false);
+  console.log("addnewBTnClick",addNewBtnClick)
 
   useEffect(() => {
+    setShowSideBar(true);
     handleGetStudentsDetails();
   }, []);
 
@@ -139,23 +90,28 @@ export default function Student() {
 
   return (
     <>
-      <div className="mainContainer">
-        <SideBar />
-        <div className="mainMiddleContainer">
-          <div className="middleContainer">
-            <TopBar title="Student" />
-            <AddNewMemComp buttonTitle="New Student" route="/add-student" />
-            <div className="studentDetail">
-              {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
-              <EnhancedTable
-                headCells={headCells}
-                studentsData={studentsData}
-              />
+      {addNewBtnClick ? (
+        <AddNewStudent setAddNewBtnClick={setAddNewBtnClick} />
+      ) : (
+        <div className="mainContainer">
+          <div className="mainMiddleContainer">
+            <div className="middleContainer">
+                <TopBar title="Student" />
+                <AddNewMemComp
+                  buttonTitle="New Student"
+                  setAddNewBtnClick={setAddNewBtnClick}
+                />
+                <div className="studentDetail">
+                  {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
+                  <EnhancedTable
+                    headCells={STUDENTS_COLUMNS}
+                    studentsData={studentData}
+                  />
+                </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
+      )}
     </>
   );
 }

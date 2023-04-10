@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import Footer from "../../Common/Footer/Footer";
-import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
 // import NewEntityButton from "../../Button";
 import NewEntityButton from "../../Common/NewEntityButton";
@@ -32,7 +30,7 @@ const initialStudentData = {
   role: "",
 };
 
-export default function AddNewStudent() {
+export default function AddNewStudent({setAddNewBtnClick}) {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
@@ -68,7 +66,6 @@ export default function AddNewStudent() {
   return (
     <>
       <div className="mainContainer">
-        <SideBar />
         <div className="mainMiddleContainer">
           <div className="middleContainer">
             <TopBar title="Add New Student" />
@@ -156,7 +153,6 @@ export default function AddNewStudent() {
           </div>
         </div>
       </div>
-      <Footer />
       {openToaster && (
         <ToasterSnackbar
           status={alertStatus}

@@ -43,3 +43,17 @@
   font-size: 1.5rem;
   font-weight: bolder;
 }
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 30px;
+  font-weight: 600;
+  width: 10%;
+  margin-bottom: 1%;
+}

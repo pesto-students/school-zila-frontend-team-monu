@@ -1,8 +1,5 @@
 import React, {useState} from "react";
-import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
-import Footer from "../../Common/Footer/Footer";
-import NewEntityButton from "../../Common/NewEntityButton";
 
 import serviceAxiosInstance from "../../../service/axiosService";
 import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
@@ -30,7 +27,7 @@ const initialTeacherData = {
 
 };
 
-export default function AddNewTeacher() {
+export default function AddNewTeacher({setAddNewBtnClick}) {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
@@ -54,7 +51,8 @@ export default function AddNewTeacher() {
       snackBarMessage = response?.message;
       updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
       console.log("Error");
-    }
+    };
+    setAddNewBtnClick(false);
   };
 
   const handleChange = (event) => {
@@ -66,7 +64,6 @@ export default function AddNewTeacher() {
   return (
     <>
       <div className="mainContainer">
-        <SideBar />
         <div className="mainMiddleContainer">
           <div className="middleContainer">
             <TopBar title="Add New Teacher" />
@@ -147,7 +144,6 @@ export default function AddNewTeacher() {
           </div>
         </div>
       </div>
-      <Footer />
       {openToaster && (
         <ToasterSnackbar
           status={alertStatus}

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoginPageImage from "../../../assets/Login-page-image.png";
-import Footer from "../../Common/Footer/Footer";
 import serviceAxiosInstance from "../../../service/axiosService";
 import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
 import { TOASTER_STATUS } from "../../../../src/utils/constants";
@@ -15,7 +14,11 @@ const initialLoginState = {
   role: "",
 };
 
-export default function LoginPage() {
+export default function LoginPage({setShowSideBar}) {
+  useEffect(()=> {
+    setShowSideBar(false);
+  },[]);
+
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
@@ -111,7 +114,6 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
-      <Footer />
       {openToaster && (
         <ToasterSnackbar
           status={alertStatus}

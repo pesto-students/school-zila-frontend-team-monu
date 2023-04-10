@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect} from "react";
 import ActivityComponent from "../../Common/ActivityComponent/ActivityComponent";
 import Footer from "../../Common/Footer/Footer";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
 import "./LatestActivity.css";
 
-export default function LatestActivity() {
+export default function LatestActivity({setShowSideBar}) {
+  useEffect(() => {
+    setShowSideBar(true);
+  },[])
   return (
     <>
       <div className="mainContainer">
@@ -20,7 +23,6 @@ export default function LatestActivity() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
