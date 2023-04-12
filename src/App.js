@@ -30,7 +30,7 @@ function App() {
             element={<LoginPage setShowSideBar={setShowSideBar} />}
           />
           <Route path="/signup" element={<SignUpPage />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/student"
             element={<Student setShowSideBar={setShowSideBar} />}
