@@ -41,7 +41,7 @@ export default function SideBar() {
               : "dashBoardButton"
           }
         >
-          <img src={studentIcon} alt="asd" />
+          <img src={studentIcon} alt="icon" />
           <p>Students</p>
         </NavLink>
         <NavLink
@@ -54,19 +54,22 @@ export default function SideBar() {
               : "dashBoardButton"
           }
         >
-          <img src={teacherIcon} alt="asd" />
+          <img src={teacherIcon} alt="icon" />
           <p>Teachers</p>
         </NavLink>
-        {/* <NavLink to="">
-          <div
-            className={
-              activeEvent ? "activeDashBoardButton" : "dashBoardButton"
-            }
-          >
-            <img src={eventIcon} alt="asd" />
-            <p>Event</p>
-          </div>
-        </NavLink> */}
+        <NavLink
+          to="/event-calendar"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? ""
+              : isActive
+              ? "activeDashBoardButton"
+              : "dashBoardButton"
+          }
+        >
+          <img src={eventIcon} alt="icon" />
+          <p>Events</p>
+        </NavLink>
         <NavLink
           to="/course"
           className={({ isActive, isPending }) =>
@@ -77,7 +80,7 @@ export default function SideBar() {
               : "dashBoardButton"
           }
         >
-          <img src={courseIcon} alt="asd" />
+          <img src={courseIcon} alt="icon" />
           <p>Course</p>
         </NavLink>
         <NavLink
@@ -90,7 +93,7 @@ export default function SideBar() {
               : "dashBoardButton"
           }
         >
-          <img src={userIcon} alt="asd" />
+          <img src={userIcon} alt="icon" />
           <p>User</p>
         </NavLink>
         <NavLink
@@ -103,7 +106,7 @@ export default function SideBar() {
               : "dashBoardButton"
           }
         >
-          <img src={activityIcon} alt="asd" />
+          <img src={activityIcon} alt="icon" />
           <p>Latest Activity</p>
         </NavLink>
       </div>

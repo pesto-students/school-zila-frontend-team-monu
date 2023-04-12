@@ -1,0 +1,17 @@
+.event-card-main {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.event-card-mid {
+    width: 7px;
+    height: 21vh;
+    background-color: #303972;
+    border-radius: 10px 0 0 10px;
+}
+
+.eventSpan {
+    position: absolute;
+    margin: 2px 0 0 10px;
+}

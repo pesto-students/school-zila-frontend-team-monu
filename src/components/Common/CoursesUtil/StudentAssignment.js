@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import DataTable from "../Student/DataTable";
+import { DataTable } from "../Student/DataTable";
 import { ASSIGNMENT_COLUMNS } from "../../../utils/constants";
 
 const rows = [

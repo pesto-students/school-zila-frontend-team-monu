@@ -6,7 +6,7 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import NewEntityButton from "../NewEntityButton";
+import TopBar from "../TopBar/TopBar";
 import AddEventDrawer from "./AddEventDrawer";
 import Eventcard from "./Eventcard";
 
@@ -94,7 +94,11 @@ const InputEventModal = ({ props }) => {
   );
 };
 
-export const EventCalendar = () => {
+export const EventCalendar = ({ setShowSideBar }) => {
+  useEffect(() => {
+    setShowSideBar(true);
+  }, []);
+
   const [calendarData, setCalendarData] = useState(defaultCalendar);
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
@@ -141,34 +145,35 @@ export const EventCalendar = () => {
     setOpenEventModal(true);
   };
 
-  const eventCardcount = [1, 2, 3, 4, 5];
+  const eventCardcount = [1, 2, 3, 4];
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        className="calendar-main"
-        style={{
-          marginLeft: "18%",
-          height: "60%x",
-          width: "70%",
-          color: "red",
-        }}
-      >
-        <Calendar
-          primaryColor="#5DBC67"
-          secondaryColor="#FFFFFF"
-          data={testData}
-          dataDisplay="list"
-          handleClickDay={handleClick}
-        />
-
-        <AddEventDrawer
-          props={{ setNewEventValue, openEventModal, setOpenEventModal }}
-        />
+    <div>
+      <div className="calendar-top">
+        <TopBar title="Event Calendar" />
       </div>
-      <div>
-        {eventCardcount.map((i) => (
-          <Eventcard key={`${i}`} />
-        ))}
+      <div className="calendar-container">
+        <div className="calendar-main">
+          <Calendar
+            primaryColor="#5DBC67"
+            secondaryColor="#FFFFFF"
+            data={testData}
+            dataDisplay="list"
+            handleClickDay={handleClick}
+          />
+
+          <AddEventDrawer
+            props={{ setNewEventValue, openEventModal, setOpenEventModal }}
+          />
+        </div>
+        <div className="eventSideBar">
+          <div className="eventSideBarTitle">
+            <p>Upcoming Events</p>
+          </div>
+          {eventCardcount.map(() => (
+            <Eventcard />
+          ))}
+          <button className="eventSideBarViewMore">View More</button>
+        </div>
       </div>
       {openToaster && (
         <ToasterSnackbar

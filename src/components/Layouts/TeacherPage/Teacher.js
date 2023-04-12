@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import SideBar from "../../Common/SideBar/SideBar";
 import TeacherCard from "../../Common/TeacherAvatar/TeacherCard";
 import "./Teacher.css";
 import BottomNavigationBar from "../../Common/BottomNavigationBar/BottomBar";
-import Footer from "../../Common/Footer/Footer";
 import TopBar from "../../Common/TopBar/TopBar";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
+import AddNewTeacher from "./AddNewTeacher";
 
 const rows = [
   {
@@ -91,8 +90,13 @@ const rows = [
   },
 ];
 
-export default function Teacher() {
+export default function Teacher({ setShowSideBar }) {
+  useEffect(() => {
+    setShowSideBar(true);
+  }, []);
+
   const [teacherData, setTeacherData] = useState(rows);
+  const [addNewBtnClick, setAddNewBtnClick] = useState(false);
 
   useEffect(() => {
     handleGetTeachersDetails();
@@ -119,31 +123,35 @@ export default function Teacher() {
 
   return (
     <>
-      <div className="mainContainer">
-        <SideBar />
-        <div className="middleContainer">
-          <TopBar title="Teacher" />
-          <AddNewMemComp buttonTitle="New Teacher" route="/add-teacher" />
-          <div className="teacherList">
-            <div className="teacherListRow1">
-              <div style={{}}>
-                {teacherData.map((data) => (
-                  <div style={{ float: "left", marginRight: "0.5vw" }}>
-                    <TeacherCard
-                      teacherProfilePic={data.teacherProfilePic}
-                      teacherName={data.teacherName}
-                      specialist={data.specialist}
-                      key={`${data.teacherName}+${data.specialist}`}
-                    />
-                  </div>
-                ))}
+      {addNewBtnClick ? (
+        <AddNewTeacher setAddNewBtnClick={setAddNewBtnClick} />
+      ) : (
+        <div className="mainContainer">
+          <div className="middleContainer">
+            <TopBar title="Teacher" />
+            <AddNewMemComp
+              buttonTitle="New Teacher"
+              setAddNewBtnClick={setAddNewBtnClick}
+            />
+            <div className="teacherList">
+              <div className="teacherListRow1">
+                <div style={{}}>
+                  {teacherData.map((data) => (
+                    <div style={{ float: "left", marginRight: "0.5vw" }}>
+                      <TeacherCard
+                        teacherProfilePic={data.teacherProfilePic}
+                        teacherName={data.teacherName}
+                        specialist={data.specialist}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
+              <BottomNavigationBar />
             </div>
-            <BottomNavigationBar />
           </div>
         </div>
-      </div>
-      <Footer />
+      )}
     </>
   );
 }

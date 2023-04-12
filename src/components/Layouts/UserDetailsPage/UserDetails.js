@@ -19,10 +19,11 @@ let defaultUser = {
 
 }
 
-export default function UserDetails() {
+export default function UserDetails({setShowSideBar}) {
   const [userData, setuserData] = useState(defaultUser);
 
   useEffect(() => {
+    setShowSideBar(true);
     handleGetUserDetails();
   },[])
 
@@ -128,7 +129,6 @@ export default function UserDetails() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
