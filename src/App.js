@@ -12,6 +12,7 @@ import SideBar from "./components/Common/SideBar/SideBar";
 import "./App.css";
 import SignUpPage from "./components/Layouts/LandingPage/SignUpPage";
 // import { Dashboard } from "@mui/icons-material";
+import Dashboard from "./components/Layouts/Admin/Dashboard";
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -20,16 +21,40 @@ function App() {
       <BrowserRouter>
         {showSideBar && <SideBar />}
         <Routes>
-          <Route path="/" element={<LandingPage setShowSideBar={setShowSideBar} />} />
-          <Route path="/login" element={<LoginPage setShowSideBar={setShowSideBar} />} />          
+          <Route
+            path="/"
+            element={<LandingPage setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage setShowSideBar={setShowSideBar} />}
+          />
           <Route path="/signup" element={<SignUpPage />} />
-          {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-          <Route path="/student" element={<Student setShowSideBar={setShowSideBar} />} />
-          <Route path="/teacher" element={<Teacher setShowSideBar={setShowSideBar} />} />
-          <Route path="/event-calendar" element={<EventCalendar setShowSideBar={setShowSideBar} />} />
-          <Route path="/course" element={<Course setShowSideBar={setShowSideBar} />} />
-          <Route path="/user" element={<UserDetails setShowSideBar={setShowSideBar} />} />
-          <Route path="/latest-activity" element={<LatestActivity setShowSideBar={setShowSideBar} />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/student"
+            element={<Student setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/teacher"
+            element={<Teacher setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/event-calendar"
+            element={<EventCalendar setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/course"
+            element={<Course setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/user"
+            element={<UserDetails setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/latest-activity"
+            element={<LatestActivity setShowSideBar={setShowSideBar} />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
