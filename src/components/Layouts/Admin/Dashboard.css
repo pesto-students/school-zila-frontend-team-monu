@@ -6,20 +6,21 @@
 }
 
 .dash-main-layout {
-  width: 134vh;
+  padding: 0 2%;
+  width: 80%;
 }
 
 .dash-main-top {
   display: flex;
   background-color: white;
-  width: 125vh;
-  height: 10vh;
+  height: fit-content;
   align-items: center;
   justify-content: space-around;
   border-radius: 8px;
 }
 
 .dash-sub-top {
+  margin: 2% 0;
   display: flex;
 }
 
@@ -35,13 +36,16 @@
 
 #calendar-mid {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.react-calendar {
+  width: 47.5%;
 }
 
 .dash-main-right-column {
-  position: fixed;
-  right: 0;
-  width: 35vh;
-  height: 90vh;
+  width: 20%;
   background-color: white;
 }
 
@@ -86,4 +90,10 @@
 .notifications-main > div:last-child {
   font-size: xx-small;
   color: grey;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
