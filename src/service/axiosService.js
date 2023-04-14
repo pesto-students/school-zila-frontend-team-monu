@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 // instance.defaults.header.common['Authorization'] = 'AUTH TOKEN FROM'
 

@@ -109,7 +109,7 @@ export default function Teacher({setShowSideBar}) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "student/",
+        url: "teacher/",
         method: "POST",
         data: payload,
       });

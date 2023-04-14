@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
+import { TokenContext } from "../../../contextApi";
 // import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
 import "./Student.css";
@@ -62,7 +63,7 @@ const rows = [
 export default function Student({setShowSideBar}) {
   const [studentData, setStudentData] = useState(rows);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
-  console.log("addnewBTnClick",addNewBtnClick)
+  const tokenContext = useContext(TokenContext);
 
   useEffect(() => {
     setShowSideBar(true);

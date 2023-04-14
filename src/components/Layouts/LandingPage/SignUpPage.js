@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SignupPageImage from "../../../assets/Login-page-image.png";
-import Footer from "../../Common/Footer/Footer";
 import serviceAxiosInstance from "../../../service/axiosService";
 import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
 import { TOASTER_STATUS } from "../../../../src/utils/constants";
@@ -172,7 +171,6 @@ export default function SignUpPage() {
           </form>
         </div>
       </div>
-      <Footer />
       {openToaster && (
         <ToasterSnackbar
           status={alertStatus}

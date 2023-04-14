@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TokenContext } from "../../../contextApi";
 import { Link } from "react-router-dom";
 import LoginPageImage from "../../../assets/Login-page-image.png";
 import serviceAxiosInstance from "../../../service/axiosService";
@@ -19,6 +20,7 @@ export default function LoginPage({setShowSideBar}) {
     setShowSideBar(false);
   },[]);
 
+  const tokenContext = useContext(TokenContext);
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
@@ -31,6 +33,8 @@ export default function LoginPage({setShowSideBar}) {
         method: "POST",
         data: loginData,
       });
+      tokenContext.setToken(response.data.token)
+      
       if (response?.status) {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);

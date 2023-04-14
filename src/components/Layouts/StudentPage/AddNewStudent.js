@@ -39,13 +39,14 @@ export default function AddNewStudent({setAddNewBtnClick}) {
     try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "add-student/",
+        url: "addStudent/",
         method: "POST",
         data: studentData,
       });
       if (response?.status) {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
+        setAddNewBtnClick(false);
       } else {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
@@ -142,9 +143,10 @@ export default function AddNewStudent({setAddNewBtnClick}) {
               </div>
               <div className="submitFormButton">
                 <input
-                  type="submit"
+                  type="button"
                   id="submit"
                   name="submit"
+                  value="Submit"
                   className="submitButton"
                   onClick={handleStudentForm}
                 />

@@ -33,11 +33,13 @@ export default function AnalysisLecture(props) {
             </button>
             <div className="analysisLectureDiv">
               <div className="analysisLecMainDiv">
-                <video src={tempVideo}></video>
+                <video width="99%" height="55%" controls>
+                  <source src={tempVideo} type="video/mp4"></source>
+                </video>
                 <div className="lectureDetail">
                   <p className="lectureDetailHeader">Lecture Detail</p>
                   <p>{description}</p>
-                </div>
+                </div> 
               </div>
               <LectureSideBar />
             </div>
