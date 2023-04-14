@@ -94,10 +94,10 @@ const InputEventModal = ({ props }) => {
   );
 };
 
-export const EventCalendar = ({setShowSideBar}) => {
-  useEffect(()=> {
+export const EventCalendar = ({ setShowSideBar }) => {
+  useEffect(() => {
     setShowSideBar(true);
-  },[]);
+  }, []);
 
   const [calendarData, setCalendarData] = useState(defaultCalendar);
   const [openToaster, setOpenToaster] = useState(false);
@@ -149,8 +149,7 @@ export const EventCalendar = ({setShowSideBar}) => {
   return (
     <div>
       <div className="calendar-top">
-      <TopBar title="Event Calendar" />
-
+        <TopBar title="Event Calendar" />
       </div>
       <div className="calendar-container">
         <div className="calendar-main">

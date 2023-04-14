@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import TeacherCard from "../../Common/TeacherAvatar/TeacherCard";
-import "./Teacher.css";
 import BottomNavigationBar from "../../Common/BottomNavigationBar/BottomBar";
 import TopBar from "../../Common/TopBar/TopBar";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import AddNewTeacher from "./AddNewTeacher";
+import "./Teacher.css";
 
 const rows = [
   {
@@ -90,10 +90,10 @@ const rows = [
   },
 ];
 
-export default function Teacher({setShowSideBar}) {
-  useEffect(()=> {
+export default function Teacher({ setShowSideBar }) {
+  useEffect(() => {
     setShowSideBar(true);
-  },[]);
+  }, []);
 
   const [teacherData, setTeacherData] = useState(rows);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);

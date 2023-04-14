@@ -18,17 +18,19 @@ export default function SideBar() {
         <p>WizzKid</p>
       </div>
       <div className="menuItems">
-        {/* <NavLink to="/dashboard"
-        className={({ isActive, isPending }) =>
-        isPending
-          ? ""
-          : isActive
-          ? "activeDashBoardButton"
-          : "dashBoardButton"
-      }>
-            <img src={homeIcon} alt="icon" />
-            <p>Dashboard</p>
-        </NavLink> */}
+        <NavLink
+          to="/dashboard"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? ""
+              : isActive
+              ? "activeDashBoardButton"
+              : "dashBoardButton"
+          }
+        >
+          <img src={homeIcon} alt="asd" />
+          <p>Dashboard</p>
+        </NavLink>
         <NavLink
           to="/student"
           className={({ isActive, isPending }) =>
@@ -55,15 +57,18 @@ export default function SideBar() {
           <img src={teacherIcon} alt="icon" />
           <p>Teachers</p>
         </NavLink>
-        <NavLink 
-            to="/event-calendar"          
-            className={({ isActive, isPending }) =>
+        <NavLink
+          to="/event-calendar"
+          className={({ isActive, isPending }) =>
             isPending
-            ? ""
-            : isActive ? "activeDashBoardButton" : "dashBoardButton"
-            }>
-            <img src={eventIcon} alt="icon" />
-            <p>Events</p>
+              ? ""
+              : isActive
+              ? "activeDashBoardButton"
+              : "dashBoardButton"
+          }
+        >
+          <img src={eventIcon} alt="icon" />
+          <p>Events</p>
         </NavLink>
         <NavLink
           to="/course"
