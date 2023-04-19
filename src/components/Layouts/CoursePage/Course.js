@@ -31,10 +31,42 @@ function a11yProps(index) {
   };
 }
 
-export default function Course({ setShowSideBar }) {
-  useEffect(() => {
+const dummyCourses = [
+  {
+    topicName: "Subject 1",
+    topicImage: "https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?cs=srgb&dl=pexels-pixabay-301920.jpg&fm=jpg",
+    teacherName: "Teacher Name",
+    rating: "4.7",
+    views: "1456",
+  },
+  {
+    topicName: "Subject 2",
+    topicImage: "https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?cs=srgb&dl=pexels-pixabay-301920.jpg&fm=jpg",
+    teacherName: "Teacher Name",
+    rating: "4.9",
+    views: "1456",
+  },
+  {
+    topicName: "Subject 3",
+    topicImage: "https://www.google.com/search?rlz=1C1ONGR_enIN957IN957&q=Discussion+images&stick=H4sIAAAAAAAAAONQF5LUr0jW18_VNzA2zChKtwKxstKNTBxS85SkYFIgAauUzOLk0uLizPw8oJyWXG5qSaKVfkVBYl5qDlBdfl5yakGJVXFmSmp5YmVxFG9OanJJaVGqQmZuYnrqIkYBkFlFqWmZeam5qXkl-ga_GMUCXP0DfFwVHH2C_RWCXR2DnD0U3PyDFrAwLGBhW8DCuoCFeQELyyJWQRe4zRDTim-xSTKUPLs26yl_z-I9b1XvXfbmqFj7IEB01pwJ5wB4Jsq_0wAAAA&sa=X&ved=2ahUKEwjV0vq86Kj-AhVUxTgGHaFsACIQs9oBKAB6BAgiEAI&biw=1366&bih=617&dpr=1#",
+    teacherName: "Teacher Name",
+    rating: "4.6",
+    views: "1456",
+  },
+  {
+    topicName: "Subject 4",
+    topicImage: "https://www.google.com/search?rlz=1C1ONGR_enIN957IN957&q=Discussion+images&stick=H4sIAAAAAAAAAONQF5LUr0jW18_VNzA2zChKtwKxstKNTBxS85SkYFIgAauUzOLk0uLizPw8oJyWXG5qSaKVfkVBYl5qDlBdfl5yakGJVXFmSmp5YmVxFG9OanJJaVGqQmZuYnrqIkYBkFlFqWmZeam5qXkl-ga_GMUCXP0DfFwVHH2C_RWCXR2DnD0U3PyDFrAwLGBhW8DCuoCFeQELyyJWQRe4zRDTim-xSTKUPLs26yl_z-I9b1XvXfbmqFj7IEB01pwJ5wB4Jsq_0wAAAA&sa=X&ved=2ahUKEwjV0vq86Kj-AhVUxTgGHaFsACIQs9oBKAB6BAgiEAI&biw=1366&bih=617&dpr=1#",
+    teacherName: "Teacher Name",
+    rating: "4.7",
+    views: "1456",
+  },
+]
+
+export default function Course({setShowSideBar}) {
+  useEffect(()=> {
     setShowSideBar(true);
-  }, []);
+    handleGetCoursesDetails();
+  },[]);
 
   const [courseData, setCourseData] = useState([]);
   const [openLecture, setOpenLecture] = useState(false);
@@ -44,10 +76,6 @@ export default function Course({ setShowSideBar }) {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    handleGetCoursesDetails();
-  }, []);
-
   const handleGetCoursesDetails = async () => {
     try {
       let payload = {
@@ -56,7 +84,7 @@ export default function Course({ setShowSideBar }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "student/",
+        url: "course/",
         method: "POST",
         data: payload,
       });
@@ -94,10 +122,7 @@ export default function Course({ setShowSideBar }) {
                 </div>
                 <TabPanel value={value} index={0}>
                   <div className="subjectDetails">
-                    <SubjectCard setOpenLecture={setOpenLecture} />
-                    <SubjectCard setOpenLecture={setOpenLecture} />
-                    <SubjectCard setOpenLecture={setOpenLecture} />
-                    <SubjectCard setOpenLecture={setOpenLecture} />
+                    {dummyCourses.map((lecture) => <SubjectCard  props={{...lecture, setOpenLecture}} />)}
                   </div>
                 </TabPanel>
                 <TabPanel value={value} index={1}>

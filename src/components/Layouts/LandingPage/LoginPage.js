@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { TokenContext } from "../../../contextApi";
 import { Link } from "react-router-dom";
 import LoginPageImage from "../../../assets/Login-page-image.png";
 import serviceAxiosInstance from "../../../service/axiosService";
@@ -6,6 +7,7 @@ import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
 import { TOASTER_STATUS } from "../../../../src/utils/constants";
 import { updateTosterStatus } from '../../../utils/commonService';
 import "./LoginPage.css";
+import ROLES from "../../../constant/roles";
 
 let snackBarMessage = "";
 const initialLoginState = {
@@ -19,18 +21,25 @@ export default function LoginPage({setShowSideBar}) {
     setShowSideBar(false);
   },[]);
 
+  const tokenContext = useContext(TokenContext);
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
   const [loginData, setLoginData] = useState(initialLoginState);
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e?.preventDefault()
     try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "login/",
+        url: "/login",
         method: "POST",
         data: loginData,
       });
+      tokenContext.setToken(response?.data?.token)
+      localStorage.setItem("token",response?.data?.token);
+      localStorage.setItem("role",loginData?.role);
+      localStorage.setItem("school_uuid",response?.data?.school_uuid);
+      window.location.href = "/student";
       if (response?.status) {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
@@ -91,15 +100,18 @@ export default function LoginPage({setShowSideBar}) {
                 autoComplete="new-password"
               />
               <label htmlFor="role">Role *</label>
-              <input
-                type="text"
+              <select 
                 id="role"
                 name="role"
                 value={loginData.role}
-                onChange={handleChange}
-                autoComplete="new-role"
-              />
-              <Link to="/student">
+                onChange={handleChange}>
+                <option value="">Select role</option>
+                {
+                  Object.entries(ROLES)?.map(([key,map])=>{
+                    return <option value={key}>{key}</option>
+                  })
+                }
+              </select>
                 <div className="submitFormBtn">
                   <input
                     type="submit"
@@ -109,7 +121,6 @@ export default function LoginPage({setShowSideBar}) {
                     onClick={handleLogin}
                   />
                 </div>
-              </Link>
             </div>
           </form>
         </div>

@@ -67,6 +67,14 @@ textarea {
   resize: none;
 }
 
+#teacher_start_end_date {
+  display: flex;
+}
+
+#teacher_start_end_date > input {
+  width: 50%;
+}
+
 .education {
   margin-top: 3%;
 }

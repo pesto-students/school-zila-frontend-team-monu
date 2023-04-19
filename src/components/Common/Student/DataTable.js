@@ -127,10 +127,9 @@ export default function EnhancedTable({ headCells, studentsData }) {
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [visibleRows, setVisibleRows] = React.useState(null);
+  const [visibleRows, setVisibleRows] = React.useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
-
   function createData(
     name,
     id,
@@ -191,7 +190,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
     );
 
     setVisibleRows(rowsOnMount);
-  }, []);
+  }, [studentsData]);
 
   const handleRequestSort = React.useCallback(
     (event, newOrderBy) => {

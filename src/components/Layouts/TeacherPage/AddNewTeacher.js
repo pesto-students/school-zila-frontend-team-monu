@@ -32,17 +32,19 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
   const [alertStatus, setAlertStatus] = useState(null);
 
   const [teacherData, setTeacherData] = useState(initialTeacherData);
+
   const handleTeacherForm = async () => {
     try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "add-teacher/",
+        url: "addTeacher/",
         method: "POST",
         data: teacherData,
       });
       if (response?.status) {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
+        setAddNewBtnClick(false);
       } else {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
@@ -52,7 +54,6 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
       updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
       console.log("Error");
     };
-    setAddNewBtnClick(false);
   };
 
   const handleChange = (event) => {
@@ -85,6 +86,7 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
                       name="teacherAddress"
                       rows="7"
                       cols="50"
+                      onChange={handleChange}
                       autoComplete="new-teacherAddress"
                     />
                     <label htmlFor="teacherDob">Date of Birth *</label>
@@ -119,8 +121,10 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
                     <label htmlFor="teacherUniversity">University *</label>
                     <input type="text" id="teacherUniversity" name="teacherUniversity" value={teacherData.teacherUniversity} onChange={handleChange} autoComplete="new-teacherUniversity" />
                     <label htmlFor="teacherStartDate">Start & End Date *</label>
-                    <input type="date" id="teacherStartDate" name="teacherStartDate" value={teacherData.teacherStartDate} onChange={handleChange} autoComplete="new-teacherStartDate" />
-                    <input type="date" id="teacherEndDate" name="teacherEndDate" value={teacherData.teacherEndDate} onChange={handleChange} autoComplete="new-teacherEndDate" />
+                    <div id="teacher_start_end_date">
+                      <input type="date" id="teacherStartDate" name="teacherStartDate" value={teacherData.teacherStartDate} onChange={handleChange} autoComplete="new-teacherStartDate" />
+                      <input type="date" id="teacherEndDate" name="teacherEndDate" value={teacherData.teacherEndDate} onChange={handleChange} autoComplete="new-teacherEndDate" />
+                    </div>
                   </div>
                   <div className="pdfRightDiv commonFormDiv">
                     <label htmlFor="teacherDegree">Degree *</label>
@@ -132,9 +136,10 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
               </div>
               <div className="submitFormButton">
                 <input
-                  type="submit"
+                  type="button"
                   id="submit"
                   name="Submit"
+                  value="Submit"
                   className="submitButton"
                   onClick={handleTeacherForm}
                   autoComplete="new-teacherCity"

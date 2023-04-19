@@ -98,10 +98,19 @@ export default function Teacher({ setShowSideBar }) {
   const [teacherData, setTeacherData] = useState(rows);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
 
-  useEffect(() => {
-    handleGetTeachersDetails();
-  }, []);
 
+  const structureStudentData = (res)=>{
+
+    let result = res?.map(row=>{
+      return {
+        teacherProfilePic: null,
+        teacherName: row?.teacher_name,
+        specialist: "",
+      }
+    });
+    // console.log("===============result",result)
+    setTeacherData(result);
+}
   const handleGetTeachersDetails = async () => {
     try {
       let payload = {
@@ -109,18 +118,19 @@ export default function Teacher({ setShowSideBar }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "student/",
+        url: "/get-all-teacher",
         method: "POST",
-        data: payload,
       });
       if (response?.status) {
-        setTeacherData(response.data);
+        structureStudentData(response.data?.data);
       }
     } catch (e) {
       console.log("Error");
     }
   };
-
+  useEffect(() => {
+    handleGetTeachersDetails();
+  }, []);
   return (
     <>
       {addNewBtnClick ? (

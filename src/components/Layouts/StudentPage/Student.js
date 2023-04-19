@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
-import SideBar from "../../Common/SideBar/SideBar";
+import { TokenContext } from "../../../contextApi";
+// import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
@@ -109,34 +110,43 @@ const rows = [
 ];
 
 export default function Student({ setShowSideBar }) {
-  const [studentData, setStudentData] = useState(rows);
+  const [studentData, setStudentData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
-  console.log("addnewBTnClick", addNewBtnClick);
+  const tokenContext = useContext(TokenContext);
 
-  useEffect(() => {
-    setShowSideBar(true);
-    handleGetStudentsDetails();
-  }, []);
+  const structureStudentData = (res)=>{
 
+      let result = res?.map(row=>{
+        return {
+          id: row?._id,
+          name: row?.student_name,
+          date: "",
+          parentName: "",
+          city: "",
+          studentGrade: "",
+        }
+      });
+      console.log("result",result);
+      setStudentData(result);
+  }
   const handleGetStudentsDetails = async () => {
     try {
-      let payload = {
-        schoolId: "",
-      };
       let response = await serviceAxiosInstance({
-        // url of the api endpoint (can be changed)
-        url: "student/",
+        url: "/get-all-student",
         method: "POST",
-        data: payload,
       });
       if (response?.status) {
-        setStudentData(response.data);
+        structureStudentData(response?.data?.data);
       }
     } catch (e) {
       console.log("Error");
     }
   };
 
+  useEffect(() => {
+    setShowSideBar(true);
+    handleGetStudentsDetails();
+  }, []);
   return (
     <>
       {addNewBtnClick ? (
@@ -153,7 +163,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={STUDENTS_COLUMNS}
+                  headCells={headCells}
                   studentsData={studentData}
                 />
               </div>
