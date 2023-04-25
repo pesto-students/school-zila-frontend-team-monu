@@ -23,10 +23,6 @@ const initialStudentData = {
   parent1Relationship: "",
   parent1Email: "",
   parent1Phone: "",
-  parent2Name: "",
-  parent2Relationship: "",
-  parent2Email: "",
-  parent2Phone: "",
   role: "",
 };
 
@@ -37,16 +33,30 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
   const [studentData, setStudentData] = useState(initialStudentData);
   const handleStudentForm = async () => {
     try {
+      let payload = {
+        student_name:studentData?.studentName,
+        student_email:studentData?.studentEmail,
+        student_password:studentData?.studentPassword,
+        student_dob:studentData?.studentDob,
+        student_mobile:studentData?.studentPhone,
+        student_address:studentData?.studentAddress,
+        parent_name:studentData?.parent1Name,
+        parent_relationship:studentData?.parent1Relationship,
+        parent_email:studentData?.parent1Email,
+        parent_mobile:studentData?.parent1Phone,
+        school_uuid:localStorage.getItem("school_uuid"),
+        role:"STUDENT",
+      }
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "addStudent/",
+        url: "/signup",
         method: "POST",
-        data: studentData,
+        data: payload,
       });
       if (response?.status) {
         snackBarMessage = response?.message;
-        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
         setAddNewBtnClick(false);
+        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
       } else {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
@@ -170,20 +180,12 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
                     <input type="text" id="parent1Name" name="parent1Name" value={studentData.parent1Name} onChange={handleChange} autoComplete="new-parent1Name" />
                     <label htmlFor="parent1Email">Email *</label>
                     <input type="email" id="parent1Email" name="parent1Email" value={studentData.parent1Email} onChange={handleChange} autoComplete="new-parent1Email" />
-                    <label htmlFor="parent2Name">Guardian 2 Name *</label>
-                    <input type="text" id="parent2Name" name="parent2Name" value={studentData.parent2Name} onChange={handleChange} autoComplete="new-parent2Name" />
-                    <label htmlFor="parent2Email">Email *</label>
-                    <input type="email" id="parent2Email" name="parent2Email" value={studentData.parent2Email} onChange={handleChange} autoComplete="new-parent2Email" />
-                  </div>
+                   </div>
                   <div className="pdfRightDiv commonFormDiv">
                     <label htmlFor="parent1Relationship">Relationship *</label>
                     <input type="text" id="parent1Relationship" name="parent1Relationship" value={studentData.parent1Relationship} onChange={handleChange} autoComplete="new-parent1Relationship" />
                     <label htmlFor="parent1Phone">Phone *</label>
                     <input type="text" id="parent1Phone" name="parent1Phone" value={studentData.parent1Phone} onChange={handleChange} autoComplete="new-parent1Phone" />
-                    <label htmlFor="parent2Relationship">Relationship *</label>
-                    <input type="text" id="parent2Relationship" name="parent2Relationship" value={studentData.parent2Relationship} onChange={handleChange} autoComplete="new-parent2Relationship" />
-                    <label htmlFor="parent2Phone">Phone *</label>
-                    <input type="text" id="parent2Phone" name="parent2Phone" value={studentData.parent2Phone} onChange={handleChange} autoComplete="new-parent2Phone" />
                   </div>
                 </div>
               </div>

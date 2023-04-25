@@ -9,6 +9,51 @@ import AddNewStudent from "./AddNewStudent";
 import { STUDENTS_COLUMNS } from "../../../utils/constants";
 import "./Student.css";
 
+const headCells = [
+  {
+    id: "name",
+    numeric: false,
+    disablePadding: true,
+    label: "Name",
+  },
+  {
+    id: "id",
+    numeric: true,
+    disablePadding: false,
+    label: "ID",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Date",
+  },
+  {
+    id: "pname",
+    numeric: true,
+    disablePadding: false,
+    label: "Parent Name",
+  },
+  {
+    id: "city",
+    numeric: true,
+    disablePadding: false,
+    label: "City",
+  },
+  {
+    id: "contact",
+    numeric: true,
+    disablePadding: false,
+    label: "Contact",
+  },
+  {
+    id: "action",
+    numeric: true,
+    disablePadding: false,
+    label: "Action",
+  },
+];
+
 const rows = [
   {
     id: "#123456789",
@@ -71,16 +116,16 @@ export default function Student({ setShowSideBar }) {
 
       let result = res?.map(row=>{
         return {
-          id: row?.student_id,
-          name: row?.student_name,
-          date: row?.student_dob,
-          parentName: row?.parent_name,
-          city: row?.student_address,
-          studentGrade: null,
+          id: row?.student_id || "-",
+          name: row?.student_name || "-",
+          date: row?.student_dob || "-",
+          parentName: row?.parent_name || "-",
+          city: row?.student_address || "-",
+          email:row?.stuent_email,
+          mobile:row?.student_mobile,
           data:row,
         }
       });
-      console.log("result",result);
       setStudentData(result);
   }
   const handleGetStudentsDetails = async () => {
