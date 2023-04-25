@@ -6,31 +6,42 @@ import ToasterSnackbar from "../../Common/Toaster/toasterAlerts";
 import { TOASTER_STATUS } from "../../../../src/utils/constants";
 import { updateTosterStatus } from "../../../utils/commonService";
 import "./SignUpPage.css";
+import ROLES from "../../../constant/roles";
 
 let snackBarMessage = "";
 const initialSignupState = {
-  firstName: "",
-  lastName: "",
+  schoolName: "",
+  schoolMoto:"",
   email: "",
   password: "",
   confirmPass: "",
-  schoolName: "",
   mobileNo: "",
-  role: "",
+  location:"",
 };
 
 export default function SignUpPage() {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
-
+  const [erroMsg,setErrorMsg] = useState("");
   const [signupData, setSignupData] = useState(initialSignupState);
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e?.preventDefault();
+    let payload =  {
+      "school_name": signupData?.schoolName,
+      "school_moto": signupData?.schoolMoto,
+      // "school_imgs": "img-1.png",
+      "school_mobile": signupData?.mobileNo,
+      "school_location":signupData?.location,
+      "school_email": signupData?.email,
+      "school_password": signupData?.password,
+      "role": "SCHOOL"
+   }
     try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "signup/",
+        url: "/signup",
         method: "POST",
-        data: signupData,
+        data: payload,
       });
       if (response?.status) {
         snackBarMessage = response?.message;
@@ -47,10 +58,10 @@ export default function SignUpPage() {
           TOASTER_STATUS.ERROR
         );
       }
-    } catch (e) {
-      snackBarMessage = response?.message;
+    } catch (error) {
+      snackBarMessage = error?.response?.data?.message || error?.response?.data?.toString() || error?.response?.toString();
+      setErrorMsg(snackBarMessage);
       updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
-      console.log("Error");
     }
   };
 
@@ -81,23 +92,24 @@ export default function SignUpPage() {
           <p className="loginTitle">SIGNUP</p>
           <form autoComplete="off">
             <div className="loginForm">
-              <label htmlFor="firstname">First Name *</label>
+            <label htmlFor="schoolname">School Name *</label>
               <input
                 type="text"
-                id="fname"
-                name="fname"
-                value={signupData.firstName}
+                id="schoolname"
+                name="schoolName"
+                value={signupData?.schoolName || ""}
                 onChange={handleChange}
-                autoComplete="new-firstname"
+                autoComplete="new-schoolname"
               />
-              <label htmlFor="lastname">Last Name *</label>
+
+            <label htmlFor="schoolmoto">School Moto *</label>
               <input
                 type="text"
-                id="lname"
-                name="lname"
-                value={signupData.lastName}
+                id="schoolmoto"
+                name="schoolMoto"
+                value={signupData?.schoolMoto || ""}
                 onChange={handleChange}
-                autoComplete="new-lastname"
+                autoComplete="new-schoolMoto"
               />
 
               <label htmlFor="email">Email *</label>
@@ -105,7 +117,7 @@ export default function SignUpPage() {
                 type="email"
                 id="email"
                 name="email"
-                value={signupData.email}
+                value={signupData?.email || ""}
                 onChange={handleChange}
                 autoComplete="new-email"
               />
@@ -114,7 +126,7 @@ export default function SignUpPage() {
                 type="password"
                 id="password"
                 name="password"
-                value={signupData.password}
+                value={signupData?.password || ""}
                 onChange={handleChange}
                 autoComplete="new-password"
               />
@@ -122,41 +134,32 @@ export default function SignUpPage() {
               <input
                 type="password"
                 id="confPassword"
-                name="confPassword"
-                value={signupData.confirmPass}
+                name="confirmPass"
+                value={signupData?.confirmPass || ""}
                 onChange={handleChange}
                 autoComplete="new-confPassword"
               />
 
-              <label htmlFor="schoolname">School Name *</label>
-              <input
-                type="text"
-                id="schoolname"
-                name="schoolname"
-                value={signupData.schoolName}
-                onChange={handleChange}
-                autoComplete="new-schoolname"
-              />
               <label htmlFor="mobno">Mobile No *</label>
               <input
                 type="text"
                 id="mobileno"
-                name="mobileno"
-                value={signupData.mobileNo}
+                name="mobileNo"
+                value={signupData?.mobileNo || ""}
                 onChange={handleChange}
                 autoComplete="new-mobileno"
               />
 
-              <label htmlFor="role">Role *</label>
+              <label htmlFor="mobno">Address *</label>
               <input
                 type="text"
-                id="role"
-                name="role"
-                value={signupData.role}
+                id="location"
+                name="location"
+                value={signupData?.location || ""}
                 onChange={handleChange}
-                autoComplete="new-role"
+                autoComplete="new-location"
               />
-              <Link to="/student">
+
                 <div className="submitFormBtn">
                   <input
                     type="submit"
@@ -166,7 +169,6 @@ export default function SignUpPage() {
                     onClick={handleLogin}
                   />
                 </div>
-              </Link>
             </div>
           </form>
         </div>
@@ -175,7 +177,7 @@ export default function SignUpPage() {
         <ToasterSnackbar
           status={alertStatus}
           openToaster={openToaster}
-          message={"Message for Toast"}
+          message={erroMsg}
           setOpenToaster={setOpenToaster}
           alertStatus={alertStatus}
           setAlertStatus={setAlertStatus}
