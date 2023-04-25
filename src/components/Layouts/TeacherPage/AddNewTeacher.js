@@ -61,7 +61,18 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
     const {name, value} = event?.target;
     setTeacherData({ ...teacherData, [name]: value });
   };
-
+const handleFileUpload = (e) => {
+ let files =  e?.target?.files;
+ if(files?.length>0)
+ {
+    let file = files[0];
+    serviceAxiosInstance.post("/upload",file).then(res=>{
+      console.log("res",res);
+    }).catch(error=>{
+      console.log("error",error);
+    })
+ }
+}
   return (
     <>
       <div className="mainContainer">
@@ -98,15 +109,23 @@ export default function AddNewTeacher({setAddNewBtnClick}) {
                       <label htmlFor="teacherSpecialization">Specialization *</label>
                       <input type="text" id="teacherSpecialization" name="teacherSpecialization" value={teacherData.teacherSpecialization} onChange={handleChange} autoComplete="new-teacherSpecialization" />
                     <label htmlFor="teacherPhoto">Photo *</label>
-                    <textarea
-                      type="text"
-                      id="teacherPhoto"
-                      name="teacherPhoto"
-                      rows="7"
-                      value="Drag and drop or 
-                      click here to select file"
-                      disabled
-                    />
+                     
+                    <label for="file-upload" style={{width:"fit-content"}}>
+                      <div className="upload-box">
+                        click here to select file
+                      </div>
+                      {/* <textarea
+                        type="text"
+                        id="teacherPhoto"
+                        name="teacherPhoto"
+                        rows="7"
+                        value="Drag and drop or 
+                        click here to select file"
+                        disabled
+                      /> */}
+                    </label>
+                    <input style={{display:'none'}} onChange={handleFileUpload} type="file" id="file-upload"/>
+
                     <label htmlFor="teacherPassword">Password *</label>
                     <input type="password" id="teacherPassword" name="teacherPassword" value={teacherData.teacherPassword} onChange={handleChange} autoComplete="new-teacherPassword" />
                   </div>

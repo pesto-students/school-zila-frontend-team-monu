@@ -103,3 +103,14 @@ textarea {
   width: 105px;
   border: 1px dashed #c1bbeb;
 }
+
+.upload-box {
+  height: 120px;
+  width: 300px;
+  border: 1px dotted gray;
+  color: #A098AE;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

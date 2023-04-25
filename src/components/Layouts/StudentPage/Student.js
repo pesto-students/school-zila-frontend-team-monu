@@ -6,6 +6,7 @@ import EnhancedTable from "../../Common/Student/DataTable";
 import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
+import AddNewStudent from "./AddNewStudent";
 
 const headCells = [
   {
@@ -43,12 +44,6 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: "Contact",
-  },
-  {
-    id: "grade",
-    numeric: true,
-    disablePadding: false,
-    label: "Grade",
   },
   {
     id: "action",
@@ -118,15 +113,15 @@ export default function Student({ setShowSideBar }) {
 
       let result = res?.map(row=>{
         return {
-          id: row?._id,
-          name: row?.student_name,
-          date: "",
-          parentName: "",
-          city: "",
-          studentGrade: "",
+          id: row?.student_id || "-",
+          name: row?.student_name || "-",
+          date: row?.student_dob || "-",
+          parentName: row?.parent_name || "-",
+          city: row?.student_address || "-",
+          email:row?.stuent_email,
+          mobile:row?.student_mobile,
         }
       });
-      console.log("result",result);
       setStudentData(result);
   }
   const handleGetStudentsDetails = async () => {

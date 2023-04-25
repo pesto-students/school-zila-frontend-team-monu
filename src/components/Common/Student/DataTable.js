@@ -19,7 +19,6 @@ import {
   Date,
   ParentName,
   StudentAction,
-  StudentGrade,
   StudentId,
   StudentName,
 } from "../StudentCard/StudentCard";
@@ -137,7 +136,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
     parentName,
     city,
     contact,
-    grade,
     action
   ) {
     console.log(id);
@@ -148,7 +146,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
       parentName,
       city,
       contact,
-      grade,
       action,
     };
   }
@@ -161,7 +158,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
       ParentName(data.parentName),
       City(data.city),
       Contact(),
-      StudentGrade(data.studentGrade),
       StudentAction()
     );
   });
@@ -172,7 +168,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
   //   ParentName("Parent 1"),
   //   City("City 1"),
   //   Contact(),
-  //   StudentGrade("VII A"),
   //   StudentAction()
   // ),
 
@@ -350,7 +345,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
                         <TableCell align="right">{row.parentName}</TableCell>
                         <TableCell align="right">{row.city}</TableCell>
                         <TableCell align="right">{row.contact}</TableCell>
-                        <TableCell align="right">{row.grade}</TableCell>
                         <TableCell align="right">{row.action}</TableCell>
                       </TableRow>
                     );
