@@ -114,7 +114,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={headCells}
+                  headCells={STUDENTS_COLUMNS}
                   studentsData={studentData}
                 />
               </div>
