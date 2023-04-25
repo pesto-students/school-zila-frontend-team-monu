@@ -3,60 +3,11 @@ import TopBar from "../../Common/TopBar/TopBar";
 import { TokenContext } from "../../../contextApi";
 // import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
-import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
-
-const headCells = [
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Name",
-  },
-  {
-    id: "id",
-    numeric: true,
-    disablePadding: false,
-    label: "ID",
-  },
-  {
-    id: "date",
-    numeric: true,
-    disablePadding: false,
-    label: "Date",
-  },
-  {
-    id: "pname",
-    numeric: true,
-    disablePadding: false,
-    label: "Parent Name",
-  },
-  {
-    id: "city",
-    numeric: true,
-    disablePadding: false,
-    label: "City",
-  },
-  {
-    id: "contact",
-    numeric: true,
-    disablePadding: false,
-    label: "Contact",
-  },
-  {
-    id: "grade",
-    numeric: true,
-    disablePadding: false,
-    label: "Grade",
-  },
-  {
-    id: "action",
-    numeric: true,
-    disablePadding: false,
-    label: "Action",
-  },
-];
+import AddNewStudent from "./AddNewStudent";
+import { STUDENTS_COLUMNS } from "../../../utils/constants";
+import "./Student.css";
 
 const rows = [
   {
@@ -163,7 +114,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={headCells}
+                  headCells={STUDENTS_COLUMNS}
                   studentsData={studentData}
                 />
               </div>

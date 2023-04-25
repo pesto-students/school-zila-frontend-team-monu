@@ -12,7 +12,7 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import { visuallyHidden } from "@mui/utils";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 import {
   City,
   Contact,
@@ -382,16 +382,17 @@ export default function EnhancedTable({ headCells, studentsData }) {
   );
 }
 
-export function DataTable({studentData, columns}) {
+export function DataTable({ studentData, columns }) {
   return (
     <div style={{ height: "69.3vh", width: "100%" }}>
       <DataGrid
         rows={studentData}
         columns={columns}
         pageSize={7}
+        isRowSelectable={(params) => console.log("params", params)}
         rowsPerPageOptions={[5]}
-        // checkboxSelection
+        sx={{ fontSize: "10px" }}
       />
     </div>
-  )
+  );
 }

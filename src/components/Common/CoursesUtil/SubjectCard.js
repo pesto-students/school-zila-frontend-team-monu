@@ -1,21 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import TempSubjectPic from "../../../assets/tempTeacherPic.jpg";
 import LectureImg from "../../../assets/LectureImg.jpg";
 import StarIcon from "../../../assets/Star-icon.svg";
 import ViewsIcon from "../../../assets/Views-icon.svg";
 import "./SubjectCard.css";
 
-export default function SubjectCard({props}) {
-  const { setOpenLecture, topicImage, topicName, teacherName, views, rating } = props;
+export default function SubjectCard({ props }) {
+  const {
+    setOpenLecture,
+    setLectureDetails,
+    topicImage,
+    topicName,
+    teacherName,
+    views,
+    rating,
+    lectureUrl,
+    lectureDetail,
+  } = props;
   return (
     <div className="subjectDetail">
       <div className="subAvatar">
-        <img src={LectureImg} alt="Subject Picture" />
+      <img src={LectureImg} alt="Subject Picture" />
         <div className="selectSubjectDiv">
           <button
             className="selectSubject"
-            onClick={() => setOpenLecture(true)}
+            onClick={() => {
+              setLectureDetails({ lectureUrl, lectureDetail });
+              setOpenLecture(true);
+            }}
           >
             Select
           </button>
