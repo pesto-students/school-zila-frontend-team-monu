@@ -62,7 +62,8 @@
   font-weight: bold;
 }
 
-.schoolLoginBtn {
+.schoolLoginBtn,
+.schoolSignUpBtn {
   border: none;
   background-color: #524ab4;
   width: 20%;

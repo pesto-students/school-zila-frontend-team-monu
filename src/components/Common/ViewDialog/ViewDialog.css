@@ -1,0 +1,53 @@
+.dialog-menu-content {
+  padding: 8% 6% 8% 6%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-profile {
+  width: 45%;
+}
+
+.user-profile > img {
+  width: 100%;
+}
+
+.user-details {
+  width: 48%;
+}
+
+.user-name {
+  font-size: 2.3rem;
+}
+
+.user-detail {
+  display: flex;
+}
+
+.user-label > p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.user-field > p {
+  margin-left: 30%;
+  font-size: 1.2rem;
+}
+
+.password-btn,
+.edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 35px;
+  width: 100%;
+  margin-top: 5%;
+}
+
+.dialog-menu-footer {
+  width: 600px;
+}

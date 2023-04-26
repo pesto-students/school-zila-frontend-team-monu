@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../../Common/Footer/Footer";
 import SideBar from "../../Common/SideBar/SideBar";
 import TopBar from "../../Common/TopBar/TopBar";
@@ -10,30 +10,28 @@ import EmailIcon from "../../../assets/Email-icon.svg";
 import "./UserDetails.css";
 
 let defaultUser = {
-  userName: 'Vishal',
-  userPhone: '9876543210',
-  userEmail:'vishal@gmail.com',
-  userCity: 'Mumbai',
-  userCountry: 'India',
-  role:'Admin',
+  userName: "Vishal",
+  userPhone: "9876543210",
+  userEmail: "vishal@gmail.com",
+  userCity: "Mumbai",
+  userCountry: "India",
+  role: "Admin",
+};
 
-}
-
-export default function UserDetails({setShowSideBar}) {
+export default function UserDetails({ setShowSideBar }) {
   const [userData, setuserData] = useState(defaultUser);
 
   useEffect(() => {
     setShowSideBar(true);
     handleGetUserDetails();
-  },[])
-
+  }, []);
 
   const handleGetUserDetails = async () => {
     try {
       let payload = {
-        schoolId: '',
-        userId: '',
-      }
+        schoolId: "",
+        userId: "",
+      };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
         url: "user/",
@@ -73,7 +71,9 @@ export default function UserDetails({setShowSideBar}) {
                     <p className="userDetailText1">{userData.role}</p>
                     <div className="location">
                       <img src={LocationIcon} alt="User Location" />
-                      <p className="userDetailText2">{userData.userCity+', '+userData.userCountry}</p>
+                      <p className="userDetailText2">
+                        {userData.userCity + ", " + userData.userCountry}
+                      </p>
                     </div>
                   </div>
                   <div className="userContact">
@@ -112,15 +112,30 @@ export default function UserDetails({setShowSideBar}) {
                   </div>
                   <div>
                     <label htmlFor="userPhone">Phone No</label>
-                    <input type="text" id="userPhone" name="userPhone" disabled />
+                    <input
+                      type="text"
+                      id="userPhone"
+                      name="userPhone"
+                      disabled
+                    />
                   </div>
                   <div>
                     <label htmlFor="userEmail">Email</label>
-                    <input type="text" id="userEmail" name="userEmail" disabled />
+                    <input
+                      type="text"
+                      id="userEmail"
+                      name="userEmail"
+                      disabled
+                    />
                   </div>
                   <div>
                     <label htmlFor="userPassword">Password</label>
-                    <input type="text" id="userPassword" name="userPassword" disabled />
+                    <input
+                      type="text"
+                      id="userPassword"
+                      name="userPassword"
+                      disabled
+                    />
                   </div>
                   <a href="http://localhost:3000">Change Password</a>
                 </div>
