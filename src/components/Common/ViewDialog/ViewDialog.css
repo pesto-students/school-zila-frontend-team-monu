@@ -24,6 +24,11 @@
   display: flex;
 }
 
+.edit-user-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
 .user-label > p {
   font-size: 1.2rem;
   font-weight: bold;
@@ -32,6 +37,11 @@
 .user-field > p {
   margin-left: 30%;
   font-size: 1.2rem;
+}
+
+.edit-user-field {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .password-btn,
@@ -50,4 +60,13 @@
 
 .dialog-menu-footer {
   width: 600px;
+}
+
+.userDetailForm input {
+  background: #f3f6f8;
+  border: 1px solid #c1bbeb;
+  padding: 1.5% 0 1.5% 3%;
+  border-radius: 4px;
+  color: #787272;
+  width: 100%;
 }

@@ -5,7 +5,14 @@ import MenuItem from "@mui/material/MenuItem";
 import FormDialog from "./ViewDialog/ViewDialog";
 
 export default function ViewMenu(props) {
-  const { parentClassName, children } = props;
+  const {
+    teacherProfilePic,
+    teacherName,
+    specialist,
+    parentClassName,
+    children,
+  } = props;
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -37,7 +44,13 @@ export default function ViewMenu(props) {
         }}
       >
         <MenuItem>
-          <FormDialog>View</FormDialog>
+          <FormDialog
+            teacherProfilePic={teacherProfilePic}
+            teacherName={teacherName}
+            specialist={specialist}
+          >
+            View
+          </FormDialog>
         </MenuItem>
       </Menu>
     </div>

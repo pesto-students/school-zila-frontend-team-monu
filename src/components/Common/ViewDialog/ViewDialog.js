@@ -1,14 +1,19 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
-import Footer from "../Footer/Footer";
 import TempStudentPic from "../../../assets/tempTeacherPic.jpg";
 import "./ViewDialog.css";
 
 export default function FormDialog(props) {
-  const { children } = props;
+  const { children, teacherProfilePic, teacherName, specialist } = props;
   const [open, setOpen] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
+  const [userData, useUserData] = React.useState({
+    email: "Saurabh@gmail.com",
+    mobileNo: "0123456789",
+    parentName: "abc",
+    password: "**********",
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -27,32 +32,65 @@ export default function FormDialog(props) {
         <div className="dialog-menu">
           <div className="dialog-menu-content">
             <div className="user-profile">
-              <img src={TempStudentPic} alt="Student Profile Pic" />
+              <img
+                src={teacherProfilePic ?? TempStudentPic}
+                alt="Student Profile Pic"
+              />
             </div>
-            <div className="user-details">
-              <p className="user-name">
-                I'm <strong>Saurabh Kumar</strong>
-              </p>
-              <hr />
-              <div className="user-detail">
-                <div className="user-label">
-                  <p>EMAIL</p>
-                  <p>MOBILE NO</p>
-                  <p>PARENT NAME</p>
-                  <p>PASSWORD</p>
+            {edit ? (
+              <div className="user-details">
+                <p className="user-name">
+                  I'm <strong>{teacherName}</strong>
+                </p>
+                <hr />
+                <div className="user-detail">
+                  <div className="user-label">
+                    <p>EMAIL</p>
+                    <p>MOBILE NO</p>
+                    <p>PARENT NAME</p>
+                    <p>PASSWORD</p>
+                  </div>
+                  <div className="user-field">
+                    <p>{userData.email}</p>
+                    <p>{userData.mobileNo}</p>
+                    <p>{userData.parentName}</p>
+                    <p>{userData.password}</p>
+                  </div>
                 </div>
-                <div className="user-field">
-                  <p>saurabh124@gmail.com</p>
-                  <p>0123456789</p>
-                  <p>qwertyuiopasdfghjkl</p>
-                  <p>**********</p>
+                <div className="change-password">
+                  <button className="password-btn">Change Password</button>
+                  <button className="edit-btn" onClick={() => setEdit(!edit)}>
+                    Edit
+                  </button>
                 </div>
               </div>
-              <div className="change-password">
-                <button className="password-btn">Change Password</button>
-                <button className="edit-btn">Edit</button>
+            ) : (
+              <div className="user-details">
+                <p className="user-name">
+                  I'm <strong>{teacherName}</strong>
+                </p>
+                <hr />
+                <div className="edit-user-detail">
+                  <div className="user-label">
+                    <p>EMAIL</p>
+                    <p>MOBILE NO</p>
+                    <p>PARENT NAME</p>
+                    <p>PASSWORD</p>
+                  </div>
+                  <div className="edit-user-field userDetailForm">
+                    <input value={userData.email} required />
+                    <input value={userData.mobileNo} required />
+                    <input value={userData.parentName} required />
+                    <input value={userData.password} required />
+                  </div>
+                </div>
+                <div className="change-password">
+                  <button className="edit-btn" onClick={() => setEdit(!edit)}>
+                    Save
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="dialog-menu-footer"></div>
         </div>

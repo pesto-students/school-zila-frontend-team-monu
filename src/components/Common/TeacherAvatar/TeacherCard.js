@@ -10,7 +10,14 @@ export default function TeacherCard(props) {
 
   return (
     <div className="teacherCard">
-      <ViewMenu parentClassName="optionButton">...</ViewMenu>
+      <ViewMenu
+        parentClassName="optionButton"
+        teacherProfilePic={teacherProfilePic}
+        teacherName={teacherName}
+        specialist={specialist}
+      >
+        ...
+      </ViewMenu>
       <div className="teachersDetails">
         <div className="avatar">
           <img
