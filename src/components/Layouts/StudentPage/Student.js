@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import TopBar from "../../Common/TopBar/TopBar";
 import { TokenContext } from "../../../contextApi";
-// import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
-import "./Student.css";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import AddNewStudent from "./AddNewStudent";
@@ -109,21 +108,20 @@ export default function Student({ setShowSideBar }) {
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
   const tokenContext = useContext(TokenContext);
 
-  const structureStudentData = (res)=>{
-
-      let result = res?.map(row=>{
-        return {
-          id: row?.student_id || "-",
-          name: row?.student_name || "-",
-          date: row?.student_dob || "-",
-          parentName: row?.parent_name || "-",
-          city: row?.student_address || "-",
-          email:row?.stuent_email,
-          mobile:row?.student_mobile,
-        }
-      });
-      setStudentData(result);
-  }
+  const structureStudentData = (res) => {
+    let result = res?.map((row) => {
+      return {
+        id: row?.student_id || "-",
+        name: row?.student_name || "-",
+        date: row?.student_dob || "-",
+        parentName: row?.parent_name || "-",
+        city: row?.student_address || "-",
+        email: row?.stuent_email,
+        mobile: row?.student_mobile,
+      };
+    });
+    setStudentData(result);
+  };
   const handleGetStudentsDetails = async () => {
     try {
       let response = await serviceAxiosInstance({
@@ -158,7 +156,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={headCells}
+                  headCells={STUDENTS_COLUMNS}
                   studentsData={studentData}
                 />
               </div>

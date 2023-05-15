@@ -12,7 +12,7 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import { visuallyHidden } from "@mui/utils";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid } from '@mui/x-data-grid';
 import {
   City,
   Contact,
@@ -129,7 +129,15 @@ export default function EnhancedTable({ headCells, studentsData }) {
   const [visibleRows, setVisibleRows] = React.useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
-  function createData(name, id, date, parentName, city, contact, action) {
+  function createData(
+    name,
+    id,
+    date,
+    parentName,
+    city,
+    contact,
+    action
+  ) {
     console.log(id);
     return {
       name,
@@ -307,6 +315,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
                     return (
                       <TableRow
                         hover
+                        onClick={(event) => handleClick(event, row.name)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -314,10 +323,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
                         selected={isItemSelected}
                         sx={{ cursor: "pointer" }}
                       >
-                        <TableCell
-                          padding="checkbox"
-                          onClick={(event) => handleClick(event, row.name)}
-                        >
+                        <TableCell padding="checkbox">
                           <Checkbox
                             color="primary"
                             checked={isItemSelected}
@@ -370,16 +376,17 @@ export default function EnhancedTable({ headCells, studentsData }) {
   );
 }
 
-export function DataTable({ studentData, columns }) {
+export function DataTable({studentData, columns}) {
   return (
     <div style={{ height: "69.3vh", width: "100%" }}>
       <DataGrid
         rows={studentData}
         columns={columns}
         pageSize={7}
+        isRowSelectable={(params) => console.log("params", params)}
         rowsPerPageOptions={[5]}
-        // checkboxSelection
+        sx={{ fontSize: "10px" }}
       />
     </div>
-  );
+  )
 }
