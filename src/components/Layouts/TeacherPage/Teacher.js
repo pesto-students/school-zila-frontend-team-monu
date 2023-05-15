@@ -7,95 +7,12 @@ import serviceAxiosInstance from "../../../service/axiosService";
 import AddNewTeacher from "./AddNewTeacher";
 import "./Teacher.css";
 
-const rows = [
-  {
-    teacherProfilePic: null,
-    teacherName: "Saurabh",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Vishal",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Monu",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Gyan",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Saurabh",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Vishal",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Monu",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Gyan",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Saurabh",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Vishal",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Monu",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Gyan",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Saurabh",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Vishal",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Monu",
-    specialist: "CSE",
-  },
-  {
-    teacherProfilePic: null,
-    teacherName: "Gyan",
-    specialist: "CSE",
-  },
-];
-
 export default function Teacher({ setShowSideBar }) {
   useEffect(() => {
     setShowSideBar(true);
   }, []);
 
-  const [teacherData, setTeacherData] = useState(rows);
+  const [teacherData, setTeacherData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
 
 
@@ -108,7 +25,6 @@ export default function Teacher({ setShowSideBar }) {
         specialist: "",
       }
     });
-    // console.log("===============result",result)
     setTeacherData(result);
 }
   const handleGetTeachersDetails = async () => {

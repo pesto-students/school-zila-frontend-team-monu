@@ -1,13 +1,57 @@
 import React, { useState, useEffect, useContext } from "react";
+
 import TopBar from "../../Common/TopBar/TopBar";
 import { TokenContext } from "../../../contextApi";
-// import DataTable from "../../Common/Student/DataTable";
 import EnhancedTable from "../../Common/Student/DataTable";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import AddNewStudent from "./AddNewStudent";
-import { STUDENTS_COLUMNS } from "../../../utils/constants";
 import "./Student.css";
+
+const headCells = [
+  {
+    id: "name",
+    numeric: false,
+    disablePadding: true,
+    label: "Name",
+  },
+  {
+    id: "id",
+    numeric: true,
+    disablePadding: false,
+    label: "ID",
+  },
+  {
+    id: "date",
+    numeric: true,
+    disablePadding: false,
+    label: "Date",
+  },
+  {
+    id: "pname",
+    numeric: true,
+    disablePadding: false,
+    label: "Parent Name",
+  },
+  {
+    id: "city",
+    numeric: true,
+    disablePadding: false,
+    label: "City",
+  },
+  {
+    id: "contact",
+    numeric: true,
+    disablePadding: false,
+    label: "Contact",
+  },
+  {
+    id: "action",
+    numeric: true,
+    disablePadding: false,
+    label: "Action",
+  },
+];
 
 const rows = [
   {
@@ -65,21 +109,20 @@ export default function Student({ setShowSideBar }) {
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
   const tokenContext = useContext(TokenContext);
 
-  const structureStudentData = (res)=>{
-
-      let result = res?.map(row=>{
-        return {
-          id: row?._id,
-          name: row?.student_name,
-          date: "",
-          parentName: "",
-          city: "",
-          studentGrade: "",
-        }
-      });
-      console.log("result",result);
-      setStudentData(result);
-  }
+  const structureStudentData = (res) => {
+    let result = res?.map((row) => {
+      return {
+        id: row?.student_id || "-",
+        name: row?.student_name || "-",
+        date: row?.student_dob || "-",
+        parentName: row?.parent_name || "-",
+        city: row?.student_address || "-",
+        email: row?.stuent_email,
+        mobile: row?.student_mobile,
+      };
+    });
+    setStudentData(result);
+  };
   const handleGetStudentsDetails = async () => {
     try {
       let response = await serviceAxiosInstance({
@@ -114,7 +157,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={STUDENTS_COLUMNS}
+                  headCells={headCells}
                   studentsData={studentData}
                 />
               </div>
