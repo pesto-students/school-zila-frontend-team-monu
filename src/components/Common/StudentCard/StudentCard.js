@@ -1,6 +1,7 @@
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ContactIcon from "../../../assets/StudentContact-icon.svg";
 import EmailIcon from "../../../assets/StudentEmail-icon.svg";
+import teacherProfilePic from "../../../assets/tempTeacherPic.jpg";
+import ViewMenu from "../ViewMenu";
 
 import "./StudentCard.css";
 
@@ -50,6 +51,16 @@ export function StudentGrade(studentGrade) {
   );
 }
 
-export function StudentAction() {
-  return <MoreHorizIcon style={{ fontSize: "2.2rem", color: "#A098AE" }} />;
+export function StudentAction(studentName, studentID) {
+  // return <MoreHorizIcon style={{ fontSize: "2.2rem", color: "#A098AE" }} />;
+  return (
+    <ViewMenu
+      parentClassName=""
+      teacherProfilePic={teacherProfilePic}
+      teacherName={studentName}
+      specialist={studentID}
+    >
+      ...
+    </ViewMenu>
+  );
 }
