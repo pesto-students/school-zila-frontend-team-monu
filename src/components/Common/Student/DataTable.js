@@ -19,7 +19,6 @@ import {
   Date,
   ParentName,
   StudentAction,
-  StudentGrade,
   StudentId,
   StudentName,
 } from "../StudentCard/StudentCard";
@@ -130,16 +129,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
   const [visibleRows, setVisibleRows] = React.useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
-  function createData(
-    name,
-    id,
-    date,
-    parentName,
-    city,
-    contact,
-    grade,
-    action
-  ) {
+  function createData(name, id, date, parentName, city, contact, action) {
     console.log(id);
     return {
       name,
@@ -148,7 +138,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
       parentName,
       city,
       contact,
-      grade,
       action,
     };
   }
@@ -161,7 +150,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
       ParentName(data.parentName),
       City(data.city),
       Contact(),
-      StudentGrade(data.studentGrade),
       StudentAction()
     );
   });
@@ -172,7 +160,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
   //   ParentName("Parent 1"),
   //   City("City 1"),
   //   Contact(),
-  //   StudentGrade("VII A"),
   //   StudentAction()
   // ),
 
@@ -320,7 +307,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.name)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -328,7 +314,10 @@ export default function EnhancedTable({ headCells, studentsData }) {
                         selected={isItemSelected}
                         sx={{ cursor: "pointer" }}
                       >
-                        <TableCell padding="checkbox">
+                        <TableCell
+                          padding="checkbox"
+                          onClick={(event) => handleClick(event, row.name)}
+                        >
                           <Checkbox
                             color="primary"
                             checked={isItemSelected}
@@ -350,7 +339,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
                         <TableCell align="right">{row.parentName}</TableCell>
                         <TableCell align="right">{row.city}</TableCell>
                         <TableCell align="right">{row.contact}</TableCell>
-                        <TableCell align="right">{row.grade}</TableCell>
                         <TableCell align="right">{row.action}</TableCell>
                       </TableRow>
                     );
