@@ -129,15 +129,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
   const [visibleRows, setVisibleRows] = React.useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(DEFAULT_ROWS_PER_PAGE);
   const [paddingHeight, setPaddingHeight] = React.useState(0);
-  function createData(
-    name,
-    id,
-    date,
-    parentName,
-    city,
-    contact,
-    action
-  ) {
+  function createData(name, id, date, parentName, city, contact, action) {
     console.log(id);
     return {
       name,
@@ -315,7 +307,6 @@ export default function EnhancedTable({ headCells, studentsData }) {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.name)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
@@ -323,7 +314,10 @@ export default function EnhancedTable({ headCells, studentsData }) {
                         selected={isItemSelected}
                         sx={{ cursor: "pointer" }}
                       >
-                        <TableCell padding="checkbox">
+                        <TableCell
+                          padding="checkbox"
+                          onClick={(event) => handleClick(event, row.name)}
+                        >
                           <Checkbox
                             color="primary"
                             checked={isItemSelected}

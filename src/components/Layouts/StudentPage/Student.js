@@ -6,6 +6,7 @@ import EnhancedTable from "../../Common/Student/DataTable";
 import AddNewMemComp from "../../Common/TopBar/AddNewMemComp";
 import serviceAxiosInstance from "../../../service/axiosService";
 import AddNewStudent from "./AddNewStudent";
+import "./Student.css";
 
 const headCells = [
   {
@@ -156,7 +157,7 @@ export default function Student({ setShowSideBar }) {
               <div className="studentDetail">
                 {/* <DataTable studentData={studentData} columns={STUDENTS_COLUMNS} /> */}
                 <EnhancedTable
-                  headCells={STUDENTS_COLUMNS}
+                  headCells={headCells}
                   studentsData={studentData}
                 />
               </div>
