@@ -15,6 +15,7 @@ export default function SubjectCard({ props }) {
     rating,
     lectureUrl,
     lectureDetail,
+    grade,
   } = props;
   return (
     <div className="subjectDetail">
@@ -46,8 +47,11 @@ export default function SubjectCard({ props }) {
           </div>
         </div>
       </div>
+      <div className="grade">
+        <p id="grade">{`${grade}st Grade`}</p>
+      </div>
       <div className="subTeachersName">
-        <p>{teacherName}</p>
+        <p id="teacherName">{teacherName}</p>
       </div>
     </div>
   );

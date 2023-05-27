@@ -12,6 +12,7 @@ const dummyUpload = {
   lectureDetail: "",
   teacherName: "",
   rating: "",
+  lecGrade: null,
 };
 const dummyAssignment = {
   topicName: "",
@@ -19,6 +20,7 @@ const dummyAssignment = {
   assignmentDetail: "",
   teacherName: "",
   rating: "",
+  assignmentGrade: null,
 };
 
 let snackBarMessage = "";
@@ -107,6 +109,8 @@ export default function UploadFile() {
     handleUploadAssignment();
   };
 
+  const stdOptions = [1,2,3,4,5,6,7,8,9,10,11,12];
+
   return (
     <>
       <div className="upload-container">
@@ -126,6 +130,12 @@ export default function UploadFile() {
               <p class="file-name"></p>
             </label>
           </div>
+          <label for="lecStandard" className="topicLabel">
+            Grade:
+          </label>
+          <select name="lecGrade" id="lecGrade">
+            {stdOptions.map((g) =>(<option value={g}>{g}</option>))}
+          </select>
           <label for="topicName" className="topicLabel">
             Topic title:
           </label>
@@ -135,7 +145,7 @@ export default function UploadFile() {
             name="topicName"
             value={uploadLecture.topicName}
             onChange={handleLectureChange}
-          />{" "}
+          />
           <br />
           <label for="lectureDetail" className="topicLabel">
             Description:
@@ -159,6 +169,12 @@ export default function UploadFile() {
               <p class="file-name"></p>
             </label>
           </div>
+          <label for="assignmentStandard" className="topicLabel">
+            Grade:
+          </label>
+          <select name="assignmentGrade" id="assignmentGrade">
+            {stdOptions.map((g) =>(<option value={g}>{g}</option>))}
+          </select>
           <label for="topicName" className="topicLabel">
             Topic title:
           </label>
