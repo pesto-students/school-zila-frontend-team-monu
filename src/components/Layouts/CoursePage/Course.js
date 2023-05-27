@@ -36,6 +36,7 @@ function a11yProps(index) {
 const dummyCourses = [
   {
     topicName: "Subject 1",
+    grade: 1,
     topicImage:
       "https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?cs=srgb&dl=pexels-pixabay-301920.jpg&fm=jpg",
     teacherName: "Teacher Name",
@@ -52,6 +53,7 @@ const dummyCourses = [
   },
   {
     topicName: "Subject 2",
+    grade: 1,
     topicImage:
       "https://images.pexels.com/photos/301920/pexels-photo-301920.jpeg?cs=srgb&dl=pexels-pixabay-301920.jpg&fm=jpg",
     teacherName: "Teacher Name",
@@ -68,6 +70,7 @@ const dummyCourses = [
   },
   {
     topicName: "Subject 3",
+    grade: 1,
     topicImage:
       "https://www.google.com/search?rlz=1C1ONGR_enIN957IN957&q=Discussion+images&stick=H4sIAAAAAAAAAONQF5LUr0jW18_VNzA2zChKtwKxstKNTBxS85SkYFIgAauUzOLk0uLizPw8oJyWXG5qSaKVfkVBYl5qDlBdfl5yakGJVXFmSmp5YmVxFG9OanJJaVGqQmZuYnrqIkYBkFlFqWmZeam5qXkl-ga_GMUCXP0DfFwVHH2C_RWCXR2DnD0U3PyDFrAwLGBhW8DCuoCFeQELyyJWQRe4zRDTim-xSTKUPLs26yl_z-I9b1XvXfbmqFj7IEB01pwJ5wB4Jsq_0wAAAA&sa=X&ved=2ahUKEwjV0vq86Kj-AhVUxTgGHaFsACIQs9oBKAB6BAgiEAI&biw=1366&bih=617&dpr=1#",
     teacherName: "Teacher Name",
@@ -84,6 +87,7 @@ const dummyCourses = [
   },
   {
     topicName: "Subject 4",
+    grade: 1,
     topicImage:
       "https://www.google.com/search?rlz=1C1ONGR_enIN957IN957&q=Discussion+images&stick=H4sIAAAAAAAAAONQF5LUr0jW18_VNzA2zChKtwKxstKNTBxS85SkYFIgAauUzOLk0uLizPw8oJyWXG5qSaKVfkVBYl5qDlBdfl5yakGJVXFmSmp5YmVxFG9OanJJaVGqQmZuYnrqIkYBkFlFqWmZeam5qXkl-ga_GMUCXP0DfFwVHH2C_RWCXR2DnD0U3PyDFrAwLGBhW8DCuoCFeQELyyJWQRe4zRDTim-xSTKUPLs26yl_z-I9b1XvXfbmqFj7IEB01pwJ5wB4Jsq_0wAAAA&sa=X&ved=2ahUKEwjV0vq86Kj-AhVUxTgGHaFsACIQs9oBKAB6BAgiEAI&biw=1366&bih=617&dpr=1#",
     teacherName: "Teacher Name",

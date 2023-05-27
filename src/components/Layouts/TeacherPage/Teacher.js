@@ -19,16 +19,20 @@ export default function Teacher({ setShowSideBar }) {
     let result = res?.map((row) => {
       return {
         teacherProfilePic: null,
-        teacherName: row?.teacher_name,
-        specialist: "",
+        teacherName: row?.teacherName,
+        specialist: row?.teacherSpecialization,
       };
     });
-    setTeacherData(result);
+    setTeacherData({
+      ...teacherData,
+      [name]: value,
+      schoolUuid: localStorage.getItem("school_uuid"),
+    });
   };
   const handleGetTeachersDetails = async () => {
     try {
       let payload = {
-        schoolId: "",
+        schoolId: localStorage.getItem("school_uuid"),
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)

@@ -106,3 +106,14 @@
 .selectSubjectDiv > a {
   width: 100%;
 }
+
+#grade {
+  font-size: x-small;
+  margin-top: 75%;
+  display: flex;
+}
+
+#teacherName {
+  margin-top: 35%;
+  display: flex;
+}
