@@ -11,31 +11,31 @@ import ROLES from "../../../constant/roles";
 let snackBarMessage = "";
 const initialSignupState = {
   schoolName: "",
-  schoolMoto:"",
+  schoolMoto: "",
   email: "",
   password: "",
   confirmPass: "",
   mobileNo: "",
-  location:"",
+  location: "",
 };
 
 export default function SignUpPage() {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
-  const [erroMsg,setErrorMsg] = useState("");
+  const [erroMsg, setErrorMsg] = useState("");
   const [signupData, setSignupData] = useState(initialSignupState);
   const handleLogin = async (e) => {
     e?.preventDefault();
-    let payload =  {
-      "school_name": signupData?.schoolName,
-      "school_moto": signupData?.schoolMoto,
+    let payload = {
+      school_name: signupData?.schoolName,
+      school_moto: signupData?.schoolMoto,
       // "school_imgs": "img-1.png",
-      "school_mobile": signupData?.mobileNo,
-      "school_location":signupData?.location,
-      "school_email": signupData?.email,
-      "school_password": signupData?.password,
-      "role": "SCHOOL"
-   }
+      school_mobile: signupData?.mobileNo,
+      school_location: signupData?.location,
+      school_email: signupData?.email,
+      school_password: signupData?.password,
+      role: "SCHOOL",
+    };
     try {
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
@@ -59,7 +59,10 @@ export default function SignUpPage() {
         );
       }
     } catch (error) {
-      snackBarMessage = error?.response?.data?.message || error?.response?.data?.toString() || error?.response?.toString();
+      snackBarMessage =
+        error?.response?.data?.message ||
+        error?.response?.data?.toString() ||
+        error?.response?.toString();
       setErrorMsg(snackBarMessage);
       updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
     }
@@ -92,7 +95,7 @@ export default function SignUpPage() {
           <p className="loginTitle">SIGNUP</p>
           <form autoComplete="off">
             <div className="loginForm">
-            <label htmlFor="schoolname">School Name *</label>
+              <label htmlFor="schoolname">School Name *</label>
               <input
                 type="text"
                 id="schoolname"
@@ -102,7 +105,7 @@ export default function SignUpPage() {
                 autoComplete="new-schoolname"
               />
 
-            <label htmlFor="schoolmoto">School Moto *</label>
+              <label htmlFor="schoolmoto">School Moto *</label>
               <input
                 type="text"
                 id="schoolmoto"
@@ -160,15 +163,15 @@ export default function SignUpPage() {
                 autoComplete="new-location"
               />
 
-                <div className="submitFormBtn">
-                  <input
-                    type="submit"
-                    id="submit"
-                    name="submit"
-                    className="formSubmitBtn"
-                    onClick={handleLogin}
-                  />
-                </div>
+              <div className="submitFormBtn">
+                <input
+                  type="submit"
+                  id="submit"
+                  name="submit"
+                  className="formSubmitBtn"
+                  onClick={handleLogin}
+                />
+              </div>
             </div>
           </form>
         </div>
