@@ -150,7 +150,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
       ParentName(data.parentName),
       City(data.city),
       Contact(),
-      StudentAction()
+      StudentAction(data.name, data.id)
     );
   });
   // createData(

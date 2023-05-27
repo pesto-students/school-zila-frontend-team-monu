@@ -2,7 +2,7 @@ import React from "react";
 import TempTeacherPic from "../../../assets/tempTeacherPic.jpg";
 import PhoneCallIcon from "../../../assets/Call-icon.svg";
 import EmailIcon from "../../../assets/Email-icon.svg";
-import NewEntityButton from "../NewEntityButton";
+import ViewMenu from "../ViewMenu";
 import "./TeacherCard.css";
 
 export default function TeacherCard(props) {
@@ -10,7 +10,14 @@ export default function TeacherCard(props) {
 
   return (
     <div className="teacherCard">
-      <NewEntityButton parentClassName="optionButton">...</NewEntityButton>
+      <ViewMenu
+        parentClassName="optionButton"
+        teacherProfilePic={teacherProfilePic}
+        teacherName={teacherName}
+        specialist={specialist}
+      >
+        ...
+      </ViewMenu>
       <div className="teachersDetails">
         <div className="avatar">
           <img

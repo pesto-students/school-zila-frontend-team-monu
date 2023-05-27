@@ -15,18 +15,16 @@ export default function Teacher({ setShowSideBar }) {
   const [teacherData, setTeacherData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
 
-
-  const structureStudentData = (res)=>{
-
-    let result = res?.map(row=>{
+  const structureStudentData = (res) => {
+    let result = res?.map((row) => {
       return {
         teacherProfilePic: null,
         teacherName: row?.teacher_name,
         specialist: "",
-      }
+      };
     });
     setTeacherData(result);
-}
+  };
   const handleGetTeachersDetails = async () => {
     try {
       let payload = {
@@ -34,8 +32,8 @@ export default function Teacher({ setShowSideBar }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/get-all-teacher",
-        method: "POST",
+        url: "/teacher",
+        method: "GET",
       });
       if (response?.status) {
         structureStudentData(response.data?.data);
