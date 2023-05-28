@@ -121,7 +121,7 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable({ headCells, studentsData }) {
+export default function EnhancedTable({ headCells, studentsData,handleEdit,handleDelete }) {
   const [order, setOrder] = React.useState(DEFAULT_ORDER);
   const [orderBy, setOrderBy] = React.useState(DEFAULT_ORDER_BY);
   const [selected, setSelected] = React.useState([]);
@@ -162,7 +162,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
       City(data.city),
       Contact(),
       StudentGrade(data.studentGrade),
-      StudentAction()
+      StudentAction(handleEdit,handleDelete,data)
     );
   });
   // createData(

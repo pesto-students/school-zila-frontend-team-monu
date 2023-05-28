@@ -60,21 +60,24 @@ const rows = [
   // { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
+
 export default function Student({ setShowSideBar }) {
   const [studentData, setStudentData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
+  const [formType,setFormType] = useState({status:"ADD",data:null});
   const tokenContext = useContext(TokenContext);
 
   const structureStudentData = (res)=>{
 
       let result = res?.map(row=>{
         return {
-          id: row?._id,
+          id: row?.student_id,
           name: row?.student_name,
-          date: "",
-          parentName: "",
-          city: "",
-          studentGrade: "",
+          date: row?.student_dob,
+          parentName: row?.parent_name,
+          city: row?.student_address,
+          studentGrade: null,
+          data:row,
         }
       });
       console.log("result",result);
@@ -94,6 +97,14 @@ export default function Student({ setShowSideBar }) {
     }
   };
 
+  const handleEdit = (data) => {
+    setFormType({status:"EDIT",data:data});
+    setAddNewBtnClick(true);
+  }
+  const handleDelete = () => {
+    alert("delete")
+  }
+
   useEffect(() => {
     setShowSideBar(true);
     handleGetStudentsDetails();
@@ -101,7 +112,9 @@ export default function Student({ setShowSideBar }) {
   return (
     <>
       {addNewBtnClick ? (
-        <AddNewStudent setAddNewBtnClick={setAddNewBtnClick} />
+        <AddNewStudent 
+        setAddNewBtnClick={setAddNewBtnClick}
+        formType={formType} />
       ) : (
         <div className="mainContainer">
           <div className="mainMiddleContainer">
@@ -116,6 +129,8 @@ export default function Student({ setShowSideBar }) {
                 <EnhancedTable
                   headCells={STUDENTS_COLUMNS}
                   studentsData={studentData}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
                 />
               </div>
             </div>

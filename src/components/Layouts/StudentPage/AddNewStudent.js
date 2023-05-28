@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TopBar from "../../Common/TopBar/TopBar";
 // import NewEntityButton from "../../Button";
 import NewEntityButton from "../../Common/NewEntityButton";
@@ -30,7 +30,7 @@ const initialStudentData = {
   role: "",
 };
 
-export default function AddNewStudent({setAddNewBtnClick}) {
+export default function AddNewStudent({setAddNewBtnClick,formType}) {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
@@ -58,18 +58,58 @@ export default function AddNewStudent({setAddNewBtnClick}) {
     }
   };
 
+  const handleStudentEdit = async() => {
+    try
+    {
+      let response = await serviceAxiosInstance({
+        url: "/edit-student",
+        method: "POST",
+        data: studentData,
+      });
+    }
+    catch(err)
+    {
+
+    }
+  }
   const handleChange = (event) => {
     event.preventDefault();
     const {name, value} = event?.target;
     setStudentData({ ...studentData, [name]: value });
   };
 
+  const getStudentDetail = () => {
+      
+  }
+  useEffect(()=>{
+    if(formType?.status === "EDIT")
+    {
+      const data = formType?.data?.data;
+      const tempStudentData = {
+        studentImage: null,
+        schoolUuid:"",
+        studentName: data?.student_name,
+        studentPassword: "",
+        studentEmail:  data?.student_email,
+        studentDob: data?.student_dob,
+        studentPhone: data?.student_mobile,
+        studentAddress: data?.student_address,
+        parent1Name: data?.parent_name,
+        parent1Relationship: data?.parent_relationship,
+        parent1Email: data?.parent_email,
+        parent1Phone: data?.parent_mobile,
+        role: "STUDENT",
+      };
+      setStudentData(tempStudentData)
+      getStudentDetail(formType?.data);
+    }
+  },[formType])
   return (
     <>
       <div className="mainContainer">
         <div className="mainMiddleContainer">
           <div className="middleContainer">
-            <TopBar title="Add New Student" />
+            <TopBar title={`${formType?.status === "EDIT"?"Edit":"Add New"} Student`} />
             <form autoComplete="off">
               <div className="personalDetail">
                 <div className="personalDetailHeader commonFormHeader">
@@ -109,8 +149,14 @@ export default function AddNewStudent({setAddNewBtnClick}) {
                     <input type="text" id="studentPhone" name="studentPhone" value={studentData.studentPhone} onChange={handleChange} autoComplete="new-studentPhone" />
                     <label htmlFor="parent1Name">Parent Name *</label>
                     <input type="text" id="parent1Name" name="parent1Name" value={studentData.parent1Name} onChange={handleChange} autoComplete="new-parent1Name" />
-                    <label htmlFor="studentPassword">Password *</label>
-                    <input type="text" id="studentPassword" name="studentPassword" value={studentData.studentPassword} onChange={handleChange} autoComplete="new-studentPassword" />
+                    {
+                      formType?.status !== "EDIT" ? 
+                      <>
+                      <label htmlFor="studentPassword">Password *</label>
+                      <input type="text" id="studentPassword" name="studentPassword" value={studentData.studentPassword} onChange={handleChange} autoComplete="new-studentPassword" />
+                      </>
+                      :null
+                    }
                   </div>
                 </div>
               </div>
@@ -142,6 +188,17 @@ export default function AddNewStudent({setAddNewBtnClick}) {
                 </div>
               </div>
               <div className="submitFormButton">
+                {
+                  formType?.status === "EDIT"?
+                  <input
+                  type="button"
+                  id="submit"
+                  name="submit"
+                  value="Save"
+                  className="submitButton"
+                  onClick={handleStudentEdit}
+                />
+                  :
                 <input
                   type="button"
                   id="submit"
@@ -150,6 +207,7 @@ export default function AddNewStudent({setAddNewBtnClick}) {
                   className="submitButton"
                   onClick={handleStudentForm}
                 />
+                }
               </div>
             </form>
           </div>

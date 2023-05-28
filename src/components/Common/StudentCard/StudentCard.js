@@ -1,8 +1,10 @@
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ContactIcon from "../../../assets/StudentContact-icon.svg";
 import EmailIcon from "../../../assets/StudentEmail-icon.svg";
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import "./StudentCard.css";
+import Box from "@mui/material/Box";
 
 export function StudentName(studentName, studentImage) {
   return (
@@ -50,6 +52,13 @@ export function StudentGrade(studentGrade) {
   );
 }
 
-export function StudentAction() {
-  return <MoreHorizIcon style={{ fontSize: "2.2rem", color: "#A098AE" }} />;
+export function StudentAction(handleEdit,handleDelete,data) {
+  return <Box display="flex" gap="12px" justifyContent="flex-end">
+            <Box onClick={()=>handleEdit(data)}>
+                <EditIcon fontSize="large"/>
+            </Box>
+            <Box onClick={()=>handleDelete(data)}>
+              <DeleteIcon fontSize="large"/>
+            </Box>
+  </Box>
 }
