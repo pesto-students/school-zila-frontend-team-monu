@@ -66,7 +66,11 @@ export default function AddNewTeacher({ setAddNewBtnClick }) {
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event?.target;
-    setTeacherData({ ...teacherData, [name]: value });
+    setTeacherData({
+      ...teacherData,
+      [name]: value,
+      schoolUuid: localStorage.getItem("school_uuid"),
+    });
   };
   const handleFileUpload = (e) => {
     let files = e?.target?.files;

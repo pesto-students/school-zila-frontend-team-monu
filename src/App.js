@@ -13,6 +13,7 @@ import "./App.css";
 import SignUpPage from "./components/Layouts/LandingPage/SignUpPage";
 // import { Dashboard } from "@mui/icons-material";
 import Dashboard from "./components/Layouts/Admin/Dashboard";
+import ClassPage from "./components/Layouts/ClassesPage/ClassPage";
 
 function App() {
   const [showSideBar, setShowSideBar] = useState(false);
@@ -54,6 +55,10 @@ function App() {
           <Route
             path="/latest-activity"
             element={<LatestActivity setShowSideBar={setShowSideBar} />}
+          />
+          <Route
+            path="/classes"
+            element={<ClassPage setShowSideBar={setShowSideBar} />}
           />
         </Routes>
       </BrowserRouter>

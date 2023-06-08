@@ -19,7 +19,7 @@ export default function Teacher({ setShowSideBar }) {
     let result = res?.map((row) => {
       return {
         teacherProfilePic: null,
-        teacherName: row?.teacher_name,
+        teacherName: row?.teacherName,
         specialist: "",
       };
     });
