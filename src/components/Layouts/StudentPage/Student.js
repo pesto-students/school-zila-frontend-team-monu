@@ -54,56 +54,6 @@ const headCells = [
   },
 ];
 
-const rows = [
-  {
-    id: "#123456789",
-    name: "Student 1",
-    date: "March 25, 2023",
-    parentName: "Parent 1",
-    city: "City 1",
-    studentGrade: "VII A",
-  },
-  {
-    id: "#123456789",
-    name: "Student 1",
-    date: "March 25, 2023",
-    parentName: "Parent 1",
-    city: "City 1",
-    studentGrade: "VII A",
-  },
-  {
-    id: "#123456789",
-    name: "Student 1",
-    date: "March 25, 2023",
-    parentName: "Parent 1",
-    city: "City 1",
-    studentGrade: "VII A",
-  },
-  {
-    id: "#123456789",
-    name: "Student 1",
-    date: "March 25, 2023",
-    parentName: "Parent 1",
-    city: "City 1",
-    studentGrade: "VII A",
-  },
-  {
-    id: "#123456789",
-    name: "Student 1",
-    date: "March 25, 2023",
-    parentName: "Parent 1",
-    city: "City 1",
-    studentGrade: "VII A",
-  },
-  // { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  // { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  // { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  // { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  // { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  // { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  // { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  // { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
 
 
 export default function Student({ setShowSideBar }) {
@@ -138,7 +88,7 @@ export default function Student({ setShowSideBar }) {
         structureStudentData(response?.data?.data);
       }
     } catch (e) {
-      console.log("Error");
+      console.log("Error",e);
     }
   };
 
@@ -146,8 +96,22 @@ export default function Student({ setShowSideBar }) {
     setFormType({status:"EDIT",data:data});
     setAddNewBtnClick(true);
   }
-  const handleDelete = () => {
-    alert("delete")
+  const handleDelete = async(data) => {
+    try {
+      let payload = {
+        student_email:data?.data?.student_email,
+        role:"STUDENT",
+      }
+      let response = await serviceAxiosInstance({
+        url: "/delete-user",
+        method: "POST",
+        data:payload,
+      });
+      alert(response?.data?.message)
+      window.location.reload();
+    } catch (e) {
+      alert(e?.data?.message || e?.message || e?.data || e?.toString())
+    }
   }
 
   useEffect(() => {

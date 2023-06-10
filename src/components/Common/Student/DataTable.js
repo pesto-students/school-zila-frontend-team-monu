@@ -158,7 +158,6 @@ export default function EnhancedTable({ headCells, studentsData,handleEdit,handl
       ParentName(data.parentName),
       City(data.city),
       Contact(),
-      StudentGrade(data.studentGrade),
       StudentAction(handleEdit,handleDelete,data)
     );
   });

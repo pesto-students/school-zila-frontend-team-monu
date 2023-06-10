@@ -14,19 +14,31 @@ export default function Teacher({ setShowSideBar }) {
 
   const [teacherData, setTeacherData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
+  const [formType,setFormType] = useState({status:"ADD",data:null});
 
-
-  const structureStudentData = (res)=>{
-
-    let result = res?.map(row=>{
-      return {
-        teacherProfilePic: null,
-        teacherName: row?.teacher_name,
-        specialist: "",
-      }
+  const structureData = (students) => {
+    let arr = [];
+    students?.map(student=>{
+      let obj = {
+        teacherName: student?.teacher_name,
+        teacherEmail: student?.teacher_email,
+        teacherPassword: student?.teacher_password,
+        teacherPhone:student?.teacher_phone,
+        teacherAddress: student?.teacher_address,
+        teacherCity: student?.teacher_city,
+        teacherPhoto: null,
+        teacherDob: student?.teacher_dob,
+        teacherSpecialization: student?.teacher_specialization,
+        teacherUniversity: student?.teacher_university,
+        teacherDegree: student?.teacher_degree,
+        teacherStartDate: student?.teacher_start_date,
+        teacherEndDate: student?.teacher_end_date,      
+      };
+      arr.push(obj);
     });
-    setTeacherData(result);
-}
+    setTeacherData(arr);
+  }
+
   const handleGetTeachersDetails = async () => {
     try {
       let payload = {
@@ -38,19 +50,50 @@ export default function Teacher({ setShowSideBar }) {
         method: "POST",
       });
       if (response?.status) {
-        structureStudentData(response.data?.data);
+        structureData(response.data?.data);
       }
     } catch (e) {
-      console.log("Error");
+      console.log("Error",e);
     }
   };
+  
+  const handleEdit = (data) => {
+    formType.status = "EDIT";
+    formType.data = data;
+    setFormType({...formType});
+    setAddNewBtnClick(true);
+  }
+
+  const handleDelete = async(data) => {
+    console.log("========del==",data)
+    try {
+      let payload = {
+        teacher_email:data?.teacherEmail,
+        role:"TEACHER",
+      }
+      let response = await serviceAxiosInstance({
+        url: "/delete-user",
+        method: "POST",
+        data:payload,
+      });
+      alert(response?.data?.message)
+      window.location.reload();
+    } catch (e) {
+      alert(e?.data?.message || e?.message || e?.data || e?.toString())
+    }
+  }
+
   useEffect(() => {
     handleGetTeachersDetails();
   }, []);
   return (
     <>
       {addNewBtnClick ? (
-        <AddNewTeacher setAddNewBtnClick={setAddNewBtnClick} />
+        <AddNewTeacher 
+        setAddNewBtnClick={setAddNewBtnClick}
+        formType={formType}
+        setFormType={setFormType}
+        />
       ) : (
         <div className="mainContainer">
           <div className="middleContainer">
@@ -68,6 +111,9 @@ export default function Teacher({ setShowSideBar }) {
                         teacherProfilePic={data.teacherProfilePic}
                         teacherName={data.teacherName}
                         specialist={data.specialist}
+                        data={data}
+                        handleEdit={handleEdit}
+                        handleDelete={handleDelete}
                       />
                     </div>
                   ))}

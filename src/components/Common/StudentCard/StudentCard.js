@@ -44,13 +44,6 @@ export function Contact() {
   );
 }
 
-export function StudentGrade(studentGrade) {
-  return (
-    <div className="student-grade">
-      <p>{studentGrade}</p>
-    </div>
-  );
-}
 
 export function StudentAction(handleEdit,handleDelete,data) {
   return <Box display="flex" gap="12px" justifyContent="flex-end">

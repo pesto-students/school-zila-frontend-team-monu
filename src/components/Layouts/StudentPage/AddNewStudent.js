@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import TopBar from "../../Common/TopBar/TopBar";
 // import NewEntityButton from "../../Button";
+import Box from "@mui/material/Box";
+import BackIcon from '@mui/icons-material/KeyboardBackspace';
 import NewEntityButton from "../../Common/NewEntityButton";
 
 import serviceAxiosInstance from "../../../service/axiosService";
@@ -54,9 +56,7 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
         data: payload,
       });
       if (response?.status) {
-        snackBarMessage = response?.message;
-        setAddNewBtnClick(false);
-        updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.SUCCESS);
+        window.location.reload();
       } else {
         snackBarMessage = response?.message;
         updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
@@ -71,15 +71,29 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
   const handleStudentEdit = async() => {
     try
     {
+      let payload = {
+        student_name:studentData?.studentName,
+        student_email:studentData?.studentEmail,
+        student_dob:studentData?.studentDob,
+        student_mobile:studentData?.studentPhone,
+        student_address:studentData?.studentAddress,
+        parent_name:studentData?.parent1Name,
+        parent_relationship:studentData?.parent1Relationship,
+        parent_email:studentData?.parent1Email,
+        parent_mobile:studentData?.parent1Phone,
+        role:"STUDENT",
+      }
       let response = await serviceAxiosInstance({
         url: "/edit-student",
         method: "POST",
-        data: studentData,
+        data: payload,
       });
+      window.location.reload();
     }
     catch(err)
     {
-
+      snackBarMessage = err?.message;
+      updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
     }
   }
   const handleChange = (event) => {
@@ -119,7 +133,14 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
       <div className="mainContainer">
         <div className="mainMiddleContainer">
           <div className="middleContainer">
+            <Box display="flex" alignItems="center" gap="16px">
+            <Box 
+            onClick={()=>window.location.reload()}
+            sx={{background:"white",padding:"2px 4px",borderRadius:"4px",border:"1px solid rgba(0,0,0,0.225)"}}>
+              <BackIcon fontSize="large"/>
+            </Box>
             <TopBar title={`${formType?.status === "EDIT"?"Edit":"Add New"} Student`} />
+            </Box>
             <form autoComplete="off">
               <div className="personalDetail">
                 <div className="personalDetailHeader commonFormHeader">
@@ -143,8 +164,14 @@ export default function AddNewStudent({setAddNewBtnClick,formType}) {
                     <input type="text" id="studentName" name="studentName" value={studentData.studentName} onChange={handleChange} autoComplete="new-studentName" />
                     <label htmlFor="studentDob">Date of Birth *</label>
                     <input type="date" id="studentDob" name="studentDob" value={studentData.studentDob} onChange={handleChange} autoComplete="new-studentDob" />
-                    <label htmlFor="studentEmail">Email *</label>
-                    <input type="email" id="studentEmail" name="studentEmail" value={studentData.studentEmail} onChange={handleChange} autoComplete="new-studentEmail" />
+                    {
+                       formType?.status !== "EDIT" ? 
+                       <>
+                        <label htmlFor="studentEmail">Email *</label>
+                        <input type="email" id="studentEmail" name="studentEmail" value={studentData.studentEmail} onChange={handleChange} autoComplete="new-studentEmail" />
+                       </>
+                       :null
+                    }
                     <label htmlFor="studentAddress">Address *</label>
                     <textarea
                       type="text"
