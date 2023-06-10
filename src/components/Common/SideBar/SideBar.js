@@ -58,6 +58,19 @@ export default function SideBar() {
           <p>Teachers</p>
         </NavLink>
         <NavLink
+          to="/classes"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? ""
+              : isActive
+              ? "activeDashBoardButton"
+              : "dashBoardButton"
+          }
+        >
+          <img src={activityIcon} alt="icon" />
+          <p>Class</p>
+        </NavLink>
+        <NavLink
           to="/event-calendar"
           className={({ isActive, isPending }) =>
             isPending
