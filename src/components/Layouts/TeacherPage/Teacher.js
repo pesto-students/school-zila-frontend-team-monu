@@ -14,16 +14,16 @@ export default function Teacher({ setShowSideBar }) {
 
   const [teacherData, setTeacherData] = useState([]);
   const [addNewBtnClick, setAddNewBtnClick] = useState(false);
-  const [formType,setFormType] = useState({status:"ADD",data:null});
+  const [formType, setFormType] = useState({ status: "ADD", data: null });
 
   const structureData = (students) => {
     let arr = [];
-    students?.map(student=>{
+    students?.map((student) => {
       let obj = {
         teacherName: student?.teacher_name,
         teacherEmail: student?.teacher_email,
         teacherPassword: student?.teacher_password,
-        teacherPhone:student?.teacher_phone,
+        teacherPhone: student?.teacher_phone,
         teacherAddress: student?.teacher_address,
         teacherCity: student?.teacher_city,
         teacherPhoto: null,
@@ -32,12 +32,12 @@ export default function Teacher({ setShowSideBar }) {
         teacherUniversity: student?.teacher_university,
         teacherDegree: student?.teacher_degree,
         teacherStartDate: student?.teacher_start_date,
-        teacherEndDate: student?.teacher_end_date,      
+        teacherEndDate: student?.teacher_end_date,
       };
       arr.push(obj);
     });
     setTeacherData(arr);
-  }
+  };
 
   const handleGetTeachersDetails = async () => {
     try {
@@ -46,42 +46,42 @@ export default function Teacher({ setShowSideBar }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/get-all-teacher",
-        method: "POST",
+        url: "/teacher",
+        method: "GET",
       });
       if (response?.status) {
         structureData(response.data?.data);
       }
     } catch (e) {
-      console.log("Error",e);
+      console.log("Error", e);
     }
   };
-  
+
   const handleEdit = (data) => {
     formType.status = "EDIT";
     formType.data = data;
-    setFormType({...formType});
+    setFormType({ ...formType });
     setAddNewBtnClick(true);
-  }
+  };
 
-  const handleDelete = async(data) => {
-    console.log("========del==",data)
+  const handleDelete = async (data) => {
+    console.log("========del==", data);
     try {
       let payload = {
-        teacher_email:data?.teacherEmail,
-        role:"TEACHER",
-      }
+        teacher_email: data?.teacherEmail,
+        role: "TEACHER",
+      };
       let response = await serviceAxiosInstance({
         url: "/delete-user",
         method: "POST",
-        data:payload,
+        data: payload,
       });
-      alert(response?.data?.message)
+      alert(response?.data?.message);
       window.location.reload();
     } catch (e) {
-      alert(e?.data?.message || e?.message || e?.data || e?.toString())
+      alert(e?.data?.message || e?.message || e?.data || e?.toString());
     }
-  }
+  };
 
   useEffect(() => {
     handleGetTeachersDetails();
@@ -89,10 +89,10 @@ export default function Teacher({ setShowSideBar }) {
   return (
     <>
       {addNewBtnClick ? (
-        <AddNewTeacher 
-        setAddNewBtnClick={setAddNewBtnClick}
-        formType={formType}
-        setFormType={setFormType}
+        <AddNewTeacher
+          setAddNewBtnClick={setAddNewBtnClick}
+          formType={formType}
+          setFormType={setFormType}
         />
       ) : (
         <div className="mainContainer">
