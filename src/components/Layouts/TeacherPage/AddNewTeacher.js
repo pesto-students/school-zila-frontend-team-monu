@@ -57,18 +57,11 @@ export default function AddNewTeacher({
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/addTeacher",
+        url: "/signup",
         method: "POST",
         data: payload,
       });
       if (response?.status) {
-        snackBarMessage = response?.message;
-        updateTosterStatus(
-          setOpenToaster,
-          setAlertStatus,
-          TOASTER_STATUS.SUCCESS
-        );
-        setAddNewBtnClick(false);
         window.location.reload();
       } else {
         snackBarMessage = response?.message;

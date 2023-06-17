@@ -90,6 +90,7 @@ textarea {
   height: 40px;
   width: 12%;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .submitFormButton {

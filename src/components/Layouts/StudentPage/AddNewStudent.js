@@ -33,6 +33,7 @@ export default function AddNewStudent({ setAddNewBtnClick, formType }) {
   const [alertStatus, setAlertStatus] = useState(null);
 
   const [studentData, setStudentData] = useState(initialStudentData);
+  const [classList,setClassList] = useState([]);
   const handleStudentForm = async () => {
     try {
       let payload = {
@@ -51,7 +52,7 @@ export default function AddNewStudent({ setAddNewBtnClick, formType }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/addStudent",
+        url: "/signup",
         method: "POST",
         data: payload,
       });
@@ -108,9 +109,23 @@ export default function AddNewStudent({ setAddNewBtnClick, formType }) {
     const { name, value } = event?.target;
     setStudentData({ ...studentData, [name]: value });
   };
-
+  const getClassList = async() => {
+    let payload = {
+      school_uuid: localStorage.getItem("school_uuid"),
+    }
+    let response = await serviceAxiosInstance({
+      url: "/get-all-class",
+      method: "POST",
+      data: payload,
+    });
+    if(response.status)
+    {
+      setClassList(response.data?.data);
+    }
+  }
   const getStudentDetail = () => {};
   useEffect(() => {
+    getClassList();
     if (formType?.status === "EDIT") {
       const data = formType?.data?.data;
       const tempStudentData = {
@@ -235,6 +250,19 @@ export default function AddNewStudent({ setAddNewBtnClick, formType }) {
                       onChange={handleChange}
                       autoComplete="new-parent1Name"
                     />
+                     <div>
+                  <label htmlFor="studentAddress">Select class *</label>
+                 
+                  <select className="selectClass">
+                    <option value="">Select</option>
+                    {
+                    classList?.map(item=>{
+                      return <option value="first">{item.class_name} &nbsp;&nbsp;({item?.abbreviation})</option>
+                    })
+                  }
+                    
+                  </select>
+                  </div>
                     {formType?.status !== "EDIT" ? (
                       <>
                         <label htmlFor="studentPassword">Password *</label>

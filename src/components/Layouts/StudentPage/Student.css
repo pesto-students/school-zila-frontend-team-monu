@@ -17,3 +17,16 @@
   justify-content: flex-end;
   width: 100%;
 }
+
+.selectClass {
+  margin-top: 4px;
+  display: block;
+  width: 250px;
+  height: 30px;
+  border-color: #c1bbeb;
+  color: #a098ae;
+}
+
+.selectClass > option {
+  padding: 12px;
+}

@@ -46,7 +46,7 @@ export default function Teacher({ setShowSideBar }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/teacher",
+        url: "/get-all-teacher",
         method: "GET",
       });
       if (response?.status) {
@@ -65,7 +65,6 @@ export default function Teacher({ setShowSideBar }) {
   };
 
   const handleDelete = async (data) => {
-    console.log("========del==", data);
     try {
       let payload = {
         teacher_email: data?.teacherEmail,

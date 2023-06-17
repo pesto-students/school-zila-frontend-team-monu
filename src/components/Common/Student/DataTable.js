@@ -54,7 +54,7 @@ function stableSort(array, comparator) {
 
 const DEFAULT_ORDER = "asc";
 const DEFAULT_ORDER_BY = "id";
-const DEFAULT_ROWS_PER_PAGE = 5;
+const DEFAULT_ROWS_PER_PAGE = 25;
 
 function EnhancedTableHead(props) {
   const {
@@ -361,15 +361,15 @@ export default function EnhancedTable({
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+        {/* <TablePagination
+          rowsPerPageOptions={[]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> */}
       </Paper>
     </Box>
   );

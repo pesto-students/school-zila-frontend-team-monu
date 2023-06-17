@@ -122,7 +122,7 @@ export default function Student({ setShowSideBar }) {
   const handleGetStudentsDetails = async () => {
     try {
       let response = await serviceAxiosInstance({
-        url: "/student",
+        url: "/get-all-student",
         method: "GET",
       });
       if (response?.status) {

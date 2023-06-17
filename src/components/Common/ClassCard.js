@@ -1,6 +1,6 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-import { CardActionArea, Menu, MenuItem } from "@mui/material";
+import { CardActionArea, Menu, MenuItem, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -8,7 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export default function ActionAreaCard({ ClassIcon, SubjectIcon }) {
+export default function ActionAreaCard({ item }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -21,7 +21,7 @@ export default function ActionAreaCard({ ClassIcon, SubjectIcon }) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button  onClick={handleClickOpen}>
         <div style={{ padding: "2% 4% 2% 4%" }}>
           <Card
             sx={{
@@ -37,13 +37,14 @@ export default function ActionAreaCard({ ClassIcon, SubjectIcon }) {
                   alignItems: "center",
                 }}
               >
-                <img src={ClassIcon} alt="" style={{ width: "65%" }} />
+                {/* <img src={ClassIcon} alt="" style={{ width: "65%" }} /> */}
+                <Typography fontSize="55px" color="#3D3D3D">{item.abbreviation || item?.class_name}</Typography>
               </div>
             </CardActionArea>
           </Card>
         </div>
       </Button>
-      <Dialog
+      {/* <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
@@ -57,7 +58,7 @@ export default function ActionAreaCard({ ClassIcon, SubjectIcon }) {
             })}
           </DialogContentText>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 }
