@@ -1,9 +1,9 @@
 import ContactIcon from "../../../assets/StudentContact-icon.svg";
 import EmailIcon from "../../../assets/StudentEmail-icon.svg";
-import teacherProfilePic from "../../../assets/tempTeacherPic.jpg";
-import ViewMenu from "../ViewMenu";
-
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./StudentCard.css";
+import Box from "@mui/material/Box";
 
 export function StudentName(studentName, studentImage) {
   return (
@@ -43,24 +43,15 @@ export function Contact() {
   );
 }
 
-export function StudentGrade(studentGrade) {
+export function StudentAction(handleEdit, handleDelete, data) {
   return (
-    <div className="student-grade">
-      <p>{studentGrade}</p>
-    </div>
-  );
-}
-
-export function StudentAction(studentName, studentID) {
-  // return <MoreHorizIcon style={{ fontSize: "2.2rem", color: "#A098AE" }} />;
-  return (
-    <ViewMenu
-      parentClassName=""
-      teacherProfilePic={teacherProfilePic}
-      teacherName={studentName}
-      specialist={studentID}
-    >
-      ...
-    </ViewMenu>
+    <Box display="flex" gap="12px" justifyContent="flex-end">
+      <Box onClick={() => handleEdit(data)}>
+        <EditIcon fontSize="large" />
+      </Box>
+      <Box onClick={() => handleDelete(data)}>
+        <DeleteIcon fontSize="large" />
+      </Box>
+    </Box>
   );
 }

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TopBar from "../../Common/TopBar/TopBar";
 // import NewEntityButton from "../../Button";
+import Box from "@mui/material/Box";
+import BackIcon from "@mui/icons-material/KeyboardBackspace";
 import NewEntityButton from "../../Common/NewEntityButton";
 
 import serviceAxiosInstance from "../../../service/axiosService";
@@ -26,11 +28,12 @@ const initialStudentData = {
   role: "",
 };
 
-export default function AddNewStudent({ setAddNewBtnClick }) {
+export default function AddNewStudent({ setAddNewBtnClick, formType }) {
   const [openToaster, setOpenToaster] = useState(false);
   const [alertStatus, setAlertStatus] = useState(null);
 
   const [studentData, setStudentData] = useState(initialStudentData);
+  const [classList,setClassList] = useState([]);
   const handleStudentForm = async () => {
     try {
       let payload = {
@@ -49,7 +52,7 @@ export default function AddNewStudent({ setAddNewBtnClick }) {
       };
       let response = await serviceAxiosInstance({
         // url of the api endpoint (can be changed)
-        url: "/addStudent",
+        url: "/signup",
         method: "POST",
         data: payload,
       });
@@ -76,18 +79,97 @@ export default function AddNewStudent({ setAddNewBtnClick }) {
     }
   };
 
+  const handleStudentEdit = async () => {
+    try {
+      let payload = {
+        student_name: studentData?.studentName,
+        student_email: studentData?.studentEmail,
+        student_dob: studentData?.studentDob,
+        student_mobile: studentData?.studentPhone,
+        student_address: studentData?.studentAddress,
+        parent_name: studentData?.parent1Name,
+        parent_relationship: studentData?.parent1Relationship,
+        parent_email: studentData?.parent1Email,
+        parent_mobile: studentData?.parent1Phone,
+        role: "STUDENT",
+      };
+      let response = await serviceAxiosInstance({
+        url: "/edit-student",
+        method: "POST",
+        data: payload,
+      });
+      window.location.reload();
+    } catch (err) {
+      snackBarMessage = err?.message;
+      updateTosterStatus(setOpenToaster, setAlertStatus, TOASTER_STATUS.ERROR);
+    }
+  };
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event?.target;
     setStudentData({ ...studentData, [name]: value });
   };
-
+  const getClassList = async() => {
+    let payload = {
+      school_uuid: localStorage.getItem("school_uuid"),
+    }
+    let response = await serviceAxiosInstance({
+      url: "/get-all-class",
+      method: "POST",
+      data: payload,
+    });
+    if(response.status)
+    {
+      setClassList(response.data?.data);
+    }
+  }
+  const getStudentDetail = () => {};
+  useEffect(() => {
+    getClassList();
+    if (formType?.status === "EDIT") {
+      const data = formType?.data?.data;
+      const tempStudentData = {
+        studentImage: null,
+        schoolUuid: "",
+        studentName: data?.student_name,
+        studentPassword: "",
+        studentEmail: data?.student_email,
+        studentDob: data?.student_dob,
+        studentPhone: data?.student_mobile,
+        studentAddress: data?.student_address,
+        parent1Name: data?.parent_name,
+        parent1Relationship: data?.parent_relationship,
+        parent1Email: data?.parent_email,
+        parent1Phone: data?.parent_mobile,
+        role: "STUDENT",
+      };
+      setStudentData(tempStudentData);
+      getStudentDetail(formType?.data);
+    }
+  }, [formType]);
   return (
     <>
       <div className="mainContainer">
         <div className="mainMiddleContainer">
           <div className="middleContainer">
-            <TopBar title="Add New Student" />
+            <Box display="flex" alignItems="center" gap="16px">
+              <Box
+                onClick={() => window.location.reload()}
+                sx={{
+                  background: "white",
+                  padding: "2px 4px",
+                  borderRadius: "4px",
+                  border: "1px solid rgba(0,0,0,0.225)",
+                }}
+              >
+                <BackIcon fontSize="large" />
+              </Box>
+              <TopBar
+                title={`${
+                  formType?.status === "EDIT" ? "Edit" : "Add New"
+                } Student`}
+              />
+            </Box>
             <form autoComplete="off">
               <div className="personalDetail">
                 <div className="personalDetailHeader commonFormHeader">
@@ -125,15 +207,19 @@ export default function AddNewStudent({ setAddNewBtnClick }) {
                       onChange={handleChange}
                       autoComplete="new-studentDob"
                     />
-                    <label htmlFor="studentEmail">Email *</label>
-                    <input
-                      type="email"
-                      id="studentEmail"
-                      name="studentEmail"
-                      value={studentData.studentEmail}
-                      onChange={handleChange}
-                      autoComplete="new-studentEmail"
-                    />
+                    {formType?.status !== "EDIT" ? (
+                      <>
+                        <label htmlFor="studentEmail">Email *</label>
+                        <input
+                          type="email"
+                          id="studentEmail"
+                          name="studentEmail"
+                          value={studentData.studentEmail}
+                          onChange={handleChange}
+                          autoComplete="new-studentEmail"
+                        />
+                      </>
+                    ) : null}
                     <label htmlFor="studentAddress">Address *</label>
                     <textarea
                       type="text"
@@ -164,15 +250,32 @@ export default function AddNewStudent({ setAddNewBtnClick }) {
                       onChange={handleChange}
                       autoComplete="new-parent1Name"
                     />
-                    <label htmlFor="studentPassword">Password *</label>
-                    <input
-                      type="text"
-                      id="studentPassword"
-                      name="studentPassword"
-                      value={studentData.studentPassword}
-                      onChange={handleChange}
-                      autoComplete="new-studentPassword"
-                    />
+                     <div>
+                  <label htmlFor="studentAddress">Select class *</label>
+                 
+                  <select className="selectClass">
+                    <option value="">Select</option>
+                    {
+                    classList?.map(item=>{
+                      return <option value="first">{item.class_name} &nbsp;&nbsp;({item?.abbreviation})</option>
+                    })
+                  }
+                    
+                  </select>
+                  </div>
+                    {formType?.status !== "EDIT" ? (
+                      <>
+                        <label htmlFor="studentPassword">Password *</label>
+                        <input
+                          type="text"
+                          id="studentPassword"
+                          name="studentPassword"
+                          value={studentData.studentPassword}
+                          onChange={handleChange}
+                          autoComplete="new-studentPassword"
+                        />
+                      </>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -224,14 +327,25 @@ export default function AddNewStudent({ setAddNewBtnClick }) {
                 </div>
               </div>
               <div className="submitFormButton">
-                <input
-                  type="button"
-                  id="submit"
-                  name="submit"
-                  value="Submit"
-                  className="submitButton"
-                  onClick={handleStudentForm}
-                />
+                {formType?.status === "EDIT" ? (
+                  <input
+                    type="button"
+                    id="submit"
+                    name="submit"
+                    value="Save"
+                    className="submitButton"
+                    onClick={handleStudentEdit}
+                  />
+                ) : (
+                  <input
+                    type="button"
+                    id="submit"
+                    name="submit"
+                    value="Submit"
+                    className="submitButton"
+                    onClick={handleStudentForm}
+                  />
+                )}
               </div>
             </form>
           </div>

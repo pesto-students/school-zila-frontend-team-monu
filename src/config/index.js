@@ -1,1 +1,1 @@
-export const baseUrl = process.env.NODE_ENV === "production"?"":"http://localhost:5555"
+export const baseUrl = process.env.NODE_ENV === "production"?"https://school-zila-backend-team-monu.vercel.app/":"http://localhost:5555"

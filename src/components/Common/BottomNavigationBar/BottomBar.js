@@ -8,7 +8,7 @@ export default function BottomNavigationBar() {
 
   return (
     <div className="navigationBar">
-      <p>
+      {/* <p>
         Showing <strong>1-5</strong> from <strong>100</strong> data
       </p>
       <div className="pageNavigation">
@@ -17,7 +17,7 @@ export default function BottomNavigationBar() {
         <button className="pageNumber">2</button>
         <button className="pageNumber">3</button>
         <img src={ForwardArrow} alt="forward arrow" />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 .teacherCard {
   width: 14.5vw;
-  height: 30vh;
   margin-top: 3%;
   margin-right: 2%;
+  padding: 18px 12px;
   background-color: white;
   border-radius: 12px;
   display: flex;
@@ -11,7 +11,13 @@
   align-items: center;
   position: relative;
 }
-
+.action-icon {
+  padding:4px;
+  color:#55a95e;
+  border:1px solid #55a95e;
+  border-radius:200px;
+  cursor: pointer;
+}
 .contact {
   display: flex;
   justify-content: space-evenly;

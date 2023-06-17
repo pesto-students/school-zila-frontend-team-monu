@@ -41,12 +41,6 @@ const STUDENTS_COLUMNS = [
     label: "Contact",
   },
   {
-    id: "grade",
-    numeric: true,
-    disablePadding: false,
-    label: "Grade",
-  },
-  {
     id: "action",
     numeric: true,
     disablePadding: false,

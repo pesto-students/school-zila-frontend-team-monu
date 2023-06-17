@@ -54,7 +54,7 @@ function stableSort(array, comparator) {
 
 const DEFAULT_ORDER = "asc";
 const DEFAULT_ORDER_BY = "id";
-const DEFAULT_ROWS_PER_PAGE = 5;
+const DEFAULT_ROWS_PER_PAGE = 25;
 
 function EnhancedTableHead(props) {
   const {
@@ -120,7 +120,12 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-export default function EnhancedTable({ headCells, studentsData }) {
+export default function EnhancedTable({
+  headCells,
+  studentsData,
+  handleEdit,
+  handleDelete,
+}) {
   const [order, setOrder] = React.useState(DEFAULT_ORDER);
   const [orderBy, setOrderBy] = React.useState(DEFAULT_ORDER_BY);
   const [selected, setSelected] = React.useState([]);
@@ -150,7 +155,7 @@ export default function EnhancedTable({ headCells, studentsData }) {
       ParentName(data.parentName),
       City(data.city),
       Contact(),
-      StudentAction(data.name, data.id)
+      StudentAction(handleEdit, handleDelete, data)
     );
   });
   // createData(
@@ -356,15 +361,15 @@ export default function EnhancedTable({ headCells, studentsData }) {
             </TableBody>
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+        {/* <TablePagination
+          rowsPerPageOptions={[]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> */}
       </Paper>
     </Box>
   );

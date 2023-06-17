@@ -34,6 +34,9 @@ import Science from "../../../assets/scienceIcon.webp";
 import SocialS from "../../../assets/social-scienceIcon.webp";
 import Sociology from "../../../assets/sociologyIcon.png";
 import Economics from "../../../assets/economicsIcon.webp";
+import { useState } from "react";
+import { AddClass } from "./AddClass";
+import serviceAxiosInstance from "../../../service/axiosService";
 
 export default function ClassPage({ setShowSideBar }) {
   const classes = [
@@ -123,27 +126,47 @@ export default function ClassPage({ setShowSideBar }) {
       ],
     },
   ];
-
+  const [showAddModal,setShowAddModal] = useState(false);
+  const [classList,setClassList] = useState([]);
+  const getClassList = async() => {
+    let payload = {
+      school_uuid: localStorage.getItem("school_uuid"),
+    }
+    let response = await serviceAxiosInstance({
+      url: "/get-all-class",
+      method: "POST",
+      data: payload,
+    });
+    if(response.status)
+    {
+      setClassList(response.data?.data);
+    }
+  }
   useEffect(() => {
     setShowSideBar(true);
+    getClassList();
   }, []);
+  if(showAddModal)
+  {
+    return <AddClass/>
+  }
   return (
     <>
       {
         <div className="mainContainer">
-          <div className="mainMiddleContainer">
+          <div className="mainMiddleContainer" >
             <div className="middleContainer">
               <TopBar title="Class" />
-              <div className="subjects">
-                <div className="subjectHeader">
+              <div className="subjects" style={{paddingBottom:"5vh"}}>
+                <div className="subjectHeader" style={{paddingTop:"16px"}}>
                   <p>Classes</p>
+                  <button className="submitButton" onClick={()=>setShowAddModal(true)}>Add class</button>
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap" }}>
-                  {classes.map((el) => {
+                <div style={{ display: "flex",gap:"12px", flexWrap: "wrap" }}>
+                  {classList.map((item) => {
                     return (
                       <ActionAreaCard
-                        ClassIcon={el.asset}
-                        SubjectIcon={el.subject}
+                      item={item}
                       />
                     );
                   })}
