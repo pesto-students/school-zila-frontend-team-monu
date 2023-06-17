@@ -1,0 +1,43 @@
+.navigationBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.6em;
+  width: 98.7%;
+}
+
+.pageNavigation {
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+}
+
+.navigationBar > p {
+  font-size: 1em;
+  color: #a098ae;
+}
+
+p > strong {
+  color: #303972;
+}
+
+.activePage {
+  background-color: #5dbc67;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  border: none;
+  color: white;
+}
+
+.pageNumber {
+  border: 2px solid #a098ae;
+  width: 2.4em;
+  height: 2.4em;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.pageNavigation > img {
+  width: 0.6em;
+}

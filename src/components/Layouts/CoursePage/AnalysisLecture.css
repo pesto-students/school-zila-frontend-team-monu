@@ -1,0 +1,59 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin: 1% 2.5% 0 17.5%;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.analysisLectureDiv {
+  display: flex;
+  width: inherit;
+}
+
+.analysisLecMainDiv {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-right: 3%;
+}
+
+.lectureDetail {
+  background-color: white;
+  border-radius: 12px;
+  margin-top: 5%;
+  padding: 3%;
+}
+
+.lectureDetail > p {
+  color: #303972;
+  font-size: 1.2rem;
+}
+
+.lectureDetailHeader {
+  color: #303972;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 30px;
+  font-weight: 600;
+  width: 10%;
+  margin-bottom: 1%;
+}

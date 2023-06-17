@@ -1,0 +1,47 @@
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  /* margin-bottom: -10%; */
+}
+
+.calendar-main {
+  margin-left: 18%;
+  height: 60%;
+  width: 70%;
+  color: red;
+}
+
+.calendar-top {
+  padding: 1% 2.5% 0 17%;
+}
+
+.eventSideBar {
+  margin-right: 3%;
+}
+
+.eventSideBarViewMore {
+  border: none;
+  color: #5dbc67;
+  background-color: #e4eef0;
+  width: 100%;
+  height: 5vh;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.eventSideBarTitle {
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8%;
+  border-radius: 12px;
+}
+
+.eventSideBarTitle > p {
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color: #303972;
+}

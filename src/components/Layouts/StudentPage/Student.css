@@ -1,0 +1,32 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin: 1% 2.5% 0 17.5%;
+}
+
+.studentDetail {
+  margin: 30px 15px 0 40px;
+}
+
+.mainMiddleContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.selectClass {
+  margin-top: 4px;
+  display: block;
+  width: 250px;
+  height: 30px;
+  border-color: #c1bbeb;
+  color: #a098ae;
+}
+
+.selectClass > option {
+  padding: 12px;
+}

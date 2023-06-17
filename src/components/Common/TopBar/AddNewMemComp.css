@@ -1,0 +1,16 @@
+.middleHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addEntity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5dbc67;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  height: 40px;
+  font-weight: 600;
+}

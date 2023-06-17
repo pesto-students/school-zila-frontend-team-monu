@@ -1,0 +1,20 @@
+.mainContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.middleContainer {
+  width: 100%;
+  margin: 1% 2.5% 0 17.5%;
+}
+
+.teacherList {
+  margin: 1% 0 0 2%;
+}
+
+.teacherListRow1,
+.teacherListRow2,
+.teacherListRow3 {
+  display: flex;
+  justify-content: center;
+}
